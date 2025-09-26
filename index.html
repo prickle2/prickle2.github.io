@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
 
-  <!-- 프로필 원본 선로딩(선명도 유지) -->
+  <!-- Keep photo crisp -->
   <link rel="preload" as="image" href="profile.jpg">
 
   <style>
@@ -51,11 +51,18 @@
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff;
       border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
-    /* 프로그램 썸네일 */
-    .thumb{aspect-ratio:16/9; background:#fff center/cover no-repeat; border-radius:12px}
+    /* 프로그램 썸네일(이미지 태그로, 잘림 방지) */
+    .thumbWrap{
+      aspect-ratio:16/9; border:1px solid var(--stroke); border-radius:12px;
+      background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 · 디지털뱃지 이미지 */
-    .stamp{width:84px; height:84px; border-radius:12px; background:#fff center/cover no-repeat; border:1px solid var(--stroke)}
+    /* 3품 이미지 프레임(내부는 <img>) */
+    .stamp{
+      width:84px; height:84px; border-radius:12px; border:1px solid var(--stroke);
+      background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -138,7 +145,7 @@
           </div>
         </div>
 
-        <!-- 키워드: 네모 박스 -->
+        <!-- 키워드 -->
         <div class="mt-5">
           <span class="tag">🧬 생물화학</span>
           <span class="tag">💊 제약연구</span>
@@ -155,14 +162,11 @@
         </div>
       </div>
 
-      <!-- RIGHT PHOTO: 원본 화질 유지 + 조금 더 작게 -->
+      <!-- RIGHT PHOTO (조금 작게, 잘림 없이) -->
       <div class="reveal">
-        <img
-          src="profile.jpg"
-          alt="성하은 프로필"
-          class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
-          loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);"
-        />
+        <img src="profile.jpg" alt="성하은 프로필"
+             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+             loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);" />
       </div>
     </section>
 
@@ -296,68 +300,75 @@
       </div>
     </section>
 
-    <!-- 프로그램 (이미지 파일 연결) -->
+    <!-- 프로그램 (썸네일 <img> + object-contain) -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('스꾸.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="스꾸.jpg" alt="SKKU-BA-DIVE"></div>
           <div class="text-xs text-[var(--muted)]">2024 하계</div>
           <div class="text-base font-semibold mt-1">SKKU-BA-DIVE</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('경동.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="경동.jpg" alt="화학과 동문기업 탐방"></div>
           <div class="text-xs text-[var(--muted)]">2024</div>
           <div class="text-base font-semibold mt-1">화학과 학생 동문기업 탐방 프로그램</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('아두이노.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="아두이노.jpg" alt="DNA School 아두이노 II"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
           <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('에든버러.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="에든버러대학교 수업"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
           <div class="text-base font-semibold mt-1">에든버러대학교 온라인 수업</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('포폴.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumb mb-3" style="background-image:url('노벨.jpg')"></div>
+          <div class="thumbWrap mb-3"><img src="노벨.jpg" alt="노벨 화학상 분야 경연"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
         </article>
       </div>
     </section>
 
-    <!-- 디지털 뱃지 & 3품 -->
+    <!-- 디지털 뱃지 & 3품 (이미지 잘림 방지 완료) -->
     <section id="global" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 뱃지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
+        <!-- 디지털 뱃지: 가로형 이미지 온전히 보이도록 -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
-          <img src="뱃지.jpg" alt="Digital Badge" class="mx-auto rounded-lg shadow w-32 h-32 object-cover">
+          <img src="뱃지.jpg" alt="Digital Badge"
+               class="mx-auto rounded-lg shadow w-[240px] h-[170px] object-contain bg-white" />
         </div>
+
+        <!-- 3품 -->
         <div class="glass rounded-xl p-4 reveal">
           <div class="font-semibold mb-3">3품 인증</div>
+
           <div class="flex items-center gap-4">
-            <div class="stamp" style="background-image:url('인성.jpg')"></div>
+            <div class="stamp"><img src="인성.jpg" alt="인성 인증" class="max-w-full max-h-full object-contain"></div>
             <div class="text-sm">인성 인증 — ✅ 완료</div>
           </div>
+
           <div class="flex items-center gap-4 mt-3">
-            <div class="stamp" style="background-image:url('글로벌.jpg')"></div>
+            <div class="stamp"><img src="글로벌.jpg" alt="글로벌 인증" class="max-w-full max-h-full object-contain"></div>
             <div class="text-sm">글로벌 인증 — ✅ 완료</div>
           </div>
+
           <div class="flex items-center gap-4 mt-3">
-            <div class="stamp" style="background-image:url('인턴십.jpg')"></div>
+            <div class="stamp"><img src="인턴십.jpg" alt="인턴십 인증" class="max-w-full max-h-full object-contain"></div>
             <div class="text-sm">인턴십 인증 — ⏳ 진행 예정</div>
           </div>
         </div>
