@@ -1,280 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>E-Portfolio — Pink</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Portfolio</title>
 
-  <!-- Google Font: 한국어 가독성 좋은 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN (설치 불필요) -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* ===== Theme Variables (원하면 여기만 바꿔 색감 변경) ===== */
-    :root{
-      --bg-from:#fff1f2;   /* baby pink very light */
-      --bg-to:#ffe4e6;     /* baby pink light */
-      --ink:#0f172a;       /* 글자색(짙게) */
-      --muted:#475569;     /* 보조 텍스트 */
-      --card:#ffffffcc;    /* 카드 반투명 */
-      --stroke:#e2e8f0;    /* 경계선 */
-      --accent:#f472b6;    /* 포인트(버튼/하이라이트) */
-      --accent-strong:#ec4899;
-    }
-    html { scroll-behavior:smooth; }
     body {
-      font-family: "Noto Sans KR", ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--ink);
-      background: linear-gradient(to bottom right, var(--bg-from), var(--bg-to));
-    }
-    /* 부드러운 애니메이션 기본값 */
-    .soft { transition: all .25s ease; }
-    .glass {
-      background: var(--card);
-      backdrop-filter: saturate(170%) blur(6px);
+      font-family: 'Pretendard', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #fff0f6);
+      color: #1e1e1e;
     }
     .card {
-      border: 1px solid var(--stroke);
-      border-radius: 16px;
-      background: var(--card);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 6px 18px rgba(244,114,182,.18);
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
     .chip {
-      display:inline-flex; align-items:center; gap:.5rem;
-      border:1px solid var(--stroke); padding:.375rem .75rem;
-      border-radius:999px; font-size:.8rem; font-weight:600;
-      background: #fff;
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      background: #fdf2f8;
+      color: #be185d;
+      font-size: 0.85rem;
+      font-weight: 500;
     }
-    .maxw { max-width: 1120px; } /* ≈ max-w-6xl */
   </style>
 </head>
-<body>
+<body class="leading-relaxed">
 
-  <!-- NAV -->
-  <header class="sticky top-0 z-50 border-b border-[var(--stroke)]/70 glass">
-    <div class="mx-auto maxw px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="text-lg font-extrabold tracking-tight soft hover:opacity-80">성○○ 포트폴리오</a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a class="soft hover:opacity-70" href="#about">소개</a>
-        <a class="soft hover:opacity-70" href="#awards">수상</a>
-        <a class="soft hover:opacity-70" href="#experience">경험</a>
-        <a class="soft hover:opacity-70" href="#projects">프로젝트</a>
-        <a class="soft hover:opacity-70" href="#pubs">발표/포스터</a>
-        <a class="soft hover:opacity-70" href="#skills">스킬</a>
-        <a class="soft hover:opacity-70" href="#contact">연락</a>
-      </nav>
-      <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded-lg soft"
-         style="background:var(--accent); color:white;">이력서(PDF)</a>
-    </div>
+  <!-- Header -->
+  <header class="sticky top-0 bg-white/70 backdrop-blur border-b z-50">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <div class="text-xl font-bold text-pink-600">E-Portfolio</div>
+      <div class="space-x-6 text-gray-700 font-medium">
+        <a href="#about" class="hover:text-pink-600">소개</a>
+        <a href="#awards" class="hover:text-pink-600">수상</a>
+        <a href="#experience" class="hover:text-pink-600">경험</a>
+        <a href="#projects" class="hover:text-pink-600">프로젝트</a>
+        <a href="#skills" class="hover:text-pink-600">스킬</a>
+        <a href="#contact" class="hover:text-pink-600">연락</a>
+      </div>
+    </nav>
   </header>
 
-  <main id="top" class="mx-auto maxw px-4">
-
-    <!-- HERO / ABOUT -->
-    <section id="about" class="py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
-          식품생명공학·약학志 — 실험·탐구·임상적 사고로 연결하는 문제해결형 인재
-        </h1>
-        <p class="mt-4 text-[var(--muted)]">
-          여기에 3–4문장 자기소개를 넣으세요. 관심 분야(예: 효소공학, 약물전달, 면역생리),
-          핵심 역량(실험 설계·데이터 분석·발표), 임팩트(수상·논문·프로젝트), 향후 비전 등을 간결하게.
-        </p>
-
-        <div class="mt-6 flex flex-wrap gap-2">
-          <a href="mailto:you@example.com" class="chip soft hover:-translate-y-[1px]">you@example.com</a>
-          <a href="tel:+821012345678" class="chip soft hover:-translate-y-[1px]">+82 10-1234-5678</a>
-          <a href="#" class="chip soft hover:-translate-y-[1px]">github.com/your-id</a>
-          <a href="#" class="chip soft hover:-translate-y-[1px]">linkedin.com/in/your-id</a>
-        </div>
-
-        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="card p-5 text-center">
-            <div class="text-3xl font-extrabold">3</div>
-            <div class="text-sm text-[var(--muted)]">논문/포스터</div>
-          </div>
-          <div class="card p-5 text-center">
-            <div class="text-3xl font-extrabold">8</div>
-            <div class="text-sm text-[var(--muted)]">프로젝트</div>
-          </div>
-          <div class="card p-5 text-center">
-            <div class="text-3xl font-extrabold">6</div>
-            <div class="text-sm text-[var(--muted)]">수상</div>
-          </div>
-          <div class="card p-5 text-center">
-            <div class="text-3xl font-extrabold">420h</div>
-            <div class="text-sm text-[var(--muted)]">봉사/리더십</div>
-          </div>
-        </div>
+  <!-- Hero -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+        식품생명공학 · 약학志 <br>실험·탐구·임상적 사고로 연결하는 문제해결형 인재
+      </h1>
+      <p class="text-gray-700 text-lg mb-6">
+        3~4문장 자기소개가 들어갑니다. 관심 분야, 연구 경험, 목표 등을 담아주세요.
+      </p>
+      <div class="flex space-x-6 text-gray-600 text-sm">
+        <span>📧 you@example.com</span>
+        <span>📞 010-1234-5678</span>
       </div>
+    </div>
+    <div>
+      <img src="https://picsum.photos/500/500?grayscale" alt="Profile" class="rounded-2xl shadow-lg w-full h-auto object-cover">
+    </div>
+  </section>
 
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1280&auto=format&fit=crop"
-             alt="profile" class="rounded-2xl shadow-xl w-full h-auto object-cover soft" />
-        <!-- 핑크 라이트 오버레이 -->
-        <div class="absolute inset-0 rounded-2xl pointer-events-none"
-             style="background: radial-gradient(60% 60% at 70% 30%, rgba(244,114,182,.25), transparent 70%);"></div>
+  <!-- Awards -->
+  <section id="awards" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">🏆 수상</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card">
+        <div class="text-sm text-gray-500 mb-2">2025 · 성균관대학교</div>
+        <h3 class="text-xl font-semibold mb-2">글로벌·융합 교육 우수사례 공모전 최우수상</h3>
+        <p class="text-gray-600">탐구 설계·영상·에세이를 학술전환한 임팩트 강조.</p>
+        <a href="#" class="text-pink-600 text-sm font-medium mt-3 inline-block">상세 보기 →</a>
       </div>
-    </section>
-
-    <!-- AWARDS -->
-    <section id="awards" class="py-10">
-      <h2 class="text-2xl font-bold flex items-center gap-2">🏆 수상</h2>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <!-- 카드 1 -->
-        <article class="card p-6 soft hover:-translate-y-[2px]">
-          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
-            <span>2025 · 성균관대학교</span>
-            <!-- 상세 링크: 나중에 href만 바꾸면 됨 -->
-            <a class="underline soft hover:text-[var(--accent-strong)]" href="#">상세</a>
-          </div>
-          <div class="mt-2 text-lg font-semibold">글로벌·융합 교육 우수사례 공모전 최우수상</div>
-          <p class="mt-1 text-sm text-[var(--muted)]">탐구 설계–영상·에세이로 학습전환 임팩트 가시화</p>
-        </article>
-
-        <!-- 카드 2 -->
-        <article class="card p-6 soft hover:-translate-y-[2px]">
-          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
-            <span>2024 · 나노공정연구실</span>
-            <a class="underline soft hover:text-[var(--accent-strong)]" href="#">상세</a>
-          </div>
-          <div class="mt-2 text-lg font-semibold">학부 연구생 우수상</div>
-          <p class="mt-1 text-sm text-[var(--muted)]">QLED ETL dopant 최적화·효율 향상</p>
-        </article>
+      <div class="card">
+        <div class="text-sm text-gray-500 mb-2">2024 · 나노공정연구실</div>
+        <h3 class="text-xl font-semibold mb-2">학부 연구생 우수상</h3>
+        <p class="text-gray-600">QLED ETL dopant 최적화 효율 향상 연구.</p>
+        <a href="#" class="text-pink-600 text-sm font-medium mt-3 inline-block">상세 보기 →</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-10">
-      <h2 class="text-2xl font-bold">💼 경험</h2>
-      <div class="mt-6 grid gap-6">
-        <article class="card p-6">
-          <div class="text-sm text-[var(--muted)]">2024.07 – 2024.09 · 나노공정연구실</div>
-          <div class="text-lg font-semibold mt-1">학부연구생 (URP)</div>
-          <ul class="mt-3 list-disc pl-5 space-y-1 text-sm">
-            <li>QLED 소자 ETL dopant 농도–효율 매핑, DoE 기반 설계</li>
-            <li>IVL/EL 측정·해석, Python 데이터 파이프라인 구축</li>
-            <li>SEM/AFM 결과–소자 성능 상관분석, 포스터 작성</li>
-          </ul>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip">QLED</span><span class="chip">DoE</span><span class="chip">Python</span><span class="chip">IVL</span>
-          </div>
-        </article>
+  <!-- Skills -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">🛠 스킬</h2>
+    <div class="flex flex-wrap gap-3">
+      <span class="chip">실험 설계</span>
+      <span class="chip">데이터 분석</span>
+      <span class="chip">분자생물학</span>
+      <span class="chip">약물전달</span>
+      <span class="chip">프로그래밍</span>
+    </div>
+  </section>
 
-        <article class="card p-6">
-          <div class="text-sm text-[var(--muted)]">2023.03 – 2024.02 · Best Birthday (웹서비스)</div>
-          <div class="text-lg font-semibold mt-1">프로젝트 팀장</div>
-          <ul class="mt-3 list-disc pl-5 space-y-1 text-sm">
-            <li>팀 빌딩·백엔드 리드, 배포 자동화</li>
-            <li>사용자 인터뷰→MVP 가설 검증</li>
-            <li>런칭 및 피드백 루프 구축</li>
-          </ul>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip">Leadership</span><span class="chip">Backend</span><span class="chip">MVP</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="py-10">
-      <h2 class="text-2xl font-bold">🧪 프로젝트</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <article class="card p-6">
-          <div class="flex items-center justify-between">
-            <div class="text-lg font-semibold">가짜뉴스 판별 서비스 Right Paper</div>
-            <div class="text-sm text-[var(--muted)]">2024</div>
-          </div>
-          <div class="text-sm text-[var(--muted)] mt-1">역할: 백엔드</div>
-          <p class="mt-2 text-sm">
-            언어모델 기반 분류·신뢰점수 API. FastAPI/PG/CI. 실사용 로그 추가학습 파이프라인 구상.
-          </p>
-          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">LLM</span><span class="chip">FastAPI</span><span class="chip">MLOps</span></div>
-          <div class="mt-3 flex gap-3 text-sm">
-            <a href="#" class="underline soft hover:text-[var(--accent-strong)]">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card p-6">
-          <div class="flex items-center justify-between">
-            <div class="text-lg font-semibold">MBTI 기반 학과 추천</div>
-            <div class="text-sm text-[var(--muted)]">2023</div>
-          </div>
-          <div class="text-sm text-[var(--muted)] mt-1">역할: 개발</div>
-          <p class="mt-2 text-sm">Python turtle 인터랙티브 테스트·시각화. 피드백 기반 추천 로직 개선.</p>
-          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">UX</span></div>
-          <div class="mt-3 flex gap-3 text-sm">
-            <a href="#" class="underline soft hover:text-[var(--accent-strong)]">블로그</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="pubs" class="py-10">
-      <h2 class="text-2xl font-bold">📚 발표/포스터</h2>
-      <div class="mt-6 grid gap-4">
-        <article class="card p-6">
-          <div class="flex items-center justify-between">
-            <div class="font-semibold">(포스터) Glyceollin II의 골형성 경로 탐색</div>
-            <div class="text-sm text-[var(--muted)]">2025 · 학부 학술제</div>
-          </div>
-          <a href="#" class="underline text-sm mt-2 inline-block soft hover:text-[var(--accent-strong)]">자료 보기</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="py-10">
-      <h2 class="text-2xl font-bold">⭐ 스킬</h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <article class="card p-6">
-          <div class="font-semibold mb-2">실험/분석</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">적정·분광</span><span class="chip">겔전기영동</span><span class="chip">크로마토</span><span class="chip">멸균/배양</span>
-          </div>
-        </article>
-        <article class="card p-6">
-          <div class="font-semibold mb-2">데이터</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Excel</span>
-          </div>
-        </article>
-        <article class="card p-6">
-          <div class="font-semibold mb-2">도구</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">Prism</span><span class="chip">ImageJ</span><span class="chip">Notion</span><span class="chip">Git</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-14">
-      <div class="card p-6">
-        <h2 class="text-xl font-bold">연락</h2>
-        <p class="text-sm text-[var(--muted)] mt-2">협업·멘토링·발표 제안 언제든 환영합니다.</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a href="mailto:you@example.com" class="chip soft hover:-translate-y-[1px]">you@example.com</a>
-          <a href="tel:+821012345678" class="chip soft hover:-translate-y-[1px]">+82 10-1234-5678</a>
-          <a href="#" class="chip soft hover:-translate-y-[1px]">github.com/your-id</a>
-          <a href="#" class="chip soft hover:-translate-y-[1px]">linkedin.com/in/your-id</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="py-10 text-center text-xs text-[var(--muted)]">
-    © <span id="year"></span> 성○○. All rights reserved.
+  <!-- Footer -->
+  <footer id="contact" class="bg-white/70 backdrop-blur border-t mt-16">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+      <p>© 2025 주인님 E-Portfolio</p>
+      <p>Contact: you@example.com</p>
+    </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
