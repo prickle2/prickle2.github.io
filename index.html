@@ -3,24 +3,20 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>E-Portfolio — Pink Bloom</title>
+  <title>성(成)균관대 성(成)하은의 성(成)장 스토리</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg1:#ffe6ef;
-      --bg2:#ffeef7;
-      --ink:#0f172a;
-      --muted:#475569;
-      --accent:#f472b6;
-      --accent-strong:#ec4899;
-      --chip:#fff;
-      --stroke:#f2d7e3;
+      --bg1:#ffe6ef; --bg2:#ffeef7;
+      --ink:#0f172a; --muted:#475569;
+      --accent:#f472b6; --accent-strong:#ec4899;
+      --chip:#fff; --stroke:#f2d7e3;
     }
     html{scroll-behavior:smooth}
     body{
@@ -28,18 +24,18 @@
       color:var(--ink);
       background:linear-gradient(120deg,var(--bg1),var(--bg2));
     }
-    .pretty{font-family:"Jua", "Noto Sans KR", sans-serif; letter-spacing:.2px}
+    .pretty{font-family:"Jua","Noto Sans KR",sans-serif; letter-spacing:.2px}
     .card{background:#fff; border:1px solid var(--stroke); border-radius:18px; padding:1.25rem; box-shadow:0 8px 28px rgba(244,114,182,.16);}
-    .chip{display:inline-flex; align-items:center; padding:.45rem .85rem; border-radius:9999px; background:var(--chip); border:1px solid var(--stroke); font-size:.85rem; font-weight:600;}
+    .chip{display:inline-flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:9999px; background:var(--chip); border:1px solid var(--stroke); font-size:.85rem; font-weight:600;}
     .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease;}
     .reveal.show{opacity:1; transform:none}
+    .soft{transition:transform .25s ease, box-shadow .25s ease}
+    .soft:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(244,114,182,.22)}
+    .glass{background:rgba(255,255,255,.65); backdrop-filter:saturate(160%) blur(8px)}
     .blob{position:absolute; width:420px; height:420px; border-radius:9999px;
       background:radial-gradient(circle at 30% 30%, rgba(244,114,182,.35), transparent 60%),
                  radial-gradient(circle at 70% 70%, rgba(236,72,153,.28), transparent 55%);
       filter:blur(12px); pointer-events:none;}
-    .soft{transition:transform .25s ease, box-shadow .25s ease}
-    .soft:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(244,114,182,.22)}
-    .glass{background:rgba(255,255,255,.65); backdrop-filter:saturate(160%) blur(8px)}
   </style>
 </head>
 <body>
@@ -47,13 +43,19 @@
   <!-- NAV -->
   <header class="sticky top-0 z-50 border-b border-[var(--stroke)] glass">
     <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
-      <a href="#top" class="pretty text-xl text-[var(--accent-strong)]">E-Portfolio</a>
-      <nav class="hidden md:flex items-center gap-6 text-[15px]">
-        <a href="#about" class="hover:text-[var(--accent-strong)]">소개</a>
-        <a href="#awards" class="hover:text-[var(--accent-strong)]">수상</a>
-        <a href="#experience" class="hover:text-[var(--accent-strong)]">경험</a>
+      <a href="#top" class="pretty text-base md:text-lg text-[var(--accent-strong)]">
+        성(成)균관대 성(成)하은의 성(成)장 스토리
+      </a>
+      <nav class="hidden md:flex items-center gap-5 text-[15px]">
+        <a href="#about" class="hover:text-[var(--accent-strong)]">홈</a>
+        <a href="#education" class="hover:text-[var(--accent-strong)]">학력</a>
+        <a href="#highlights" class="hover:text-[var(--accent-strong)]">주요활동</a>
+        <a href="#credentials" class="hover:text-[var(--accent-strong)]">어학·자격증</a>
+        <a href="#scholarships" class="hover:text-[var(--accent-strong)]">장학금</a>
+        <a href="#academic" class="hover:text-[var(--accent-strong)]">교과</a>
         <a href="#programs" class="hover:text-[var(--accent-strong)]">프로그램</a>
-        <a href="#skills" class="hover:text-[var(--accent-strong)]">스킬</a>
+        <a href="#global" class="hover:text-[var(--accent-strong)]">글로벌·3품</a>
+        <a href="#roadmap" class="hover:text-[var(--accent-strong)]">목표</a>
         <a href="#contact" class="hover:text-[var(--accent-strong)]">연락</a>
       </nav>
     </div>
@@ -61,120 +63,317 @@
 
   <main id="top" class="max-w-6xl mx-auto px-5">
 
-    <!-- HERO -->
+    <!-- HOME -->
     <section id="about" class="relative py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
       <div class="blob -z-10 -left-16 -top-16"></div>
 
       <div class="reveal">
-        <h1 class="pretty text-4xl md:text-6xl font-extrabold leading-tight mb-5">
-          <span id="kw1" class="text-[var(--accent-strong)]">식품생명공학</span> ·
-          <span id="kw2">약학志</span><br/>
-          <span>실험·탐구·</span><span id="kw3">임상적 사고</span>로 연결하는<br/>
-          문제해결형 인재
+        <h1 class="pretty text-4xl md:text-6xl font-extrabold leading-tight mb-3">
+          <span id="kw1" class="text-[var(--accent-strong)]">생물화학을 탐구하는</span>
+          <span class="block md:inline">미래 연구자</span>
         </h1>
-        <p class="text-[var(--muted)] text-[17px]">
-          성균관대학교 화학과 재학, 학업 성취와 다양한 활동을 통해 성장 중입니다.
+        <p id="subtitle" class="text-[var(--muted)] text-[17px]">
+          생물화학 속 작은 발견이 언젠가 새로운 치료제가 되리라 믿습니다.
         </p>
+
         <div class="mt-6 flex flex-wrap gap-2">
-          <a href="mailto:you@example.com" class="chip soft">📧 you@example.com</a>
-          <a href="tel:+821012345678" class="chip soft">📞 010-1234-5678</a>
+          <a href="mailto:prickle2@g.skku.edu" class="chip soft">📧 prickle2@g.skku.edu</a>
+          <a href="https://instagram.com/she.u_u" class="chip soft" target="_blank" rel="noopener">📷 @she.u_u</a>
         </div>
       </div>
 
+      <!-- 프로필 이미지(원하시면 교체) -->
       <a class="relative block reveal soft" href="#">
         <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1280&auto=format&fit=crop"
              alt="profile" class="rounded-2xl shadow-xl w-full h-auto object-cover"/>
       </a>
     </section>
 
-    <!-- AWARDS -->
-    <section id="awards" class="py-10">
-      <h2 class="pretty text-3xl font-bold flex items-center gap-2 reveal">🏆 수상</h2>
+    <!-- EDUCATION -->
+    <section id="education" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🎓 학력</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <article class="card soft reveal">
-          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
-            <span>2025 · 성균관대학교</span>
-            <a href="#" class="underline hover:text-[var(--accent-strong)]">상세</a>
-          </div>
-          <div class="mt-2 text-lg font-semibold">예시 수상 제목</div>
-          <p class="mt-1 text-sm text-[var(--muted)]">설명 텍스트 자리</p>
+        <article class="card reveal">
+          <div class="text-sm text-[var(--muted)]">2023</div>
+          <div class="text-lg font-semibold mt-1">성균관대학교 자연과학계열 입학</div>
+        </article>
+        <article class="card reveal">
+          <div class="text-sm text-[var(--muted)]">2024 ~</div>
+          <div class="text-lg font-semibold mt-1">성균관대학교 화학과</div>
         </article>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-10">
-      <h2 class="pretty text-3xl font-bold reveal">💼 경험</h2>
-      <div class="mt-6 grid gap-6">
-        <article class="card reveal">
-          <div class="text-sm text-[var(--muted)]">2023 – 2024 · 성균관대학교</div>
-          <div class="text-lg font-semibold mt-1">공식홍보대사 Alimi 30기</div>
-          <p class="mt-2 text-sm text-[var(--muted)]">교내 대표 홍보대사로 활동하며 대외 소통 및 협업 경험 축적.</p>
+    <!-- HIGHLIGHTS -->
+    <section id="highlights" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🌟 주요활동</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card soft reveal">
+          <div class="text-sm text-[var(--muted)]">2023</div>
+          <div class="text-lg font-semibold mt-1">양평장로교회 울림 임원단 — 미디어</div>
         </article>
+        <article class="card soft reveal">
+          <div class="text-sm text-[var(--muted)]">2024</div>
+          <div class="text-lg font-semibold mt-1">양평장로교회 아하 임원단 — 미디어</div>
+        </article>
+        <article class="card soft reveal">
+          <div class="text-sm text-[var(--muted)]">2023–2024</div>
+          <div class="text-lg font-semibold mt-1">성균관대학교 공식홍보대사 Alimi 30기</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS: Languages + Certificates -->
+    <section id="credentials" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">📚 어학 · 자격증</h2>
+
+      <!-- 어학 -->
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card reveal">
+          <div class="font-semibold">어학</div>
+          <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-[var(--muted)]">
+            <li>TOEIC 945점</li>
+          </ul>
+        </article>
+
+        <!-- 자격증 요약 -->
+        <article class="card reveal">
+          <div class="font-semibold">자격증 요약</div>
+          <p class="text-sm text-[var(--muted)] mt-2">아래 상세 목록에서 증빙 가능</p>
+        </article>
+      </div>
+
+      <!-- 자격증 상세 -->
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card reveal">
+          <div class="font-semibold">ITQ (한국생산성본부)</div>
+          <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-[var(--muted)]">
+            <li>ITQ 한글</li>
+            <li>ITQ 파워포인트</li>
+            <li>ITQ 엑셀</li>
+            <li>ITQ 인터넷</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <div class="font-semibold">GTQ 그래픽기술자격 (한국생산성본부)</div>
+          <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-[var(--muted)]">
+            <li>GTQ 3급</li>
+            <li>GTQ 2급</li>
+            <li>GTQ 1급</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <div class="font-semibold">그 외</div>
+          <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-[var(--muted)]">
+            <li>문서실무사 4급 (대한상공회의소)</li>
+            <li>ICDL 국제컴퓨터활용자격 (Using the Computer and Managing Files)</li>
+            <li>한국사능력검정시험 (국사편찬위원회)</li>
+            <li>한자 6급 (대한검정회 한자급수자격검정시험)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SCHOLARSHIPS -->
+    <section id="scholarships" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🎓 장학금</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 1학기 · 교내</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">근로봉사장학금</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 1학기 · 교내</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">국가장학금(유형2, 신·편입생 지원)</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 1학기 · 교외</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">메가스터디교육㈜ 장학금</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 2학기 · 교내</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">근로봉사장학금</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 2학기 · 교내</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">문행장학금(추가지급)</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2024 · 1학기 · 교내</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">글로벌 리더학습 장학금</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2023 · 교외</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">양평군교육발전위원회 성적우수 장학금</div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2024 · 교외</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">증빙 보기</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">양평군교육발전위원회 성적우수 장학금</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACADEMIC (교과) -->
+    <section id="academic" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">📖 교과 진행 현황</h2>
+      <div class="mt-6 space-y-6">
+        <!-- 진행 바: width 값만 바꾸면 됩니다 -->
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>제1전공 코어</span><span>12 / 35</span>
+          </div>
+          <div class="w-full bg-pink-100 rounded-full h-3">
+            <div class="bg-pink-400 h-3 rounded-full transition-all duration-700" style="width:34%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>실험실습</span><span>1 / 6</span>
+          </div>
+          <div class="w-full bg-pink-100 rounded-full h-3">
+            <div class="bg-pink-400 h-3 rounded-full transition-all duration-700" style="width:17%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>심화</span><span>0 / 21</span>
+          </div>
+          <div class="w-full bg-pink-100 rounded-full h-3">
+            <div class="bg-pink-400 h-3 rounded-full transition-all duration-700" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- 완료 항목은 체크 스타일 -->
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="card reveal">
+            <div class="font-semibold mb-2">의사소통</div>
+            <div class="text-sm text-[var(--muted)]">4 / 4 완료 ✅</div>
+          </div>
+          <div class="card reveal">
+            <div class="font-semibold mb-2">창의</div>
+            <div class="text-sm text-[var(--muted)]">3 / 3 완료 ✅</div>
+          </div>
+          <div class="card reveal">
+            <div class="font-semibold mb-2">글로벌(필수)</div>
+            <div class="text-sm text-[var(--muted)]">2 / 2 완료 ✅</div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          <div class="card reveal"><div class="font-semibold mb-2">인문사회/자연과학기반</div><div class="text-sm text-[var(--muted)]">21 / 21 완료 ✅</div></div>
+          <div class="card reveal"><div class="font-semibold mb-2">인문사회/자연과학기반(심화)</div><div class="text-sm text-[var(--muted)]">3 / 3 완료 ✅</div></div>
+          <div class="card reveal"><div class="font-semibold mb-2">성균인성·리더십</div><div class="text-sm text-[var(--muted)]">2 / 2 완료 ✅</div></div>
+          <div class="card reveal"><div class="font-semibold mb-2">고전·명저</div><div class="text-sm text-[var(--muted)]">3 / 3 완료 ✅</div></div>
+        </div>
+
+        <div class="card reveal">
+          <div class="font-semibold mb-2">균형교양(인간·문화 / 사회·역사 / 자연·과학·기술)</div>
+          <div class="text-sm text-[var(--muted)]">각 21 / 21 완료 ✅</div>
+        </div>
       </div>
     </section>
 
     <!-- PROGRAMS -->
     <section id="programs" class="py-10">
-      <h2 class="pretty text-3xl font-bold reveal">📚 프로그램 & 글로벌</h2>
+      <h2 class="pretty text-3xl font-bold reveal">📚 프로그램 (비교과)</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        
         <article class="card soft reveal">
-          <div class="text-sm text-[var(--muted)]">2024</div>
-          <div class="text-lg font-semibold mt-1">하계 SKKU-BA-DIVE</div>
+          <div class="text-sm text-[var(--muted)]">2024 하계</div>
+          <div class="text-lg font-semibold mt-1">SKKU-BA-DIVE</div>
         </article>
-        
         <article class="card soft reveal">
           <div class="text-sm text-[var(--muted)]">2024</div>
           <div class="text-lg font-semibold mt-1">경동제약 탐방</div>
         </article>
-        
         <article class="card soft reveal">
-          <div class="text-sm text-[var(--muted)]">2025 (진행 중)</div>
-          <div class="text-lg font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노 응용</div>
+          <div class="text-sm text-[var(--muted)]">2025 · 진행 중</div>
+          <div class="text-lg font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
         </article>
-        
         <article class="card soft reveal">
-          <div class="text-sm text-[var(--muted)]">2025 (진행 중)</div>
-          <div class="text-lg font-semibold mt-1">에든버러대학 수업</div>
+          <div class="text-sm text-[var(--muted)]">2025 · 진행 중</div>
+          <div class="text-lg font-semibold mt-1">에든버러대학교 온라인 수업</div>
         </article>
-        
         <article class="card soft reveal">
-          <div class="text-sm text-[var(--muted)]">2025 (참가 중)</div>
+          <div class="text-sm text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-lg font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
-        </article>
-        
-        <!-- 글로벌 뱃지 -->
-        <article class="card soft reveal text-center">
-          <div class="text-sm text-[var(--muted)]">글로벌 경험</div>
-          <div class="mt-2 text-lg font-semibold">Global Badge</div>
-          <img src="https://via.placeholder.com/150" alt="글로벌 뱃지" class="mx-auto mt-3 rounded-lg shadow w-32 h-32 object-cover">
         </article>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="py-10">
-      <h2 class="pretty text-3xl font-bold reveal">⭐ 스킬</h2>
+    <!-- GLOBAL & 3 품 -->
+    <section id="global" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🌍 글로벌 & 3품 인증</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card soft reveal text-center">
+          <div class="text-sm text-[var(--muted)]">글로벌 뱃지</div>
+          <div class="mt-2 text-lg font-semibold">Global Badge</div>
+          <img src="https://via.placeholder.com/150" alt="글로벌 뱃지" class="mx-auto mt-3 rounded-lg shadow w-32 h-32 object-cover">
+        </article>
+        <article class="card soft reveal">
+          <div class="font-semibold mb-2">3품 인증 체크리스트</div>
+          <ul class="list-disc pl-5 space-y-1 text-sm text-[var(--muted)]">
+            <li>인성 인증 — ✅ 완료</li>
+            <li>글로벌 인증 — ✅ 완료</li>
+            <li>인턴십 인증 — ⏳ 진행 예정</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🗺️ 목표와 비전</h2>
       <div class="mt-6 grid md:grid-cols-3 gap-6">
         <article class="card reveal">
-          <div class="font-semibold mb-2">실험/분석</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">적정</span><span class="chip">분광</span>
-            <span class="chip">전기영동</span><span class="chip">크로마토</span>
-          </div>
+          <div class="font-semibold">단기</div>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            생물화학 기반 실험 역량과 데이터 해석력 강화. 학교·외부 프로그램 적극 참여.
+          </p>
         </article>
         <article class="card reveal">
-          <div class="font-semibold mb-2">데이터</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">Python</span><span class="chip">Excel</span>
-          </div>
+          <div class="font-semibold">중기</div>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            대학원 진학 준비 및 제약 연계 연구 경험 확보.
+          </p>
         </article>
         <article class="card reveal">
-          <div class="font-semibold mb-2">도구</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="chip">Notion</span><span class="chip">Git</span>
-          </div>
+          <div class="font-semibold">장기</div>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            제약/신약개발 분야에서 문제해결 중심의 미래 연구자로 성장.
+          </p>
         </article>
       </div>
     </section>
@@ -185,39 +384,43 @@
         <h2 class="text-xl font-bold">연락</h2>
         <p class="text-sm text-[var(--muted)] mt-2">협업·멘토링·발표 제안 환영합니다.</p>
         <div class="mt-4 flex flex-wrap gap-2">
-          <a href="mailto:you@example.com" class="chip soft">📧 you@example.com</a>
-          <a href="tel:+821012345678" class="chip soft">📞 010-1234-5678</a>
+          <a href="mailto:prickle2@g.skku.edu" class="chip soft">📧 prickle2@g.skku.edu</a>
+          <a href="https://instagram.com/she.u_u" target="_blank" rel="noopener" class="chip soft">📷 @she.u_u</a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="py-10 text-center text-xs text-[var(--muted)]">© <span id="year"></span> E-Portfolio</footer>
+  <footer class="py-10 text-center text-xs text-[var(--muted)]">© <span id="year"></span> 성하은. All rights reserved.</footer>
 
   <script>
+    // 연도
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 스크롤 등장
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
     }, {threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    const kwSets=[["식품생명공학","약학志","임상적 사고"],["분자생물학","약물전달","데이터 분석"],["바이오헬스","면역생리","실험 설계"]];
-    const el1=document.getElementById('kw1'); const el2=document.getElementById('kw2'); const el3=document.getElementById('kw3');
-    let idx=0;
+
+    // 헤드라인 키워드 순환 (문장 연결형)
+    const seq = [
+      "생물화학을 탐구하는",
+      "제약연구에 도전하는",
+      "신약개발을 꿈꾸는"
+    ];
+    const el1 = document.getElementById('kw1');
+    let idx = 0;
     setInterval(()=>{
-      idx=(idx+1)%kwSets.length;
-      [el1,el2,el3].forEach(el=>{
-        el.style.transition="opacity .3s ease, transform .3s ease";
-        el.style.opacity=.0; el.style.transform="translateY(-4px)";
-      });
+      idx = (idx+1)%seq.length;
+      el1.style.transition = "opacity .3s ease, transform .3s ease";
+      el1.style.opacity = .0; el1.style.transform = "translateY(-4px)";
       setTimeout(()=>{
-        el1.textContent=kwSets[idx][0];
-        el2.textContent=kwSets[idx][1];
-        el3.textContent=kwSets[idx][2];
-        [el1,el2,el3].forEach(el=>{
-          el.style.opacity=1; el.style.transform="none";
-        });
-      },260);
-    },2600);
+        el1.textContent = seq[idx];
+        el1.style.opacity = 1; el1.style.transform = "none";
+      }, 260);
+    }, 2600);
   </script>
 </body>
 </html>
