@@ -1,118 +1,288 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Portfolio</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>E-Portfolio — Pink Bloom</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind (설치 불필요) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- 한국어 가독성 + 예쁜 헤드라인 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Pretendard', sans-serif;
-      background: linear-gradient(135deg, #ffe6f0, #fff0f6);
-      color: #1e1e1e;
+    :root{
+      --bg1:#ffe6ef;  /* very light baby pink */
+      --bg2:#ffeef7;  /* lighter pink */
+      --ink:#0f172a;  /* 글자 */
+      --muted:#475569;/* 보조 텍스트 */
+      --accent:#f472b6;        /* 버튼/하이라이트 */
+      --accent-strong:#ec4899; /* hover */
+      --chip:#fff;             /* 칩 배경 */
+      --stroke:#f2d7e3;        /* 테두리 */
     }
-    .card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Noto Sans KR",ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:linear-gradient(120deg,var(--bg1),var(--bg2));
     }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+
+    /* 헤드라인 전용 (동글하고 통통한 느낌) */
+    .pretty{ font-family:"Jua", system-ui, -apple-system, "Noto Sans KR", sans-serif; letter-spacing:.2px }
+
+    /* 카드/칩/글라스 */
+    .card{ background:#fff; border:1px solid var(--stroke); border-radius:18px; padding:1.25rem; box-shadow:0 8px 28px rgba(244,114,182,.16); }
+    .chip{ display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .85rem; border-radius:9999px; background:var(--chip); border:1px solid var(--stroke); font-size:.85rem; font-weight:600; }
+
+    /* 부드러운 등장 애니메이션 */
+    .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease;}
+    .reveal.show{opacity:1; transform:none}
+
+    /* 둥근 블롭 장식 */
+    .blob{
+      position:absolute; inset:auto; width:420px; height:420px; border-radius:9999px;
+      background:radial-gradient(circle at 30% 30%, rgba(244,114,182,.35), transparent 60%),
+                 radial-gradient(circle at 70% 70%, rgba(236,72,153,.28), transparent 55%);
+      filter:blur(12px);
+      pointer-events:none;
     }
-    .chip {
-      display: inline-block;
-      padding: 0.3rem 0.75rem;
-      border-radius: 9999px;
-      background: #fdf2f8;
-      color: #be185d;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
+
+    /* 살짝 떠오르는 호버 */
+    .soft{ transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease }
+    .soft:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(244,114,182,.22) }
+
+    /* 네비 배경 유리효과 */
+    .glass{ background:rgba(255,255,255,.65); backdrop-filter:saturate(160%) blur(8px) }
   </style>
 </head>
-<body class="leading-relaxed">
+<body>
 
-  <!-- Header -->
-  <header class="sticky top-0 bg-white/70 backdrop-blur border-b z-50">
-    <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-xl font-bold text-pink-600">E-Portfolio</div>
-      <div class="space-x-6 text-gray-700 font-medium">
-        <a href="#about" class="hover:text-pink-600">소개</a>
-        <a href="#awards" class="hover:text-pink-600">수상</a>
-        <a href="#experience" class="hover:text-pink-600">경험</a>
-        <a href="#projects" class="hover:text-pink-600">프로젝트</a>
-        <a href="#skills" class="hover:text-pink-600">스킬</a>
-        <a href="#contact" class="hover:text-pink-600">연락</a>
-      </div>
-    </nav>
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 border-b border-[var(--stroke)] glass">
+    <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="pretty text-xl text-[var(--accent-strong)]">E-Portfolio</a>
+      <nav class="hidden md:flex items-center gap-6 text-[15px]">
+        <a class="hover:text-[var(--accent-strong)]" href="#about">소개</a>
+        <a class="hover:text-[var(--accent-strong)]" href="#awards">수상</a>
+        <a class="hover:text-[var(--accent-strong)]" href="#experience">경험</a>
+        <a class="hover:text-[var(--accent-strong)]" href="#projects">프로젝트</a>
+        <a class="hover:text-[var(--accent-strong)]" href="#skills">스킬</a>
+        <a class="hover:text-[var(--accent-strong)]" href="#contact">연락</a>
+      </nav>
+      <a href="#" class="hidden md:inline-flex items-center px-3 py-2 rounded-lg text-sm font-semibold soft"
+         style="background:var(--accent); color:white">이력서(PDF)</a>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section id="about" class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-        식품생명공학 · 약학志 <br>실험·탐구·임상적 사고로 연결하는 문제해결형 인재
-      </h1>
-      <p class="text-gray-700 text-lg mb-6">
-        3~4문장 자기소개가 들어갑니다. 관심 분야, 연구 경험, 목표 등을 담아주세요.
-      </p>
-      <div class="flex space-x-6 text-gray-600 text-sm">
-        <span>📧 you@example.com</span>
-        <span>📞 010-1234-5678</span>
-      </div>
-    </div>
-    <div>
-      <img src="https://picsum.photos/500/500?grayscale" alt="Profile" class="rounded-2xl shadow-lg w-full h-auto object-cover">
-    </div>
-  </section>
+  <main id="top" class="max-w-6xl mx-auto px-5">
 
-  <!-- Awards -->
-  <section id="awards" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-gray-900 mb-8">🏆 수상</h2>
-    <div class="grid md:grid-cols-2 gap-8">
+    <!-- HERO -->
+    <section id="about" class="relative py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+      <div class="blob -z-10 -left-16 -top-16"></div>
+
+      <div class="reveal">
+        <h1 class="pretty text-4xl md:text-6xl font-extrabold leading-tight mb-5">
+          <span id="kw1" class="text-[var(--accent-strong)]">식품생명공학</span> ·
+          <span id="kw2">약학志</span><br/>
+          <span>실험·탐구·</span><span id="kw3">임상적 사고</span>로 연결하는<br/>
+          문제해결형 인재
+        </h1>
+        <p class="text-[var(--muted)] text-[17px]">
+          3–4문장 자기소개가 들어갑니다. 관심 분야, 연구 경험, 목표 등을 담아주세요.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <a href="mailto:you@example.com" class="chip soft">📧 you@example.com</a>
+          <a href="tel:+821012345678" class="chip soft">📞 010-1234-5678</a>
+          <a href="#" class="chip soft">🌐 github.com/your-id</a>
+          <a href="#" class="chip soft">💼 linkedin.com/in/your-id</a>
+        </div>
+
+        <!-- 숫자 메트릭 -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="card text-center soft reveal"><div class="text-3xl font-extrabold">3</div><div class="text-sm text-[var(--muted)]">논문/포스터</div></div>
+          <div class="card text-center soft reveal"><div class="text-3xl font-extrabold">8</div><div class="text-sm text-[var(--muted)]">프로젝트</div></div>
+          <div class="card text-center soft reveal"><div class="text-3xl font-extrabold">6</div><div class="text-sm text-[var(--muted)]">수상</div></div>
+          <div class="card text-center soft reveal"><div class="text-3xl font-extrabold">420h</div><div class="text-sm text-[var(--muted)]">봉사/리더십</div></div>
+        </div>
+      </div>
+
+      <!-- 이미지(클릭 시 링크 가능) -->
+      <a class="relative block reveal soft" href="#" title="이미지 클릭 시 링크 이동(나중에 href 교체)">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1280&auto=format&fit=crop"
+             alt="profile" class="rounded-2xl shadow-xl w-full h-auto object-cover"/>
+        <div class="absolute inset-0 rounded-2xl pointer-events-none"
+             style="background: radial-gradient(60% 60% at 75% 25%, rgba(236,72,153,.25), transparent 70%);"></div>
+      </a>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards" class="py-10">
+      <h2 class="pretty text-3xl font-bold flex items-center gap-2 reveal">🏆 수상</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2025 · 성균관대학교</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">상세</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">글로벌·융합 교육 우수사례 공모전 최우수상</div>
+          <p class="mt-1 text-sm text-[var(--muted)]">탐구 설계–영상·에세이로 학습전환 임팩트 가시화</p>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between text-sm text-[var(--muted)]">
+            <span>2024 · 나노공정연구실</span>
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">상세</a>
+          </div>
+          <div class="mt-2 text-lg font-semibold">학부 연구생 우수상</div>
+          <p class="mt-1 text-sm text-[var(--muted)]">QLED ETL dopant 최적화·효율 향상</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">💼 경험</h2>
+      <div class="mt-6 grid gap-6">
+        <article class="card reveal">
+          <div class="text-sm text-[var(--muted)]">2024.07 – 2024.09 · 나노공정연구실</div>
+          <div class="text-lg font-semibold mt-1">학부연구생 (URP)</div>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-sm">
+            <li>QLED 소자 ETL dopant 농도–효율 매핑, DoE 기반 설계</li>
+            <li>IVL/EL 측정·해석, Python 데이터 파이프라인 구축</li>
+            <li>SEM/AFM 결과–소자 성능 상관분석, 포스터 작성</li>
+          </ul>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="chip">QLED</span><span class="chip">DoE</span><span class="chip">Python</span><span class="chip">IVL</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="text-sm text-[var(--muted)]">2023.03 – 2024.02 · Best Birthday (웹서비스)</div>
+          <div class="text-lg font-semibold mt-1">프로젝트 팀장</div>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-sm">
+            <li>팀 빌딩·백엔드 리드, 배포 자동화</li>
+            <li>사용자 인터뷰→MVP 가설 검증</li>
+            <li>런칭 및 피드백 루프 구축</li>
+          </ul>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="chip">Leadership</span><span class="chip">Backend</span><span class="chip">MVP</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">🧪 프로젝트</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between">
+            <div class="text-lg font-semibold">가짜뉴스 판별 서비스 Right Paper</div>
+            <div class="text-sm text-[var(--muted)]">2024</div>
+          </div>
+          <div class="text-sm text-[var(--muted)] mt-1">역할: 백엔드</div>
+          <p class="mt-2 text-sm">언어모델 기반 분류·신뢰점수 API. FastAPI/PG/CI. 실사용 로그 추가학습 파이프라인 구상.</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">LLM</span><span class="chip">FastAPI</span><span class="chip">MLOps</span></div>
+          <div class="mt-3 flex gap-3 text-sm">
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card soft reveal">
+          <div class="flex items-center justify-between">
+            <div class="text-lg font-semibold">MBTI 기반 학과 추천</div>
+            <div class="text-sm text-[var(--muted)]">2023</div>
+          </div>
+          <div class="text-sm text-[var(--muted)] mt-1">역할: 개발</div>
+          <p class="mt-2 text-sm">Python turtle 인터랙티브 테스트·시각화. 피드백 기반 추천 로직 개선.</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">UX</span></div>
+          <div class="mt-3 flex gap-3 text-sm">
+            <a href="#" class="underline hover:text-[var(--accent-strong)]">블로그</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-10">
+      <h2 class="pretty text-3xl font-bold reveal">⭐ 스킬</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <article class="card reveal">
+          <div class="font-semibold mb-2">실험/분석</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip">적정·분광</span><span class="chip">겔전기영동</span><span class="chip">크로마토</span><span class="chip">멸균/배양</span>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="font-semibold mb-2">데이터</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Excel</span>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="font-semibold mb-2">도구</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip">Prism</span><span class="chip">ImageJ</span><span class="chip">Notion</span><span class="chip">Git</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-14">
       <div class="card">
-        <div class="text-sm text-gray-500 mb-2">2025 · 성균관대학교</div>
-        <h3 class="text-xl font-semibold mb-2">글로벌·융합 교육 우수사례 공모전 최우수상</h3>
-        <p class="text-gray-600">탐구 설계·영상·에세이를 학술전환한 임팩트 강조.</p>
-        <a href="#" class="text-pink-600 text-sm font-medium mt-3 inline-block">상세 보기 →</a>
+        <h2 class="text-xl font-bold">연락</h2>
+        <p class="text-sm text-[var(--muted)] mt-2">협업·멘토링·발표 제안 언제든 환영합니다.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a href="mailto:you@example.com" class="chip soft">📧 you@example.com</a>
+          <a href="tel:+821012345678" class="chip soft">📞 010-1234-5678</a>
+          <a href="#" class="chip soft">🌐 github.com/your-id</a>
+          <a href="#" class="chip soft">💼 linkedin.com/in/your-id</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="text-sm text-gray-500 mb-2">2024 · 나노공정연구실</div>
-        <h3 class="text-xl font-semibold mb-2">학부 연구생 우수상</h3>
-        <p class="text-gray-600">QLED ETL dopant 최적화 효율 향상 연구.</p>
-        <a href="#" class="text-pink-600 text-sm font-medium mt-3 inline-block">상세 보기 →</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Skills -->
-  <section id="skills" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-gray-900 mb-8">🛠 스킬</h2>
-    <div class="flex flex-wrap gap-3">
-      <span class="chip">실험 설계</span>
-      <span class="chip">데이터 분석</span>
-      <span class="chip">분자생물학</span>
-      <span class="chip">약물전달</span>
-      <span class="chip">프로그래밍</span>
-    </div>
-  </section>
+  <footer class="py-10 text-center text-xs text-[var(--muted)]">© <span id="year"></span> 성○○. All rights reserved.</footer>
 
-  <!-- Footer -->
-  <footer id="contact" class="bg-white/70 backdrop-blur border-t mt-16">
-    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
-      <p>© 2025 주인님 E-Portfolio</p>
-      <p>Contact: you@example.com</p>
-    </div>
-  </footer>
+  <script>
+    // 연도
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // 스크롤 등장 (IntersectionObserver)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // 헤드라인 키워드 순환 (부드럽게)
+    const kwSets = [
+      ["식품생명공학","약학志","임상적 사고"],
+      ["분자생물학","약물전달","데이터 분석"],
+      ["바이오헬스","면역생리","실험 설계"]
+    ];
+    const el1 = document.getElementById('kw1');
+    const el2 = document.getElementById('kw2');
+    const el3 = document.getElementById('kw3');
+    let idx = 0;
+    setInterval(()=>{
+      idx = (idx+1)%kwSets.length;
+      [el1,el2,el3].forEach(el=>{
+        el.style.transition = "opacity .3s ease, transform .3s ease";
+        el.style.opacity = .0; el.style.transform = "translateY(-4px)";
+      });
+      setTimeout(()=>{
+        el1.textContent = kwSets[idx][0];
+        el2.textContent = kwSets[idx][1];
+        el3.textContent = kwSets[idx][2];
+        [el1,el2,el3].forEach(el=>{
+          el.style.opacity = 1; el.style.transform = "none";
+        });
+      }, 260);
+    }, 2600);
+  </script>
 </body>
 </html>
