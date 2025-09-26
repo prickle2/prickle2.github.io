@@ -180,65 +180,113 @@
       </ul>
     </section>
 
-    <!-- 어학 + 자격증 (한 줄에 하나, 장학금 스타일) -->
-    <section id="credentials" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 어학 · 자격증</h2>
-      <ul class="space-y-3">
-        <!-- 어학 -->
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">어학</div>
-          <div class="font-semibold w-full">TOEIC 945 (ETS/YBM)</div>
-        </li>
+    <!-- 어학 + 자격증 (카테고리 큰 제목 + 개별 카드, 다채로운 색감) -->
+<section id="credentials" class="py-6">
+  <h2 class="pretty text-3xl font-bold mb-2 reveal">📚 어학 · 자격증</h2>
+  <p class="text-[var(--muted)] mb-5 reveal">카테고리별로 정리된 자격 내역입니다.</p>
 
-        <!-- 컴퓨터·IT -->
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">ITQ 한글 (한국생산성본부 KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">ITQ 파워포인트 (한국생산성본부 KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">ITQ 엑셀 (한국생산성본부 KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">ITQ 인터넷 (한국생산성본부 KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">GTQ 3급 (KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">GTQ 2급 (KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">GTQ 1급 (KPC)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">ICDL — Using the Computer and Managing Files (ICDL Foundation)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
-          <div class="font-semibold w-full">문서실무사 4급 (대한상공회의소)</div>
-        </li>
+  <div class="space-y-8">
 
-        <!-- 그 외 -->
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">그 외</div>
-          <div class="font-semibold w-full">한국사능력검정시험 (국사편찬위원회)</div>
-        </li>
-        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
-          <div class="text-[12px] font-extrabold text-[var(--muted)]">그 외</div>
-          <div class="font-semibold w-full">한자 6급 (대한검정회 한자급수자격검정시험)</div>
-        </li>
-      </ul>
-    </section>
+    <!-- 어학 -->
+    <div class="reveal">
+      <h3 class="text-xl font-extrabold mb-3">어학</h3>
+      <div class="grid md:grid-cols-2 gap-3">
+        <article class="glass soft rounded-xl p-4 border-l-4 border-pink-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">💬</span>
+            <div class="font-semibold">
+              TOEIC 945 <span class="text-[var(--muted)]">(ETS/YBM)</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 컴퓨터 · IT -->
+    <div class="reveal">
+      <h3 class="text-xl font-extrabold mb-3">컴퓨터 · IT</h3>
+      <div class="grid md:grid-cols-2 gap-3">
+        <article class="glass soft rounded-xl p-4 border-l-4 border-fuchsia-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🖥️</span>
+            <div class="font-semibold">ITQ 한글 <span class="text-[var(--muted)]">(한국생산성본부 KPC)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-sky-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🖥️</span>
+            <div class="font-semibold">ITQ 파워포인트 <span class="text-[var(--muted)]">(한국생산성본부 KPC)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-emerald-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🖥️</span>
+            <div class="font-semibold">ITQ 엑셀 <span class="text-[var(--muted)]">(한국생산성본부 KPC)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-amber-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🖥️</span>
+            <div class="font-semibold">ITQ 인터넷 <span class="text-[var(--muted)]">(한국생산성본부 KPC)</span></div>
+          </div>
+        </article>
+
+        <article class="glass soft rounded-xl p-4 border-l-4 border-violet-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎨</span>
+            <div class="font-semibold">GTQ 3급 <span class="text-[var(--muted)]">(KPC)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-rose-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎨</span>
+            <div class="font-semibold">GTQ 2급 <span class="text-[var(--muted)]">(KPC)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-indigo-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎨</span>
+            <div class="font-semibold">GTQ 1급 <span class="text-[var(--muted)]">(KPC)</span></div>
+          </div>
+        </article>
+
+        <article class="glass soft rounded-xl p-4 border-l-4 border-cyan-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🗂️</span>
+            <div class="font-semibold">ICDL — Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-lime-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">📄</span>
+            <div class="font-semibold">문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 그 외 -->
+    <div class="reveal">
+      <h3 class="text-xl font-extrabold mb-3">그 외</h3>
+      <div class="grid md:grid-cols-2 gap-3">
+        <article class="glass soft rounded-xl p-4 border-l-4 border-teal-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">📚</span>
+            <div class="font-semibold">한국사능력검정시험 <span class="text-[var(--muted)]">(국사편찬위원회)</span></div>
+          </div>
+        </article>
+        <article class="glass soft rounded-xl p-4 border-l-4 border-pink-400">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🈶</span>
+            <div class="font-semibold">한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- 장학금 -->
     <section id="scholarships" class="py-6">
