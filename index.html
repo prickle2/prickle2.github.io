@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
 
-  <!-- 원본 이미지 프리로드(선명도) -->
+  <!-- 프로필 원본 선로딩(선명도 유지) -->
   <link rel="preload" as="image" href="profile.jpg">
 
   <style>
@@ -34,7 +34,7 @@
     .soft{transition:transform .25s ease, box-shadow .25s ease}
     .soft:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(244,114,182,.22)}
     .line{height:1px; background:linear-gradient(90deg,transparent, var(--stroke), transparent)}
-    .badge{display:inline-flex; align-items:center; gap:.45rem; padding:.35rem .7rem; border:1px solid var(--stroke); background:#fff; border-radius:999px; font-size:.85rem; font-weight:600;}
+    .badge{display:inline-flex; align-items:center; gap:.45rem; padding:.35rem .72rem; border:1px solid var(--stroke); background:#fff; border-radius:999px; font-size:.86rem; font-weight:700;}
     .reveal{opacity:0; transform:translateY(10px); transition:.5s}
     .reveal.show{opacity:1; transform:none}
 
@@ -47,24 +47,17 @@
     .bar{height:10px; border-radius:999px; background:#ffe0ec; overflow:hidden}
     .bar>i{display:block; height:100%; background:#f472b6; border-radius:999px}
 
+    /* 키워드(연락처와 다른 박스 스타일) */
+    .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.38rem .76rem; background:#fff;
+      border:1px solid var(--stroke); border-radius:999px; font-weight:800; margin:.25rem .35rem .25rem 0;}
+    .dot{width:.6rem; height:.6rem; border-radius:999px; display:inline-block}
+    .c1{background:#f973a4}.c2{background:#fb7185}.c3{background:#60a5fa}.c4{background:#34d399}.c5{background:#f59e0b}.c6{background:#a78bfa}
+
     /* 프로그램 썸네일 더미 */
     .thumb{aspect-ratio:16/9; background:#fff url('https://picsum.photos/640/360?blur=2') center/cover no-repeat; border-radius:12px}
 
-    /* 스탬프 자리 */
+    /* 3품 스탬프 자리 */
     .stamp{width:84px; height:84px; border-radius:12px; background:#fff url('https://picsum.photos/200?grayscale') center/cover no-repeat; border:1px solid var(--stroke)}
-
-    /* 연락처 버튼과 구분되는 '키워드' 스타일: 텍스트 + 컬러 도트(배경/테두리 없음) */
-    .kw{display:inline-flex; align-items:center; gap:.45rem; margin:.2rem .8rem .2rem 0; font-weight:700;}
-    .kw i{width:.55rem; height:.55rem; border-radius:999px; display:inline-block;}
-    .kw.c1 i{background:#f973a4}
-    .kw.c2 i{background:#fb7185}
-    .kw.c3 i{background:#60a5fa}
-    .kw.c4 i{background:#34d399}
-    .kw.c5 i{background:#f59e0b}
-    .kw.c6 i{background:#a78bfa}
-
-    /* 어학·자격증 카테고리판 */
-    .chip{display:inline-block; padding:.42rem .7rem; background:#fff; border:1px solid var(--stroke); border-radius:999px; font-weight:700; margin:.2rem .35rem .2rem 0;}
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -107,7 +100,7 @@
       <!-- LEFT -->
       <div class="pt-2 reveal">
         <h1 class="pretty text-[42px] md:text-[64px] font-extrabold leading-[1.05]">
-          <span id="kw" class="text-[var(--accent-strong)]">신약개발을 꿈꾸는</span>
+          <span id="kw" class="text-[var(--accent-strong)]">생물화학을 탐구하는</span>
           <span class="block">미래 연구자</span>
         </h1>
         <p class="text-[var(--muted)] mt-3">
@@ -147,29 +140,29 @@
           </div>
         </div>
 
-        <!-- 키워드: 연락처와 다른 스타일 -->
-        <div class="mt-4">
-          <span class="kw c1"><i></i>생물화학</span>
-          <span class="kw c2"><i></i>제약연구</span>
-          <span class="kw c3"><i></i>신약개발</span>
-          <span class="kw c4"><i></i>글로벌역량</span>
-          <span class="kw c5"><i></i>소통과리더십</span>
-          <span class="kw c6"><i></i>작은발견큰변화</span>
+        <!-- 키워드: 이모지 + 박스형(연락처와 다른 스타일) -->
+        <div class="mt-5">
+          <span class="tag"><span class="dot c1"></span>🧬 생물화학</span>
+          <span class="tag"><span class="dot c2"></span>💊 제약연구</span>
+          <span class="tag"><span class="dot c3"></span>🧪 신약개발</span>
+          <span class="tag"><span class="dot c4"></span>🌐 글로벌역량</span>
+          <span class="tag"><span class="dot c5"></span>🤝 소통과리더십</span>
+          <span class="tag"><span class="dot c6"></span>✨ 작은발견큰변화</span>
         </div>
 
         <!-- 연락 -->
-        <div class="mt-6 flex flex-wrap gap-2">
+        <div class="mt-4 flex flex-wrap gap-2">
           <a href="mailto:prickle2@g.skku.edu" class="badge soft">📧 prickle2@g.skku.edu</a>
           <a href="https://instagram.com/she.u_u" target="_blank" rel="noopener" class="badge soft">📷 @she.u_u</a>
         </div>
       </div>
 
-      <!-- RIGHT PHOTO: 원본 비율, 살짝 더 작게 -->
+      <!-- RIGHT PHOTO: 원본 화질 유지 + 조금 더 작게 -->
       <div class="reveal">
         <img
           src="profile.jpg"
           alt="성하은 프로필"
-          class="w-full max-w-[500px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+          class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
           loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);"
         />
       </div>
@@ -187,44 +180,64 @@
       </ul>
     </section>
 
-    <!-- 어학 + 자격증 (카테고리 → 항목들) -->
+    <!-- 어학 + 자격증 (한 줄에 하나, 장학금 스타일) -->
     <section id="credentials" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
+      <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 어학 · 자격증</h2>
+      <ul class="space-y-3">
         <!-- 어학 -->
-        <div class="glass rounded-2xl p-4 reveal">
-          <div class="font-extrabold mb-2">어학</div>
-          <div>
-            <span class="chip">TOEIC 945</span>
-          </div>
-        </div>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">어학</div>
+          <div class="font-semibold w-full">TOEIC 945 (ETS/YBM)</div>
+        </li>
 
         <!-- 컴퓨터·IT -->
-        <div class="glass rounded-2xl p-4 reveal">
-          <div class="font-extrabold mb-2">컴퓨터 · IT</div>
-          <div>
-            <span class="chip">ITQ 엑셀 (KPC)</span>
-            <span class="chip">ITQ 파워포인트 (KPC)</span>
-            <span class="chip">ITQ 인터넷 (KPC)</span>
-            <span class="chip">ITQ 한글 (KPC)</span>
-            <span class="chip">GTQ 3급 (KPC)</span>
-            <span class="chip">GTQ 2급 (KPC)</span>
-            <span class="chip">GTQ 1급 (KPC)</span>
-            <span class="chip">ICDL – Using the Computer and Managing Files</span>
-            <span class="chip">문서실무사 4급 (대한상공회의소)</span>
-          </div>
-        </div>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">ITQ 한글 (한국생산성본부 KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">ITQ 파워포인트 (한국생산성본부 KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">ITQ 엑셀 (한국생산성본부 KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">ITQ 인터넷 (한국생산성본부 KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">GTQ 3급 (KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">GTQ 2급 (KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">GTQ 1급 (KPC)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">ICDL — Using the Computer and Managing Files (ICDL Foundation)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">컴퓨터·IT</div>
+          <div class="font-semibold w-full">문서실무사 4급 (대한상공회의소)</div>
+        </li>
 
         <!-- 그 외 -->
-        <div class="glass rounded-2xl p-4 reveal">
-          <div class="font-extrabold mb-2">그 외</div>
-          <div>
-            <span class="chip">한국사능력검정시험 (국사편찬위원회)</span>
-            <span class="chip">한자 6급 (대한검정회 한자급수자격검정시험)</span>
-          </div>
-        </div>
-      </div>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">그 외</div>
+          <div class="font-semibold w-full">한국사능력검정시험 (국사편찬위원회)</div>
+        </li>
+        <li class="glass rounded-xl px-4 py-3 reveal flex items-center justify-between gap-3">
+          <div class="text-[12px] font-extrabold text-[var(--muted)]">그 외</div>
+          <div class="font-semibold w-full">한자 6급 (대한검정회 한자급수자격검정시험)</div>
+        </li>
+      </ul>
     </section>
 
     <!-- 장학금 -->
@@ -280,7 +293,7 @@
       </div>
     </section>
 
-    <!-- 프로그램 (총 6개, 노벨: 참가 중 표기) -->
+    <!-- 프로그램 (3열) -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -331,26 +344,23 @@
           <img src="https://via.placeholder.com/150" alt="Digital Badge" class="mx-auto rounded-lg shadow w-32 h-32 object-cover">
         </div>
         <div class="glass rounded-xl p-4 reveal">
-          <div class="font-semibold mb-3">체크리스트 (스탬프 예정)</div>
+          <div class="font-semibold mb-3">3품 인증</div>
           <div class="flex items-center gap-4">
             <div class="stamp"></div>
             <div class="text-sm">
               <div>인성 인증 — ✅ 완료</div>
-              <div class="text-[var(--muted)]">도장 이미지 추후 교체</div>
             </div>
           </div>
           <div class="flex items-center gap-4 mt-3">
             <div class="stamp"></div>
             <div class="text-sm">
               <div>글로벌 인증 — ✅ 완료</div>
-              <div class="text-[var(--muted)]">도장 이미지 추후 교체</div>
             </div>
           </div>
           <div class="flex items-center gap-4 mt-3">
             <div class="stamp"></div>
             <div class="text-sm">
               <div>인턴십 인증 — ⏳ 진행 예정</div>
-              <div class="text-[var(--muted)]">도장 이미지 추후 교체</div>
             </div>
           </div>
         </div>
@@ -381,8 +391,8 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // 키워드 순환(헤드라인)
-    const seq=["신약개발을 꿈꾸는","제약연구에 도전하는","생물화학을 탐구하는"];
+    // 헤드라인 키워드 순환
+    const seq=["생물화학을 탐구하는","제약연구에 도전하는","신약개발을 꿈꾸는"];
     let i=0; const el=document.getElementById('kw');
     setInterval(()=>{
       i=(i+1)%seq.length;
