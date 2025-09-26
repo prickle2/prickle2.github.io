@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>성(成)균관대 성(成)하은의 성(成)장 스토리</title>
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
-  <!-- 굵은 가독성 폰트: GmarketSans -->
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
+
+  <!-- 원본 이미지 프리로드(선명도) -->
+  <link rel="preload" as="image" href="profile.jpg">
 
   <style>
     :root{
@@ -51,17 +53,17 @@
     .bar{height:10px; border-radius:999px; background:#ffe0ec; overflow:hidden}
     .bar>i{display:block; height:100%; background:#f472b6; border-radius:999px}
 
-    /* 프로그램 썸네일 */
+    /* 프로그램 썸네일 더미 */
     .thumb{aspect-ratio:16/9; background:#fff url('https://picsum.photos/640/360?blur=2') center/cover no-repeat; border-radius:12px}
 
-    /* 디지털 뱃지 스탬프 자리 */
+    /* 뱃지(스탬프 자리) */
     .stamp{width:84px; height:84px; border-radius:12px; background:#fff url('https://picsum.photos/200?grayscale') center/cover no-repeat; border:1px solid var(--stroke)}
 
-    /* 어학·자격증: 좌측 카테고리/우측 내용 */
-    .dl{display:grid; grid-template-columns: 160px 1fr; gap:16px}
-    @media (min-width:768px){ .dl{grid-template-columns: 200px 1fr;} }
-    .dt{font-weight:700}
-    .dd ul{list-style:disc; padding-left:1.1rem}
+    /* 어학·자격증: 그리드 카드 */
+    .chip{display:inline-block; padding:.4rem .7rem; background:#fff; border:1px solid var(--stroke); border-radius:999px; font-weight:600;}
+
+    /* 키워드 태그 */
+    .tag{display:inline-block; padding:.35rem .7rem; border:1px solid var(--stroke); background:#fff; border-radius:999px; font-size:.85rem; margin:.25rem .35rem .25rem 0;}
   </style>
 </head>
 <body id="top">
@@ -87,16 +89,16 @@
 
   <main class="max-w-6xl mx-auto px-5">
 
-    <!-- HOME (정렬/밸런스 보정) -->
+    <!-- HOME -->
     <section id="about" class="py-10 md:py-12 grid md:grid-cols-2 gap-10 items-center">
       <!-- LEFT -->
       <div class="pt-2 reveal">
         <h1 class="pretty text-[42px] md:text-[64px] font-extrabold leading-[1.05]">
-          <span id="kw" class="text-[var(--accent-strong)]">생물화학을 탐구하는</span>
+          <span id="kw" class="text-[var(--accent-strong)]">신약개발을 꿈꾸는</span>
           <span class="block">미래 연구자</span>
         </h1>
         <p class="text-[var(--muted)] mt-3">
-          생물화학 속 작은 발견이 언젠가 새로운 치료제가 되리라 믿습니다.
+          작은 분자의 움직임이 세상을 바꾸듯, 사람들의 삶을 따뜻하게 바꾸는 연구자가 되고자 합니다.
         </p>
 
         <div class="mt-6">
@@ -132,6 +134,16 @@
           </div>
         </div>
 
+        <!-- 키워드 (요청: GPA/학점 밑에 배치) -->
+        <div class="mt-4">
+          <span class="tag">⚗️ 생물화학</span>
+          <span class="tag">💊 제약연구</span>
+          <span class="tag">🔬 신약개발</span>
+          <span class="tag">🌍 글로벌역량</span>
+          <span class="tag">🤝 소통과리더십</span>
+          <span class="tag">✨ 작은발견큰변화</span>
+        </div>
+
         <!-- 연락 -->
         <div class="mt-6 flex flex-wrap gap-2">
           <a href="mailto:prickle2@g.skku.edu" class="badge soft">📧 prickle2@g.skku.edu</a>
@@ -139,68 +151,49 @@
         </div>
       </div>
 
-      <!-- RIGHT PHOTO: 비율 고정 + 가운데 정렬 -->
+      <!-- RIGHT PHOTO: 원본 비율, 살짝 축소 -->
       <div class="reveal">
-        <div class="w-full max-w-[560px] mx-auto rounded-2xl shadow-xl overflow-hidden">
-          <div class="relative" style="aspect-ratio:4/5;">
-            <img src="profile.jpg" alt="성하은 프로필" class="absolute inset-0 w-full h-full object-cover"/>
-          </div>
-        </div>
+        <img
+          src="profile.jpg"
+          alt="성하은 프로필"
+          class="w-full max-w-[560px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+          loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);"
+        />
       </div>
     </section>
 
     <div class="line my-6"></div>
 
-    <!-- 주요활동 -->
+    <!-- 주요활동 (연도 수정) -->
     <section id="highlights" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🌟 주요활동</h2>
       <ul class="space-y-3">
-        <li class="reveal glass soft rounded-xl px-4 py-3 flex items-center justify-between">
-          <span>2023 · 양평장로교회 <b>울림</b> 임원단 — 미디어</span>
-        </li>
-        <li class="reveal glass soft rounded-xl px-4 py-3 flex items-center justify-between">
-          <span>2024 · 양평장로교회 <b>아하</b> 임원단 — 미디어</span>
-        </li>
-        <li class="reveal glass soft rounded-xl px-4 py-3 flex items-center justify-between">
-          <span>2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></span>
-        </li>
+        <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림</b> 임원단 — 미디어</li>
+        <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하</b> 임원단 — 미디어</li>
+        <li class="reveal glass soft rounded-xl px-4 py-3">2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></li>
       </ul>
     </section>
 
-    <!-- 어학 + 자격증 (좌 카테고리 / 우 내용) -->
+    <!-- 어학 + 자격증 (개별 카드) -->
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
 
-      <div class="glass rounded-2xl p-5 reveal">
-        <div class="dl">
-          <!-- 어학 -->
-          <div class="dt">어학</div>
-          <div class="dd">
-            <ul class="text-[var(--ink)]">
-              <li>TOEIC 945</li>
-            </ul>
-          </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="glass rounded-xl p-4 reveal">TOEIC 945</div>
 
-          <!-- 컴퓨터 / IT -->
-          <div class="dt">컴퓨터 · IT</div>
-          <div class="dd">
-            <ul class="text-[var(--ink)] space-y-1">
-              <li>ITQ 한글 · 파워포인트 · 엑셀 · 인터넷 <span class="text-[var(--muted)]">(한국생산성본부)</span></li>
-              <li>GTQ 3급 · 2급 · 1급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></li>
-              <li>ICDL – Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation)</span></li>
-            </ul>
-          </div>
+        <div class="glass rounded-xl p-4 reveal">ITQ 한글 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
+        <div class="glass rounded-xl p-4 reveal">ITQ 파워포인트 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
+        <div class="glass rounded-xl p-4 reveal">ITQ 엑셀 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
+        <div class="glass rounded-xl p-4 reveal">ITQ 인터넷 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
 
-          <!-- 그 외 -->
-          <div class="dt">그 외</div>
-          <div class="dd">
-            <ul class="text-[var(--ink)] space-y-1">
-              <li>문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></li>
-              <li>한국사능력검정시험</li>
-              <li>한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></li>
-            </ul>
-          </div>
-        </div>
+        <div class="glass rounded-xl p-4 reveal">GTQ 3급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
+        <div class="glass rounded-xl p-4 reveal">GTQ 2급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
+        <div class="glass rounded-xl p-4 reveal">GTQ 1급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
+
+        <div class="glass rounded-xl p-4 reveal">ICDL – Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation)</span></div>
+        <div class="glass rounded-xl p-4 reveal">문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></div>
+        <div class="glass rounded-xl p-4 reveal">한국사능력검정시험 <span class="text-[var(--muted)]">(국사편찬위원회)</span></div>
+        <div class="glass rounded-xl p-4 reveal">한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></div>
       </div>
     </section>
 
@@ -219,7 +212,7 @@
       </ul>
     </section>
 
-    <!-- 교과: 표 + 상태 진행바 -->
+    <!-- 교과 진행 현황 (글로벌 취득2/잔여2 반영) -->
     <section id="academic" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📖 교과 진행 현황</h2>
 
@@ -235,56 +228,29 @@
             </tr>
           </thead>
           <tbody>
-            <!-- 전공 -->
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3">
-              <div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3">
-              <div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">
-              <div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div>
-            </td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
 
-            <!-- 공통/교양 -->
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <!-- 요청 반영: 글로벌 잔여 2 -->
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">0</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">
-              <div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div>
-            </td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
 
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3">
-              <div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div>
-            </td></tr>
+            <!-- 글로벌(필수) 수정: 취득2 / 잔여2 -->
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
+
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- 프로그램: 3열 카드 -->
+    <!-- 프로그램 (모두 복구 + 1개 추가=총 6개) -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -293,25 +259,35 @@
           <div class="text-xs text-[var(--muted)]">2024 하계</div>
           <div class="text-base font-semibold mt-1">SKKU-BA-DIVE</div>
         </article>
+
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumb mb-3"></div>
           <div class="text-xs text-[var(--muted)]">2024</div>
-          <div class="text-base font-semibold mt-1">경동제약 탐방</div>
+          <div class="text-base font-semibold mt-1">화학과 학생 동문기업 탐방 프로그램</div>
         </article>
+
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumb mb-3"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
           <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
         </article>
+
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumb mb-3"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
           <div class="text-base font-semibold mt-1">에든버러대학교 온라인 수업</div>
         </article>
-        <article class="glass rounded-2xl p-4 soft reveal md:col-span-2 lg:col-span-1">
+
+        <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumb mb-3"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
+        </article>
+
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="thumb mb-3"></div>
+          <div class="text-xs text-[var(--muted)]">2025</div>
+          <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
         </article>
       </div>
     </section>
@@ -351,22 +327,13 @@
       </div>
     </section>
 
-    <!-- 목표 -->
+    <!-- 목표(→ 타임라인 느낌) -->
     <section id="roadmap" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="glass rounded-xl p-4 reveal">
-          <div class="font-semibold">단기</div>
-          <p class="text-sm text-[var(--muted)] mt-2">생물화학 실험 역량·데이터 해석력 강화, 학교/외부 프로그램 참여 확대.</p>
-        </div>
-        <div class="glass rounded-xl p-4 reveal">
-          <div class="font-semibold">중기</div>
-          <p class="text-sm text-[var(--muted)] mt-2">대학원 진학 준비 및 제약 연계 연구 경험 확보.</p>
-        </div>
-        <div class="glass rounded-xl p-4 reveal">
-          <div class="font-semibold">장기</div>
-          <p class="text-sm text-[var(--muted)] mt-2">제약/신약개발 분야 문제해결 중심의 미래 연구자로 성장.</p>
-        </div>
+      <div class="glass rounded-xl p-5 text-[15px] reveal">
+        <div class="mb-2"><b>단기</b> → 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
+        <div class="mb-2"><b>중기</b> → 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
+        <div><b>장기</b> → 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
       </div>
     </section>
 
@@ -384,8 +351,8 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // 키워드 순환
-    const seq=["생물화학을 탐구하는","제약연구에 도전하는","신약개발을 꿈꾸는"];
+    // 키워드 순환(헤드라인)
+    const seq=["신약개발을 꿈꾸는","제약연구에 도전하는","생물화학을 탐구하는"];
     let i=0; const el=document.getElementById('kw');
     setInterval(()=>{
       i=(i+1)%seq.length;
