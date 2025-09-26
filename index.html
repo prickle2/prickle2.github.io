@@ -39,13 +39,7 @@
     .reveal.show{opacity:1; transform:none}
 
     /* HOME – 원형 지표 */
-    .circle{
-      width:92px; height:92px; border-radius:999px;
-      display:flex; align-items:center; justify-content:center;
-      color:#fff; font-weight:800; line-height:1.1;
-      background:radial-gradient(120px 120px at 30% 30%, #f78fb8, #ec4899);
-      box-shadow:0 10px 30px rgba(236,72,153,.35);
-    }
+    .circle{ width:92px; height:92px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; line-height:1.1; background:radial-gradient(120px 120px at 30% 30%, #f78fb8, #ec4899); box-shadow:0 10px 30px rgba(236,72,153,.35);}
     .circle small{display:block; font-weight:600; font-size:11px; opacity:.9}
     .circle .value{font-size:22px}
 
@@ -56,14 +50,33 @@
     /* 프로그램 썸네일 더미 */
     .thumb{aspect-ratio:16/9; background:#fff url('https://picsum.photos/640/360?blur=2') center/cover no-repeat; border-radius:12px}
 
-    /* 뱃지(스탬프 자리) */
+    /* 스탬프 자리 */
     .stamp{width:84px; height:84px; border-radius:12px; background:#fff url('https://picsum.photos/200?grayscale') center/cover no-repeat; border:1px solid var(--stroke)}
 
-    /* 어학·자격증: 그리드 카드 */
-    .chip{display:inline-block; padding:.4rem .7rem; background:#fff; border:1px solid var(--stroke); border-radius:999px; font-weight:600;}
+    /* 연락처 버튼과 구분되는 '키워드' 스타일: 텍스트 + 컬러 도트(배경/테두리 없음) */
+    .kw{display:inline-flex; align-items:center; gap:.45rem; margin:.2rem .8rem .2rem 0; font-weight:700;}
+    .kw i{width:.55rem; height:.55rem; border-radius:999px; display:inline-block;}
+    .kw.c1 i{background:#f973a4}
+    .kw.c2 i{background:#fb7185}
+    .kw.c3 i{background:#60a5fa}
+    .kw.c4 i{background:#34d399}
+    .kw.c5 i{background:#f59e0b}
+    .kw.c6 i{background:#a78bfa}
 
-    /* 키워드 태그 */
-    .tag{display:inline-block; padding:.35rem .7rem; border:1px solid var(--stroke); background:#fff; border-radius:999px; font-size:.85rem; margin:.25rem .35rem .25rem 0;}
+    /* 어학·자격증 카테고리판 */
+    .chip{display:inline-block; padding:.42rem .7rem; background:#fff; border:1px solid var(--stroke); border-radius:999px; font-weight:700; margin:.2rem .35rem .2rem 0;}
+
+    /* 목표 화살표 카드 */
+    .arrow{
+      position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
+      padding:16px 22px; border-radius:14px; margin:10px 0;
+    }
+    .arrow:after{
+      content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+      border-top:14px solid transparent; border-bottom:14px solid transparent;
+      border-left:14px solid rgba(255,255,255,.78);
+      filter:drop-shadow(1px 0 0 var(--stroke));
+    }
   </style>
 </head>
 <body id="top">
@@ -134,14 +147,14 @@
           </div>
         </div>
 
-        <!-- 키워드 (요청: GPA/학점 밑에 배치) -->
+        <!-- 키워드: 연락처와 다른 스타일 -->
         <div class="mt-4">
-          <span class="tag">⚗️ 생물화학</span>
-          <span class="tag">💊 제약연구</span>
-          <span class="tag">🔬 신약개발</span>
-          <span class="tag">🌍 글로벌역량</span>
-          <span class="tag">🤝 소통과리더십</span>
-          <span class="tag">✨ 작은발견큰변화</span>
+          <span class="kw c1"><i></i>생물화학</span>
+          <span class="kw c2"><i></i>제약연구</span>
+          <span class="kw c3"><i></i>신약개발</span>
+          <span class="kw c4"><i></i>글로벌역량</span>
+          <span class="kw c5"><i></i>소통과리더십</span>
+          <span class="kw c6"><i></i>작은발견큰변화</span>
         </div>
 
         <!-- 연락 -->
@@ -151,12 +164,12 @@
         </div>
       </div>
 
-      <!-- RIGHT PHOTO: 원본 비율, 살짝 축소 -->
+      <!-- RIGHT PHOTO: 원본 비율, 살짝 더 작게 -->
       <div class="reveal">
         <img
           src="profile.jpg"
           alt="성하은 프로필"
-          class="w-full max-w-[560px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+          class="w-full max-w-[500px] mx-auto rounded-2xl shadow-xl object-contain soft block"
           loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);"
         />
       </div>
@@ -174,26 +187,43 @@
       </ul>
     </section>
 
-    <!-- 어학 + 자격증 (개별 카드) -->
+    <!-- 어학 + 자격증 (카테고리 → 항목들) -->
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
 
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="glass rounded-xl p-4 reveal">TOEIC 945</div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 어학 -->
+        <div class="glass rounded-2xl p-4 reveal">
+          <div class="font-extrabold mb-2">어학</div>
+          <div>
+            <span class="chip">TOEIC 945</span>
+          </div>
+        </div>
 
-        <div class="glass rounded-xl p-4 reveal">ITQ 한글 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
-        <div class="glass rounded-xl p-4 reveal">ITQ 파워포인트 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
-        <div class="glass rounded-xl p-4 reveal">ITQ 엑셀 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
-        <div class="glass rounded-xl p-4 reveal">ITQ 인터넷 <span class="text-[var(--muted)]">(한국생산성본부)</span></div>
+        <!-- 컴퓨터·IT -->
+        <div class="glass rounded-2xl p-4 reveal">
+          <div class="font-extrabold mb-2">컴퓨터 · IT</div>
+          <div>
+            <span class="chip">ITQ 엑셀 (KPC)</span>
+            <span class="chip">ITQ 파워포인트 (KPC)</span>
+            <span class="chip">ITQ 인터넷 (KPC)</span>
+            <span class="chip">ITQ 한글 (KPC)</span>
+            <span class="chip">GTQ 3급 (KPC)</span>
+            <span class="chip">GTQ 2급 (KPC)</span>
+            <span class="chip">GTQ 1급 (KPC)</span>
+            <span class="chip">ICDL – Using the Computer and Managing Files</span>
+            <span class="chip">문서실무사 4급 (대한상공회의소)</span>
+          </div>
+        </div>
 
-        <div class="glass rounded-xl p-4 reveal">GTQ 3급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
-        <div class="glass rounded-xl p-4 reveal">GTQ 2급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
-        <div class="glass rounded-xl p-4 reveal">GTQ 1급 <span class="text-[var(--muted)]">(KPC 한국생산성본부/자격)</span></div>
-
-        <div class="glass rounded-xl p-4 reveal">ICDL – Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation)</span></div>
-        <div class="glass rounded-xl p-4 reveal">문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></div>
-        <div class="glass rounded-xl p-4 reveal">한국사능력검정시험 <span class="text-[var(--muted)]">(국사편찬위원회)</span></div>
-        <div class="glass rounded-xl p-4 reveal">한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></div>
+        <!-- 그 외 -->
+        <div class="glass rounded-2xl p-4 reveal">
+          <div class="font-extrabold mb-2">그 외</div>
+          <div>
+            <span class="chip">한국사능력검정시험 (국사편찬위원회)</span>
+            <span class="chip">한자 6급 (대한검정회 한자급수자격검정시험)</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -212,7 +242,7 @@
       </ul>
     </section>
 
-    <!-- 교과 진행 현황 (글로벌 취득2/잔여2 반영) -->
+    <!-- 교과 진행 현황 -->
     <section id="academic" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📖 교과 진행 현황</h2>
 
@@ -250,7 +280,7 @@
       </div>
     </section>
 
-    <!-- 프로그램 (모두 복구 + 1개 추가=총 6개) -->
+    <!-- 프로그램 (총 6개, 노벨: 참가 중 표기) -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -286,7 +316,7 @@
 
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumb mb-3"></div>
-          <div class="text-xs text-[var(--muted)]">2025</div>
+          <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
         </article>
       </div>
@@ -327,13 +357,13 @@
       </div>
     </section>
 
-    <!-- 목표(→ 타임라인 느낌) -->
+    <!-- 목표: 화살표 카드 -->
     <section id="roadmap" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
-      <div class="glass rounded-xl p-5 text-[15px] reveal">
-        <div class="mb-2"><b>단기</b> → 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
-        <div class="mb-2"><b>중기</b> → 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
-        <div><b>장기</b> → 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
+      <div class="reveal">
+        <div class="arrow"><b>단기</b> — 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
+        <div class="arrow"><b>중기</b> — 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
+        <div class="arrow"><b>장기</b> — 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
       </div>
     </section>
 
