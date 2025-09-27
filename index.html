@@ -12,9 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
 
-  <!-- Keep photo crisp -->
-  <link rel="preload" as="image" href="profile.jpg">
-
   <style>
     :root{
       --bg1:#ffe6ef; --bg2:#ffeef7;
@@ -62,7 +59,7 @@
     .stamp{ width:100%; max-width:420px; height:auto; border-radius:12px; border:1px solid var(--stroke); background:#fff; overflow:hidden;}
     .stamp img{width:100%; height:auto; object-fit:cover}
 
-    /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
+    /* 자격증 – 세로 스티커 */
     .tall-sticker{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       width:120px; height:150px; border:1px solid var(--stroke); border-radius:14px; background:#fff;
@@ -85,16 +82,27 @@
     .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
     /* 목표 화살표 카드 */
-    .arrow{
-      position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
-      padding:16px 22px; border-radius:14px; margin:10px 0;
-    }
-    .arrow:after{
-      content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+    .arrow{ position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
+      padding:16px 22px; border-radius:14px; margin:10px 0; }
+    .arrow:after{ content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
       border-top:14px solid transparent; border-bottom:14px solid transparent;
-      border-left:14px solid rgba(255,255,255,.78);
-      filter:drop-shadow(1px 0 0 var(--stroke));
-    }
+      border-left:14px solid rgba(255,255,255,.78); filter:drop-shadow(1px 0 0 var(--stroke)); }
+
+    /* 헤드라인(두 줄 고정) */
+    .headline-line{ white-space:nowrap; font-size:clamp(28px,7vw,64px); }
+
+    /* 섹션별 파스텔 그라데이션 카드 */
+    .sec{ border:1px solid var(--stroke); border-radius:22px; padding:24px; }
+    .sec-pink{ background:linear-gradient(180deg, #fff7fb, #ffeef7); }
+    .sec-lilac{ background:linear-gradient(180deg, #fff8ff, #f5efff); }
+    .sec-mint{ background:linear-gradient(180deg, #f6fff9, #eafff4); }
+    .sec-peach{ background:linear-gradient(180deg, #fff9f4, #fff1e9); }
+
+    /* 타임라인(주요활동) */
+    .timeline{ position:relative; padding-left:28px; }
+    .timeline:before{ content:""; position:absolute; left:11px; top:0; bottom:0; width:2px; background:#f8cde0; }
+    .t-item{ position:relative; margin:14px 0; }
+    .t-item:before{ content:""; position:absolute; left:-18px; top:10px; width:12px; height:12px; border-radius:999px; background:#ec4899; box-shadow:0 0 0 4px #fde7f2; }
   </style>
 </head>
 <body id="top">
@@ -124,11 +132,11 @@
     <section id="about" class="py-10 md:py-12 grid md:grid-cols-2 gap-10 items-center">
       <!-- LEFT -->
       <div class="pt-2 reveal">
-        <h1 class="pretty text-[42px] md:text-[64px] font-extrabold leading-[1.05]">
-          <span id="kw" class="text-[var(--accent-strong)]">세상을 배움으로 채우는</span>
-          <span class="block">미래 연구자</span>
+        <h1 class="pretty font-extrabold leading-[1.08]">
+          <span id="kw" class="headline-line text-[var(--accent-strong)] block">세상을 배움으로 채우는</span>
+          <span class="headline-line block">미래 연구자</span>
         </h1>
-        <p class="text-[var(--muted)] mt-3">
+        <p class="text-[var(--muted)] mt-4">
           작은 분자의 움직임이 세상을 바꾸듯,<br>
           작은 저의 발걸음으로 사람들의 삶을 따뜻하게 바꾸고 싶습니다.
         </p>
@@ -140,30 +148,14 @@
 
         <!-- 학력 -->
         <div class="mt-5 space-y-3">
-          <div class="flex gap-3 items-start">
-            <span class="mt-[2px]">🎓</span>
-            <div class="font-semibold">2023 · 성균관대학교 자연과학계열 입학</div>
-          </div>
-          <div class="flex gap-3 items-start">
-            <span class="mt-[2px]">🎓</span>
-            <div class="font-semibold">2024 ~ · 성균관대학교 화학과</div>
-          </div>
+          <div class="flex gap-3 items-start"><span>🎓</span><div class="font-semibold">2023 · 성균관대학교 자연과학계열 입학</div></div>
+          <div class="flex gap-3 items-start"><span>🎓</span><div class="font-semibold">2024 ~ · 성균관대학교 화학과</div></div>
         </div>
 
         <!-- 원형 지표 -->
         <div class="mt-6 flex gap-5">
-          <div class="circle">
-            <div class="text-center">
-              <span class="value">97.7</span>
-              <small>GPA</small>
-            </div>
-          </div>
-          <div class="circle">
-            <div class="text-center">
-              <span class="value">86</span>
-              <small>이수학점</small>
-            </div>
-          </div>
+          <div class="circle"><div class="text-center"><span class="value">97.7</span><small>GPA</small></div></div>
+          <div class="circle"><div class="text-center"><span class="value">86</span><small>이수학점</small></div></div>
         </div>
 
         <!-- 키워드 -->
@@ -185,8 +177,7 @@
       <!-- RIGHT PHOTO -->
       <div class="reveal">
         <img src="profile.jpg" alt="성하은 프로필"
-             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
-             loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);" />
+             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"/>
       </div>
     </section>
 
@@ -194,298 +185,222 @@
 
     <!-- 활동 -->
     <section id="activities" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
+      <div class="sec sec-pink reveal">
+        <h2 class="pretty text-3xl font-bold mb-5">💡 활동</h2>
 
-      <!-- 주요활동 -->
-      <div class="mb-6">
-        <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
-        <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            2024 · 양평장로교회 <b>울림 임원단</b> — 미디어
-          </li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            2025 · 양평장로교회 <b>아하 임원단</b> — 미디어
-          </li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            <b>성균관대학교 공식 홍보대사 알리미</b> (2023–2024)
-          </li>
-        </ul>
-      </div>
+        <!-- 주요활동 = 타임라인 -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
+          <div class="timeline">
+            <div class="t-item glass rounded-xl px-4 py-3">
+              <b>2024 · 양평장로교회 울림 임원단</b> — 미디어
+            </div>
+            <div class="t-item glass rounded-xl px-4 py-3">
+              <b>2025 · 양평장로교회 아하 임원단</b> — 미디어
+            </div>
+            <div class="t-item glass rounded-xl px-4 py-3">
+              <b>성균관대학교 공식 홍보대사 알리미</b> (2023–2024)
+            </div>
+          </div>
+        </div>
 
-      <!-- 동아리/봉사 (한 줄 나열) -->
-      <div>
-        <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
-        <div class="flex flex-wrap gap-3">
-          <div class="circle-sticker">2023<br>어깨동무<small>동아리</small></div>
-          <div class="circle-sticker">2024<br>레드체리<small>동아리</small></div>
-          <div class="circle-sticker">2024<br>장돌<small>동아리</small></div>
-          <div class="circle-sticker">2025<br>양평군노인요양원<small>봉사</small></div>
+        <!-- 동아리/봉사 – 그대로 -->
+        <div>
+          <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
+          <div class="flex flex-wrap gap-3">
+            <div class="circle-sticker">2023<br>어깨동무<small>동아리</small></div>
+            <div class="circle-sticker">2024<br>레드체리<small>동아리</small></div>
+            <div class="circle-sticker">2024<br>장돌<small>동아리</small></div>
+            <div class="circle-sticker">2025<br>양평군노인요양원<small>봉사</small></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 어학 · 자격증 -->
     <section id="credentials" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
-      <div class="flex flex-wrap gap-4">
-
-        <!-- TOEIC -->
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">💬</div>
-          <div class="ts-title">TOEIC</div>
-          <div class="ts-sub">945점</div>
-          <div class="ts-org">(ETS / YBM 한국TOEIC위원회)</div>
-        </div>
-
-        <!-- ITQ -->
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🖥️</div>
-          <div class="ts-title">ITQ</div>
-          <div class="ts-sub">한글</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🧰</div>
-          <div class="ts-title">ITQ</div>
-          <div class="ts-sub">파워포인트</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">📊</div>
-          <div class="ts-title">ITQ</div>
-          <div class="ts-sub">엑셀</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🌐</div>
-          <div class="ts-title">ITQ</div>
-          <div class="ts-sub">인터넷</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-
-        <!-- GTQ -->
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🎨</div>
-          <div class="ts-title">GTQ</div>
-          <div class="ts-sub">3급</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🎨</div>
-          <div class="ts-title">GTQ</div>
-          <div class="ts-sub">2급</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🎨</div>
-          <div class="ts-title">GTQ</div>
-          <div class="ts-sub">1급</div>
-          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
-        </div>
-
-        <!-- ICDL / 문서실무사 / 한국사 / 한자 -->
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🗂️</div>
-          <div class="ts-title">ICDL</div>
-          <div class="ts-sub">국제자격</div>
-          <div class="ts-org">(ICDL Foundation)</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">📄</div>
-          <div class="ts-title">문서실무사</div>
-          <div class="ts-sub">4급</div>
-          <div class="ts-org">대한상공회의소</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">📚</div>
-          <div class="ts-title">한국사</div>
-          <div class="ts-sub">능력검정시험</div>
-          <div class="ts-org">국사편찬위원회</div>
-        </div>
-        <div class="tall-sticker reveal">
-          <div class="ts-emoji">🈶</div>
-          <div class="ts-title">한자</div>
-          <div class="ts-sub">6급</div>
-          <div class="ts-org">대한검정회</div>
+      <div class="sec sec-lilac reveal">
+        <h2 class="pretty text-3xl font-bold mb-5">📚 어학 · 자격증</h2>
+        <div class="flex flex-wrap gap-4">
+          <div class="tall-sticker reveal"><div class="ts-emoji">💬</div><div class="ts-title">TOEIC</div><div class="ts-sub">945점</div><div class="ts-org">(ETS / YBM 한국TOEIC위원회)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🖥️</div><div class="ts-title">ITQ</div><div class="ts-sub">한글</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🧰</div><div class="ts-title">ITQ</div><div class="ts-sub">파워포인트</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">📊</div><div class="ts-title">ITQ</div><div class="ts-sub">엑셀</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🌐</div><div class="ts-title">ITQ</div><div class="ts-sub">인터넷</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">3급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">2급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">1급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🗂️</div><div class="ts-title">ICDL</div><div class="ts-sub">국제자격</div><div class="ts-org">(ICDL Foundation)</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">📄</div><div class="ts-title">문서실무사</div><div class="ts-sub">4급</div><div class="ts-org">대한상공회의소</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">📚</div><div class="ts-title">한국사</div><div class="ts-sub">능력검정시험</div><div class="ts-org">국사편찬위원회</div></div>
+          <div class="tall-sticker reveal"><div class="ts-emoji">🈶</div><div class="ts-title">한자</div><div class="ts-sub">6급</div><div class="ts-org">대한검정회</div></div>
         </div>
       </div>
     </section>
 
     <!-- 장학금 -->
     <section id="scholarships" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🎓 장학금</h2>
-      <ul class="space-y-3">
-        <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 근로봉사장학금</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 국가장학금(유형2, 신·편입생)</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교외 · 메가스터디교육㈜</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 근로봉사장학금</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 문행장학금(추가지급)</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2024-1 · 교내 · 글로벌 리더학습 장학금</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2023 · 교외 · 양평군교육발전위원회 성적우수</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2024 · 교외 · 양평군교육발전위원회 성적우수</li>
-      </ul>
-      <p class="mt-3 text-sm text-[var(--muted)]">
-        <a href="장학.jpg" target="_blank" class="underline">장학금 수혜내역 전체 보기</a>
-      </p>
+      <div class="sec sec-mint reveal">
+        <h2 class="pretty text-3xl font-bold mb-4">🎓 장학금</h2>
+        <ul class="space-y-3">
+          <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 근로봉사장학금</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 국가장학금(유형2, 신·편입생)</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교외 · 메가스터디교육㈜</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 근로봉사장학금</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 문행장학금(추가지급)</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2024-1 · 교내 · 글로벌 리더학습 장학금</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2023 · 교외 · 양평군교육발전위원회 성적우수</li>
+          <li class="glass rounded-xl px-4 py-3 reveal">2024 · 교외 · 양평군교육발전위원회 성적우수</li>
+        </ul>
+        <p class="mt-3 text-sm text-[var(--muted)]">
+          <a href="장학.jpg" target="_blank" class="underline">장학금 수혜내역 전체 보기</a>
+        </p>
+      </div>
     </section>
 
     <!-- 교과 진행 현황 -->
     <section id="academic" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">📖 교과 진행 현황</h2>
+      <div class="sec sec-peach reveal">
+        <h2 class="pretty text-3xl font-bold mb-4">📖 교과 진행 현황</h2>
 
-      <!-- 상단 요약 -->
-      <div class="grid sm:grid-cols-2 gap-4 mb-6">
-        <a href="평점평균.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
-          <div class="circle shrink-0">
-            <div class="text-center">
-              <span class="value">4.27</span>
-              <small>평점평균</small>
-            </div>
-          </div>
-          <div class="font-semibold underline">평점평균 보기</div>
-        </a>
-        <a href="이수학점.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
-          <div class="circle shrink-0">
-            <div class="text-center">
-              <span class="value">86</span>
-              <small>이수학점</small>
-            </div>
-          </div>
-          <div class="font-semibold underline">이수학점 보기</div>
-        </a>
-      </div>
+        <!-- 상단 요약 -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <a href="평점평균.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
+            <div class="circle shrink-0"><div class="text-center"><span class="value">4.27</span><small>평점평균</small></div></div>
+            <div class="font-semibold underline">평점평균 보기</div>
+          </a>
+          <a href="이수학점.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
+            <div class="circle shrink-0"><div class="text-center"><span class="value">86</span><small>이수학점</small></div></div>
+            <div class="font-semibold underline">이수학점 보기</div>
+          </a>
+        </div>
 
-      <!-- 세부 표 -->
-      <div class="overflow-x-auto glass rounded-xl reveal">
-        <table class="w-full text-sm">
-          <thead class="bg-white/70">
-            <tr class="text-left">
-              <th class="p-3">구분</th>
-              <th class="p-3">취득</th>
-              <th class="p-3">필요</th>
-              <th class="p-3">잔여</th>
-              <th class="p-3">상태</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
-
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
-
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-          </tbody>
-        </table>
+        <!-- 세부 표 -->
+        <div class="overflow-x-auto glass rounded-xl reveal">
+          <table class="w-full text-sm">
+            <thead class="bg-white/70">
+              <tr class="text-left">
+                <th class="p-3">구분</th><th class="p-3">취득</th><th class="p-3">필요</th><th class="p-3">잔여</th><th class="p-3">상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+              <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
     <!-- 프로그램 -->
     <section id="programs" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="스꾸.jpg" alt="SKKU-BA-DIVE"></div>
-          <div class="text-xs text-[var(--muted)]">2024 하계</div>
-          <div class="text-base font-semibold mt-1">SKKU-BA-DIVE</div>
-        </article>
+      <div class="sec sec-lilac reveal">
+        <h2 class="pretty text-3xl font-bold mb-4">📚 프로그램</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="스꾸.jpg" alt="SKKU-BA-DIVE"></div>
+            <div class="text-xs text-[var(--muted)]">2024 하계</div>
+            <div class="text-base font-semibold mt-1">SKKU-BA-DIVE</div>
+          </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="경동.jpg" alt="화학과 동문기업 탐방"></div>
-          <div class="text-xs text-[var(--muted)]">2024</div>
-          <div class="text-base font-semibold mt-1">화학과 학생 동문기업 탐방 프로그램</div>
-        </article>
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="경동.jpg" alt="화학과 동문기업 탐방"></div>
+            <div class="text-xs text-[var(--muted)]">2024</div>
+            <div class="text-base font-semibold mt-1">화학과 학생 동문기업 탐방 프로그램</div>
+          </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="아두이노.jpg" alt="DNA School 아두이노 II"></div>
-          <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
-          <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
-        </article>
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="아두이노.jpg" alt="DNA School 아두이노 II"></div>
+            <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
+            <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
+          </article>
 
-        <!-- 변경된 에든버러 과정 -->
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="Using Mixed Methods in Clinical Research"></div>
-          <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
-          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: Using Mixed Methods in Clinical Research</div>
-        </article>
+          <!-- 변경된 에든버러 과정 -->
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="Using Mixed Methods in Clinical Research"></div>
+            <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
+            <div class="text-base font-semibold mt-1">University of Edinburgh – Course: Using Mixed Methods in Clinical Research</div>
+          </article>
 
-        <!-- 추가된 에든버러 과정 -->
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="GCP for Laboratories"></div>
-          <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: GCP for Laboratories</div>
-        </article>
+          <!-- 추가된 에든버러 과정 -->
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="GCP for Laboratories"></div>
+            <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
+            <div class="text-base font-semibold mt-1">University of Edinburgh – Course: GCP for Laboratories</div>
+          </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
-          <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
-        </article>
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
+            <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
+            <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
+          </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="노벨.jpg" alt="노벨 화학상 분야 경연"></div>
-          <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
-        </article>
+          <article class="glass rounded-2xl p-4 soft reveal">
+            <div class="thumbWrap mb-3"><img src="노벨.jpg" alt="노벨 화학상 분야 경연"></div>
+            <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
+            <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- 디지털 뱃지 & 3품 -->
     <section id="global" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 뱃지 & 3품 인증</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 뱃지: 여백 허용(잘림 없음) + 링크 -->
-        <div class="glass rounded-xl p-4 text-center reveal">
-          <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
-          <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
-            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
-          </div>
-          <div class="mt-3">
-            <a class="underline font-bold text-[var(--accent-strong)]" target="_blank"
+      <div class="sec sec-mint reveal">
+        <h2 class="pretty text-3xl font-bold mb-4">🌍 디지털 뱃지 & 3품 인증</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- 디지털 뱃지: 상단 라벨을 링크로 변경 -->
+          <div class="glass rounded-xl p-4 text-center">
+            <a class="text-sm text-[var(--muted)] mb-2 inline-block underline"
+               target="_blank"
                href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09">
               디지털 뱃지 보기
             </a>
-          </div>
-        </div>
-
-        <!-- 3품 -->
-        <div class="glass rounded-xl p-4 reveal">
-          <div class="font-semibold mb-3">3품 인증</div>
-
-          <div class="flex items-center gap-4">
-            <div class="stamp"><img src="인성.jpg" alt="인성 인증" class="max-w-full max-h-full object-contain"></div>
-            <div class="text-sm">인성 인증 — ✅ 완료</div>
+            <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
+              <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
+            </div>
           </div>
 
-          <div class="flex items-center gap-4 mt-3">
-            <div class="stamp"><img src="글로벌.jpg" alt="글로벌 인증" class="max-w-full max-h-full object-contain"></div>
-            <div class="text-sm">글로벌 인증 — ✅ 완료</div>
-          </div>
-
-          <div class="flex items-center gap-4 mt-3">
-            <div class="stamp"><img src="인턴십.jpg" alt="인턴십 인증" class="max-w-full max-h-full object-contain"></div>
-            <div class="text-sm">인턴십 인증 — ⏳ 진행 예정</div>
+          <!-- 3품 -->
+          <div class="glass rounded-xl p-4">
+            <div class="font-semibold mb-3">3품 인증</div>
+            <div class="flex items-center gap-4">
+              <div class="stamp"><img src="인성.jpg" alt="인성 인증" class="max-w-full max-h-full object-contain"></div>
+              <div class="text-sm">인성 인증 — ✅ 완료</div>
+            </div>
+            <div class="flex items-center gap-4 mt-3">
+              <div class="stamp"><img src="글로벌.jpg" alt="글로벌 인증" class="max-w-full max-h-full object-contain"></div>
+              <div class="text-sm">글로벌 인증 — ✅ 완료</div>
+            </div>
+            <div class="flex items-center gap-4 mt-3">
+              <div class="stamp"><img src="인턴십.jpg" alt="인턴십 인증" class="max-w-full max-h-full object-contain"></div>
+              <div class="text-sm">인턴십 인증 — ⏳ 진행 예정</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 목표: 화살표 카드 -->
+    <!-- 목표 -->
     <section id="roadmap" class="py-10">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
-      <div class="reveal">
-        <div class="arrow"><b>단기</b> — 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
-        <div class="arrow"><b>중기</b> — 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
-        <div class="arrow"><b>장기</b> — 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
+      <div class="sec sec-peach reveal">
+        <h2 class="pretty text-3xl font-bold mb-4">🗺️ 목표와 비전</h2>
+        <div>
+          <div class="arrow"><b>단기</b> — 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
+          <div class="arrow"><b>중기</b> — 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
+          <div class="arrow"><b>장기</b> — 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
+        </div>
       </div>
     </section>
 
@@ -503,15 +418,24 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // 헤드라인 키워드 순환 (홈)
+    // 헤드라인 키워드 순환(두 줄 고정 + 자동맞춤)
     const seq=["세상을 배움으로 채우는","도전을 두려워하지 않는","작은 것에도 감사하는"];
-    let i=0; const el=document.getElementById('kw');
-    setInterval(()=>{
+    const kw = document.getElementById('kw');
+
+    function fitLine(el,{min=24,max=64}={}){ el.style.fontSize=max+'px';
+      while(el.scrollWidth>el.clientWidth && max>min){ max-=1; el.style.fontSize=max+'px'; } }
+    function applyFit(){ fitLine(kw,{min:24,max:64}); }
+    window.addEventListener('resize', applyFit);
+
+    let i=0;
+    function rotate(){
       i=(i+1)%seq.length;
-      el.style.transition="opacity .25s, transform .25s";
-      el.style.opacity=.0; el.style.transform="translateY(-4px)";
-      setTimeout(()=>{ el.textContent=seq[i]; el.style.opacity=1; el.style.transform="none"; },220);
-    },2600);
+      kw.style.transition="opacity .22s, transform .22s";
+      kw.style.opacity=0; kw.style.transform="translateY(-4px)";
+      setTimeout(()=>{ kw.textContent=seq[i]; kw.style.opacity=1; kw.style.transform="none"; applyFit(); },200);
+    }
+    applyFit();
+    setInterval(rotate,2600);
   </script>
 </body>
 </html>
