@@ -74,6 +74,23 @@
       height:auto;
       object-fit: cover;   /* 조금 잘리더라도 꽉 차게 */
     }
+    
+    .tall-sticker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 140px;        /* 가로 */
+      height: 180px;       /* 세로 */
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.8rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -218,45 +235,86 @@
     </section>
 
 
-    <!-- 어학 + 자격증 (2열, 기관 자세히) -->
+    <!-- 어학 · 자격증 -->
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
-
-      <!-- 어학 -->
-      <div class="reveal">
-        <h3 class="text-xl font-extrabold mb-3">어학</h3>
-        <div class="grid md:grid-cols-2 gap-3">
-          <article class="glass soft rounded-xl p-4">💬 TOEIC 945 <span class="text-[var(--muted)]">(ETS / YBM 한국TOEIC위원회)</span></article>
+    
+      <div class="flex flex-wrap gap-4">
+    
+        <!-- 어학 -->
+        <div class="tall-sticker reveal">
+          <div>💬 TOEIC</div>
+          <div class="text-sm text-[var(--muted)]">945점</div>
+          <div class="text-xs text-[var(--muted)]">(ETS / YBM 한국TOEIC위원회)</div>
         </div>
-      </div>
-
-      <!-- 컴퓨터·IT -->
-      <div class="reveal mt-7">
-        <h3 class="text-xl font-extrabold mb-3">컴퓨터 · IT</h3>
-        <div class="grid md:grid-cols-2 gap-3">
-          <article class="glass soft rounded-xl p-4">🖥️ ITQ 한글 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
-          <article class="glass soft rounded-xl p-4">🖥️ ITQ 파워포인트 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
-          <article class="glass soft rounded-xl p-4">🖥️ ITQ 엑셀 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
-          <article class="glass soft rounded-xl p-4">🖥️ ITQ 인터넷 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
-
-          <article class="glass soft rounded-xl p-4">🎨 GTQ 3급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
-          <article class="glass soft rounded-xl p-4">🎨 GTQ 2급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
-          <article class="glass soft rounded-xl p-4">🎨 GTQ 1급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
-
-          <article class="glass soft rounded-xl p-4">🗂️ ICDL — Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation / 국제자격)</span></article>
-          <article class="glass soft rounded-xl p-4">📄 문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></article>
+    
+        <!-- 컴퓨터 IT -->
+        <div class="tall-sticker reveal">
+          <div>🖥️ ITQ 한글</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
         </div>
-      </div>
-
-      <!-- 그 외 -->
-      <div class="reveal mt-7">
-        <h3 class="text-xl font-extrabold mb-3">그 외</h3>
-        <div class="grid md:grid-cols-2 gap-3">
-          <article class="glass soft rounded-xl p-4">📚 한국사능력검정시험 <span class="text-[var(--muted)]">(국사편찬위원회)</span></article>
-          <article class="glass soft rounded-xl p-4">🈶 한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></article>
+    
+        <div class="tall-sticker reveal">
+          <div>🖥️ ITQ 파워포인트</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🖥️ ITQ 엑셀</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🖥️ ITQ 인터넷</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🎨 GTQ 3급</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🎨 GTQ 2급</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🎨 GTQ 1급</div>
+          <div class="text-sm text-[var(--muted)]">국가공인</div>
+          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🗂️ ICDL</div>
+          <div class="text-sm text-[var(--muted)]">국제자격</div>
+          <div class="text-xs text-[var(--muted)]">(ICDL Foundation)</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>📄 문서실무사 4급</div>
+          <div class="text-sm text-[var(--muted)]">대한상공회의소</div>
+        </div>
+    
+        <!-- 그 외 -->
+        <div class="tall-sticker reveal">
+          <div>📚 한국사능력검정시험</div>
+          <div class="text-sm text-[var(--muted)]">국사편찬위원회</div>
+        </div>
+    
+        <div class="tall-sticker reveal">
+          <div>🈶 한자 6급</div>
+          <div class="text-sm text-[var(--muted)]">대한검정회</div>
         </div>
       </div>
     </section>
+
 
     <!-- 장학금 -->
     <section id="scholarships" class="py-6">
