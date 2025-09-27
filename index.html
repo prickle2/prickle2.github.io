@@ -59,48 +59,35 @@
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
     /* 3품 이미지 */
-    .stamp{
-      width:100%; max-width:420px; height:auto;
-      border-radius:12px; border:1px solid var(--stroke);
-      background:#fff; overflow:hidden;
-    }
+    .stamp{ width:100%; max-width:420px; height:auto; border-radius:12px; border:1px solid var(--stroke); background:#fff; overflow:hidden;}
     .stamp img{width:100%; height:auto; object-fit:cover}
 
-    /* 세로 직사각형 스티커 (자격증) */
-    .tall-sticker {
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      width:140px; height:180px;
-      border:1px solid var(--stroke);
-      border-radius:12px; background:#fff;
-      font-size:0.9rem; font-weight:700; text-align:center;
-      box-shadow:0 4px 10px rgba(0,0,0,0.05);
-    }
-    .tall-sticker small{font-size:.75rem; font-weight:600; color:var(--muted)}
+    /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
+    .tall-sticker{ display:flex; flex-direction:column; align-items:center; justify-content:center;
+      width:120px; height:150px; border:1px solid var(--stroke); border-radius:14px; background:#fff;
+      padding:.7rem; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05); }
+    .ts-emoji{ font-size:22px; line-height:1; margin-bottom:.15rem }
+    .ts-title{ font-weight:800; font-size:1.02rem; line-height:1.1 }
+    .ts-sub  { font-weight:700; font-size:.92rem; margin-top:.25rem }
+    .ts-org  { font-size:.78rem; color:var(--muted); margin-top:.2rem }
 
-    /* 동아리/봉사 원형 스티커 */
-    .circle-sticker {
+    /* 동아리/봉사 – 불투명 원형 스티커 */
+    .circle-sticker{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       width:110px; height:110px;
-      border-radius:999px; background:rgba(255,255,255,0.75);
+      border-radius:9999px; background:rgba(255,255,255,0.78);
       border:1px solid var(--stroke);
       font-size:.85rem; font-weight:700; text-align:center;
       box-shadow:0 6px 16px rgba(0,0,0,0.08);
     }
-    .circle-sticker small {
-      font-size:0.7rem; font-weight:600; color:var(--muted);
-    }
+    .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
     /* 목표 화살표 카드 */
-    .arrow{
-      position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
-      padding:16px 22px; border-radius:14px; margin:10px 0;
-    }
-    .arrow:after{
-      content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+    .arrow{ position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
+      padding:16px 22px; border-radius:14px; margin:10px 0; }
+    .arrow:after{ content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
       border-top:14px solid transparent; border-bottom:14px solid transparent;
-      border-left:14px solid rgba(255,255,255,.78);
-      filter:drop-shadow(1px 0 0 var(--stroke));
-    }
+      border-left:14px solid rgba(255,255,255,.78); filter:drop-shadow(1px 0 0 var(--stroke)); }
   </style>
 </head>
 <body id="top">
@@ -126,102 +113,4 @@
 
   <main class="max-w-6xl mx-auto px-5">
 
-    <!-- HOME -->
-    <section id="about" class="py-10 md:py-12 grid md:grid-cols-2 gap-10 items-center">
-      <div class="pt-2 reveal">
-        <h1 class="pretty text-[42px] md:text-[64px] font-extrabold leading-[1.05]">
-          <span id="kw" class="text-[var(--accent-strong)]">생물화학을 탐구하는</span>
-          <span class="block">미래 연구자</span>
-        </h1>
-        <p class="text-[var(--muted)] mt-3">
-          작은 분자의 움직임이 세상을 바꾸듯, 사람들의 삶을 따뜻하게 바꾸는 연구자가 되고자 합니다.
-        </p>
-
-        <div class="mt-6">
-          <div class="text-[28px] font-bold">성하은</div>
-          <div class="text-sm text-[var(--muted)]">SUNG HAEUN</div>
-        </div>
-
-        <!-- 학력 -->
-        <div class="mt-5 space-y-3">
-          <div class="flex gap-3 items-start">
-            <span>🎓</span><div class="font-semibold">2023 · 성균관대학교 자연과학계열 입학</div>
-          </div>
-          <div class="flex gap-3 items-start">
-            <span>🎓</span><div class="font-semibold">2024 ~ · 성균관대학교 화학과</div>
-          </div>
-        </div>
-
-        <!-- 원형 지표 -->
-        <div class="mt-6 flex gap-5">
-          <div class="circle"><div class="text-center"><span class="value">97.7</span><small>GPA</small></div></div>
-          <div class="circle"><div class="text-center"><span class="value">86</span><small>이수학점</small></div></div>
-        </div>
-
-        <!-- 키워드 -->
-        <div class="mt-5">
-          <span class="tag">🧬 생물화학</span>
-          <span class="tag">💊 제약연구</span>
-          <span class="tag">🧪 신약개발</span>
-          <span class="tag">🌐 글로벌역량</span>
-          <span class="tag">🤝 소통과리더십</span>
-          <span class="tag">✨ 작은발견큰변화</span>
-        </div>
-
-        <!-- 연락 -->
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a href="mailto:prickle2@g.skku.edu" class="badge soft">📧 prickle2@g.skku.edu</a>
-          <a href="https://instagram.com/she.u_u" target="_blank" class="badge soft">📷 @she.u_u</a>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <img src="profile.jpg" alt="성하은 프로필"
-          class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"/>
-      </div>
-    </section>
-
-    <div class="line my-6"></div>
-
-    <!-- 활동 -->
-    <section id="activities" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
-
-      <!-- 주요활동 -->
-      <div class="mb-6">
-        <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
-        <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림</b> 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하</b> 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></li>
-        </ul>
-      </div>
-
-      <!-- 동아리/봉사 -->
-      <div>
-        <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
-        <div class="flex flex-wrap gap-3">
-          <div class="circle-sticker">2023<br>어깨동무<small>동아리</small></div>
-          <div class="circle-sticker">2024<br>레드체리<small>동아리</small></div>
-          <div class="circle-sticker">2024<br>장돌<small>동아리</small></div>
-          <div class="circle-sticker">2025<br>양평군노인요양원<small>봉사</small></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ... (어학·자격증, 장학금, 교과, 프로그램, 디지털뱃지, 목표 섹션 동일) ... -->
-
-  </main>
-
-  <footer class="py-10 text-center text-xs text-[var(--muted)]">© <span id="year"></span> 성하은</footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const io = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    const seq=["생물화학을 탐구하는","제약연구에 도전하는","신약개발을 꿈꾸는"];
-    let i=0; const el=document.getElementById('kw');
-    setInterval(()=>{i=(i+1)%seq.length;el.style.opacity=0;setTimeout(()=>{el.textContent=seq[i];el.style.opacity=1;},220);},2600);
-  </script>
-</body>
-</html>
+    <!-- H
