@@ -63,9 +63,11 @@
     .stamp img{width:100%; height:auto; object-fit:cover}
 
     /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
-    .tall-sticker{ display:flex; flex-direction:column; align-items:center; justify-content:center;
+    .tall-sticker{
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
       width:120px; height:150px; border:1px solid var(--stroke); border-radius:14px; background:#fff;
-      padding:.7rem; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05); }
+      padding:.7rem; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05);
+    }
     .ts-emoji{ font-size:22px; line-height:1; margin-bottom:.15rem }
     .ts-title{ font-weight:800; font-size:1.02rem; line-height:1.1 }
     .ts-sub  { font-weight:700; font-size:.92rem; margin-top:.25rem }
@@ -83,11 +85,16 @@
     .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
     /* 목표 화살표 카드 */
-    .arrow{ position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
-      padding:16px 22px; border-radius:14px; margin:10px 0; }
-    .arrow:after{ content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+    .arrow{
+      position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
+      padding:16px 22px; border-radius:14px; margin:10px 0;
+    }
+    .arrow:after{
+      content:""; position:absolute; right:-14px; top:50%; transform:translateY(-50%);
       border-top:14px solid transparent; border-bottom:14px solid transparent;
-      border-left:14px solid rgba(255,255,255,.78); filter:drop-shadow(1px 0 0 var(--stroke)); }
+      border-left:14px solid rgba(255,255,255,.78);
+      filter:drop-shadow(1px 0 0 var(--stroke));
+    }
   </style>
 </head>
 <body id="top">
@@ -115,13 +122,15 @@
 
     <!-- HOME -->
     <section id="about" class="py-10 md:py-12 grid md:grid-cols-2 gap-10 items-center">
+      <!-- LEFT -->
       <div class="pt-2 reveal">
         <h1 class="pretty text-[42px] md:text-[64px] font-extrabold leading-[1.05]">
-          <span id="kw" class="text-[var(--accent-strong)]">생물화학을 탐구하는</span>
+          <span id="kw" class="text-[var(--accent-strong)]">세상을 배움으로 채우는</span>
           <span class="block">미래 연구자</span>
         </h1>
         <p class="text-[var(--muted)] mt-3">
-          작은 분자의 움직임이 세상을 바꾸듯, 사람들의 삶을 따뜻하게 바꾸는 연구자가 되고자 합니다.
+          작은 분자의 움직임이 세상을 바꾸듯,<br>
+          작은 저의 발걸음으로 사람들의 삶을 따뜻하게 바꾸고 싶습니다.
         </p>
 
         <div class="mt-6">
@@ -131,22 +140,37 @@
 
         <!-- 학력 -->
         <div class="mt-5 space-y-3">
-          <div class="flex gap-3 items-start"><span>🎓</span><div class="font-semibold">2023 · 성균관대학교 자연과학계열 입학</div></div>
-          <div class="flex gap-3 items-start"><span>🎓</span><div class="font-semibold">2024 ~ · 성균관대학교 화학과</div></div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-[2px]">🎓</span>
+            <div class="font-semibold">2023 · 성균관대학교 자연과학계열 입학</div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-[2px]">🎓</span>
+            <div class="font-semibold">2024 ~ · 성균관대학교 화학과</div>
+          </div>
         </div>
 
         <!-- 원형 지표 -->
         <div class="mt-6 flex gap-5">
-          <div class="circle"><div class="text-center"><span class="value">97.7</span><small>GPA</small></div></div>
-          <div class="circle"><div class="text-center"><span class="value">86</span><small>이수학점</small></div></div>
+          <div class="circle">
+            <div class="text-center">
+              <span class="value">97.7</span>
+              <small>GPA</small>
+            </div>
+          </div>
+          <div class="circle">
+            <div class="text-center">
+              <span class="value">86</span>
+              <small>이수학점</small>
+            </div>
+          </div>
         </div>
 
         <!-- 키워드 -->
         <div class="mt-5">
           <span class="tag">🧬 생물화학</span>
           <span class="tag">💊 제약연구</span>
-          <span class="tag">🧪 신약개발</span>
-          <span class="tag">🌐 글로벌역량</span>
+          <span class="tag">🙏 감사하는삶</span>
           <span class="tag">🤝 소통과리더십</span>
           <span class="tag">✨ 작은발견큰변화</span>
         </div>
@@ -158,9 +182,11 @@
         </div>
       </div>
 
+      <!-- RIGHT PHOTO -->
       <div class="reveal">
         <img src="profile.jpg" alt="성하은 프로필"
-             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"/>
+             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+             loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);" />
       </div>
     </section>
 
@@ -174,13 +200,19 @@
       <div class="mb-6">
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
         <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림</b> 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하</b> 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2024 · 양평장로교회 <b>울림 임원단</b> — 미디어
+          </li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2025 · 양평장로교회 <b>아하 임원단</b> — 미디어
+          </li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            <b>성균관대학교 공식 홍보대사 알리미</b> (2023–2024)
+          </li>
         </ul>
       </div>
 
-      <!-- 동아리 · 봉사(한 줄 나열) -->
+      <!-- 동아리/봉사 (한 줄 나열) -->
       <div>
         <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
         <div class="flex flex-wrap gap-3">
@@ -196,18 +228,86 @@
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
       <div class="flex flex-wrap gap-4">
-        <div class="tall-sticker reveal"><div class="ts-emoji">💬</div><div class="ts-title">TOEIC</div><div class="ts-sub">945점</div><div class="ts-org">(ETS / YBM 한국TOEIC위원회)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🖥️</div><div class="ts-title">ITQ</div><div class="ts-sub">한글</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🧰</div><div class="ts-title">ITQ</div><div class="ts-sub">파워포인트</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">📊</div><div class="ts-title">ITQ</div><div class="ts-sub">엑셀</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🌐</div><div class="ts-title">ITQ</div><div class="ts-sub">인터넷</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">3급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">2급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">1급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🗂️</div><div class="ts-title">ICDL</div><div class="ts-sub">국제자격</div><div class="ts-org">(ICDL Foundation)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">📄</div><div class="ts-title">문서실무사</div><div class="ts-sub">4급</div><div class="ts-org">대한상공회의소</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">📚</div><div class="ts-title">한국사</div><div class="ts-sub">능력검정시험</div><div class="ts-org">국사편찬위원회</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🈶</div><div class="ts-title">한자</div><div class="ts-sub">6급</div><div class="ts-org">대한검정회</div></div>
+
+        <!-- TOEIC -->
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">💬</div>
+          <div class="ts-title">TOEIC</div>
+          <div class="ts-sub">945점</div>
+          <div class="ts-org">(ETS / YBM 한국TOEIC위원회)</div>
+        </div>
+
+        <!-- ITQ -->
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🖥️</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">한글</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🧰</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">파워포인트</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">📊</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">엑셀</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🌐</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">인터넷</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+
+        <!-- GTQ -->
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">3급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">2급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">1급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
+        </div>
+
+        <!-- ICDL / 문서실무사 / 한국사 / 한자 -->
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🗂️</div>
+          <div class="ts-title">ICDL</div>
+          <div class="ts-sub">국제자격</div>
+          <div class="ts-org">(ICDL Foundation)</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">📄</div>
+          <div class="ts-title">문서실무사</div>
+          <div class="ts-sub">4급</div>
+          <div class="ts-org">대한상공회의소</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">📚</div>
+          <div class="ts-title">한국사</div>
+          <div class="ts-sub">능력검정시험</div>
+          <div class="ts-org">국사편찬위원회</div>
+        </div>
+        <div class="tall-sticker reveal">
+          <div class="ts-emoji">🈶</div>
+          <div class="ts-title">한자</div>
+          <div class="ts-sub">6급</div>
+          <div class="ts-org">대한검정회</div>
+        </div>
       </div>
     </section>
 
@@ -236,11 +336,21 @@
       <!-- 상단 요약 -->
       <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <a href="평점평균.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
-          <div class="circle shrink-0"><div class="text-center"><span class="value">4.27</span><small>평점평균</small></div></div>
+          <div class="circle shrink-0">
+            <div class="text-center">
+              <span class="value">4.27</span>
+              <small>평점평균</small>
+            </div>
+          </div>
           <div class="font-semibold underline">평점평균 보기</div>
         </a>
         <a href="이수학점.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
-          <div class="circle shrink-0"><div class="text-center"><span class="value">86</span><small>이수학점</small></div></div>
+          <div class="circle shrink-0">
+            <div class="text-center">
+              <span class="value">86</span>
+              <small>이수학점</small>
+            </div>
+          </div>
           <div class="font-semibold underline">이수학점 보기</div>
         </a>
       </div>
@@ -250,16 +360,23 @@
         <table class="w-full text-sm">
           <thead class="bg-white/70">
             <tr class="text-left">
-              <th class="p-3">구분</th><th class="p-3">취득</th><th class="p-3">필요</th><th class="p-3">잔여</th><th class="p-3">상태</th>
+              <th class="p-3">구분</th>
+              <th class="p-3">취득</th>
+              <th class="p-3">필요</th>
+              <th class="p-3">잔여</th>
+              <th class="p-3">상태</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
+
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
+
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
             <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
@@ -294,10 +411,18 @@
           <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
         </article>
 
+        <!-- 변경된 에든버러 과정 -->
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="에든버러대학교 수업"></div>
+          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="Using Mixed Methods in Clinical Research"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
-          <div class="text-base font-semibold mt-1">에든버러대학교 온라인 수업</div>
+          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: Using Mixed Methods in Clinical Research</div>
+        </article>
+
+        <!-- 추가된 에든버러 과정 -->
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="GCP for Laboratories"></div>
+          <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
+          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: GCP for Laboratories</div>
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
@@ -318,11 +443,17 @@
     <section id="global" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 뱃지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 뱃지: 여백 허용(잘림 없음) -->
+        <!-- 디지털 뱃지: 여백 허용(잘림 없음) + 링크 -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
           <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
             <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
+          </div>
+          <div class="mt-3">
+            <a class="underline font-bold text-[var(--accent-strong)]" target="_blank"
+               href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09">
+              디지털 뱃지 보기
+            </a>
           </div>
         </div>
 
@@ -348,7 +479,7 @@
       </div>
     </section>
 
-    <!-- 목표 -->
+    <!-- 목표: 화살표 카드 -->
     <section id="roadmap" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
       <div class="reveal">
@@ -372,8 +503,8 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // 헤드라인 키워드 순환
-    const seq=["생물화학을 탐구하는","제약연구에 도전하는","신약개발을 꿈꾸는"];
+    // 헤드라인 키워드 순환 (홈)
+    const seq=["세상을 배움으로 채우는","도전을 두려워하지 않는","작은 것에도 감사하는"];
     let i=0; const el=document.getElementById('kw');
     setInterval(()=>{
       i=(i+1)%seq.length;
