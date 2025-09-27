@@ -60,8 +60,19 @@
 
     /* 3품 이미지 프레임(내부는 <img>) */
     .stamp{
-      width:84px; height:84px; border-radius:12px; border:1px solid var(--stroke);
-      background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
+      width: 100%;          /* 가로를 카드에 맞게 */
+      max-width: 420px;     /* 너무 커지지 않게 제한 */
+      height: auto;         /* 세로는 자동 */
+      border-radius:12px; 
+      border:1px solid var(--stroke);
+      background:#fff; 
+      overflow:hidden;
+    }
+
+    .stamp img{
+      width:100%;
+      height:auto;
+      object-fit: cover;   /* 조금 잘리더라도 꽉 차게 */
     }
 
     /* 목표 화살표 카드 */
@@ -350,7 +361,7 @@
         <div class="glass rounded-xl p-4 text-center reveal">
           <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
           <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
-            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-cover" />
+            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
           </div>
         </div>
 
