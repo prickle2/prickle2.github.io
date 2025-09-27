@@ -51,46 +51,38 @@
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff;
       border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
-    /* 프로그램 썸네일(이미지 태그로, 잘림 방지) */
+    /* 프로그램 썸네일 */
     .thumbWrap{
       aspect-ratio:1/1; border:1px solid var(--stroke); border-radius:12px;
       background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 이미지 프레임(내부는 <img>) */
+    /* 3품 이미지 프레임(원본비율, 약간 잘려도 OK 버전) */
     .stamp{
-      width: 100%;          /* 가로를 카드에 맞게 */
-      max-width: 420px;     /* 너무 커지지 않게 제한 */
-      height: auto;         /* 세로는 자동 */
-      border-radius:12px; 
-      border:1px solid var(--stroke);
-      background:#fff; 
-      overflow:hidden;
+      width:100%; max-width:420px; height:auto; border-radius:12px;
+      border:1px solid var(--stroke); background:#fff; overflow:hidden;
     }
+    .stamp img{width:100%; height:auto; object-fit:cover}
 
-    .stamp img{
-      width:100%;
-      height:auto;
-      object-fit: cover;   /* 조금 잘리더라도 꽉 차게 */
+    /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
+    .tall-sticker{ display:flex; flex-direction:column; align-items:center; justify-content:center;
+      width:120px; height:150px; border:1px solid var(--stroke); border-radius:14px; background:#fff;
+      padding:.7rem; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,.05);
     }
-    
-    .tall-sticker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 140px;        /* 가로 */
-      height: 180px;       /* 세로 */
-      border: 1px solid var(--stroke);
-      border-radius: 12px;
-      background: #fff;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 0.8rem;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    .ts-emoji{ font-size:22px; line-height:1; margin-bottom:.15rem }
+    .ts-title{ font-weight:800; font-size:1.02rem; line-height:1.1 }
+    .ts-sub  { font-weight:700; font-size:.92rem; margin-top:.25rem }
+    .ts-org  { font-size:.78rem; color:var(--muted); margin-top:.2rem }
+
+    /* 동아리/봉사 – 동그라미 스티커 */
+    .circle-sticker{
+      width:92px; height:92px; border-radius:9999px; background:#fff;
+      border:1px solid var(--stroke); display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:.5rem; box-shadow:0 4px 10px rgba(0,0,0,.05);
+      font-weight:800; font-size:.82rem; line-height:1.15;
     }
+    .circle-sticker small{ display:block; font-weight:700; font-size:.72rem; color:var(--muted); }
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -115,7 +107,7 @@
       </a>
       <nav class="hidden md:flex items-center gap-5 text-[15px]">
         <a href="#about" class="hover:text-[var(--accent-strong)]">홈</a>
-        <a href="#highlights" class="hover:text-[var(--accent-strong)]">주요활동</a>
+        <a href="#activities" class="hover:text-[var(--accent-strong)]">활동</a>
         <a href="#credentials" class="hover:text-[var(--accent-strong)]">어학·자격증</a>
         <a href="#scholarships" class="hover:text-[var(--accent-strong)]">장학금</a>
         <a href="#academic" class="hover:text-[var(--accent-strong)]">교과</a>
@@ -190,7 +182,7 @@
         </div>
       </div>
 
-      <!-- RIGHT PHOTO (조금 작게, 잘림 없이) -->
+      <!-- RIGHT PHOTO -->
       <div class="reveal">
         <img src="profile.jpg" alt="성하은 프로필"
              class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
@@ -203,118 +195,131 @@
     <!-- 활동 -->
     <section id="activities" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
-    
+
       <!-- 주요활동 -->
       <div class="mb-6">
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
         <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            2024 · 울림 임원단 — 미디어
-          </li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            2025 · 아하 임원단 — 미디어
-          </li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">
-            2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b>
-          </li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 울림 임원단 — 미디어</li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 아하 임원단 — 미디어</li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></li>
         </ul>
       </div>
-    
-      <!-- 동아리 · 봉사활동 -->
+
+      <!-- 동아리 · 봉사활동 (스티커 + 라벨) -->
       <div>
         <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
-        <div class="flex flex-wrap gap-2">
-          <!-- 동아리 -->
-          <span class="badge">2023 · 어깨동무 (Creative Group)</span>
-          <span class="badge">2024 · 레드체리</span>
-          <span class="badge">2024 · 장돌 (SKKU 화학과 스터디 동아리)</span>
-          <!-- 봉사 -->
-          <span class="badge">2024 · 양평군노인요양원 봉사</span>
+
+        <div class="text-sm font-bold text-[var(--muted)] mb-2">🎵 동아리</div>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <div class="circle-sticker">2023<br>어깨동무<small>(Creative Group)</small></div>
+          <div class="circle-sticker">2024<br>레드체리</div>
+          <div class="circle-sticker">2024<br>장돌<small>(화학과 스터디)</small></div>
+        </div>
+
+        <div class="text-sm font-bold text-[var(--muted)] mb-2">🤝 봉사</div>
+        <div class="flex flex-wrap gap-3">
+          <div class="circle-sticker">2024<br>양평군<br>노인요양원</div>
         </div>
       </div>
     </section>
-
 
     <!-- 어학 · 자격증 -->
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
-    
+
       <div class="flex flex-wrap gap-4">
-    
-        <!-- 어학 -->
+        <!-- TOEIC -->
         <div class="tall-sticker reveal">
-          <div>💬 TOEIC</div>
-          <div class="text-sm text-[var(--muted)]">945점</div>
-          <div class="text-xs text-[var(--muted)]">(ETS / YBM 한국TOEIC위원회)</div>
+          <div class="ts-emoji">💬</div>
+          <div class="ts-title">TOEIC</div>
+          <div class="ts-sub">945점</div>
+          <div class="ts-org">(ETS / YBM 한국TOEIC위원회)</div>
         </div>
-    
-        <!-- 컴퓨터 IT -->
+
+        <!-- ITQ 한글 -->
         <div class="tall-sticker reveal">
-          <div>🖥️ ITQ 한글</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🖥️</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">한글</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
+
+        <!-- ITQ 파워포인트 -->
         <div class="tall-sticker reveal">
-          <div>🖥️ ITQ 파워포인트</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🧰</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">파워포인트</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
+
+        <!-- ITQ 엑셀 -->
         <div class="tall-sticker reveal">
-          <div>🖥️ ITQ 엑셀</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">📊</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">엑셀</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
+
+        <!-- ITQ 인터넷 -->
         <div class="tall-sticker reveal">
-          <div>🖥️ ITQ 인터넷</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🌐</div>
+          <div class="ts-title">ITQ</div>
+          <div class="ts-sub">인터넷</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
+
+        <!-- GTQ 3,2,1 -->
         <div class="tall-sticker reveal">
-          <div>🎨 GTQ 3급</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">3급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
         <div class="tall-sticker reveal">
-          <div>🎨 GTQ 2급</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">2급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
         <div class="tall-sticker reveal">
-          <div>🎨 GTQ 1급</div>
-          <div class="text-sm text-[var(--muted)]">국가공인</div>
-          <div class="text-xs text-[var(--muted)]">(KPC 한국생산성본부)</div>
+          <div class="ts-emoji">🎨</div>
+          <div class="ts-title">GTQ</div>
+          <div class="ts-sub">1급</div>
+          <div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div>
         </div>
-    
+
+        <!-- ICDL -->
         <div class="tall-sticker reveal">
-          <div>🗂️ ICDL</div>
-          <div class="text-sm text-[var(--muted)]">국제자격</div>
-          <div class="text-xs text-[var(--muted)]">(ICDL Foundation)</div>
+          <div class="ts-emoji">🗂️</div>
+          <div class="ts-title">ICDL</div>
+          <div class="ts-sub">국제자격</div>
+          <div class="ts-org">(ICDL Foundation)</div>
         </div>
-    
+
+        <!-- 문서실무사 4급 -->
         <div class="tall-sticker reveal">
-          <div>📄 문서실무사 4급</div>
-          <div class="text-sm text-[var(--muted)]">대한상공회의소</div>
+          <div class="ts-emoji">📄</div>
+          <div class="ts-title">문서실무사</div>
+          <div class="ts-sub">4급</div>
+          <div class="ts-org">대한상공회의소</div>
         </div>
-    
-        <!-- 그 외 -->
+
+        <!-- 한국사/한자 -->
         <div class="tall-sticker reveal">
-          <div>📚 한국사능력검정시험</div>
-          <div class="text-sm text-[var(--muted)]">국사편찬위원회</div>
+          <div class="ts-emoji">📚</div>
+          <div class="ts-title">한국사</div>
+          <div class="ts-sub">능력검정시험</div>
+          <div class="ts-org">국사편찬위원회</div>
         </div>
-    
         <div class="tall-sticker reveal">
-          <div>🈶 한자 6급</div>
-          <div class="text-sm text-[var(--muted)]">대한검정회</div>
+          <div class="ts-emoji">㊗️</div>
+          <div class="ts-title">한자</div>
+          <div class="ts-sub">6급</div>
+          <div class="ts-org">대한검정회</div>
         </div>
       </div>
     </section>
-
 
     <!-- 장학금 -->
     <section id="scholarships" class="py-6">
@@ -394,7 +399,7 @@
       </div>
     </section>
 
-    <!-- 프로그램 (썸네일 <img> + object-contain) -->
+    <!-- 프로그램 -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -423,7 +428,7 @@
         </article>
 
         <article class="glass rounded-2xl p-4 soft reveal">
-          <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
+          <div class="thumbWrap mb-3"><img src="포폴2.jpg" alt="학생성공 공모전"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
         </article>
@@ -436,11 +441,11 @@
       </div>
     </section>
 
-    <!-- 디지털 뱃지 & 3품 (이미지 잘림 방지 완료) -->
+    <!-- 디지털 뱃지 & 3품 -->
     <section id="global" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 뱃지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 뱃지: 가로형 이미지 온전히 보이도록 -->
+        <!-- 디지털 뱃지: 여백 허용(잘림 없음) -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
           <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
@@ -470,7 +475,7 @@
       </div>
     </section>
 
-    <!-- 목표: 화살표 카드 -->
+    <!-- 목표 -->
     <section id="roadmap" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
       <div class="reveal">
