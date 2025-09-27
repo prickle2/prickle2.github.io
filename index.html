@@ -349,8 +349,9 @@
         <!-- 디지털 뱃지: 가로형 이미지 온전히 보이도록 -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <div class="text-sm text-[var(--muted)] mb-2">디지털 뱃지</div>
-          <img src="뱃지.jpg" alt="Digital Badge"
-               class="mx-auto rounded-lg shadow w-[240px] h-[170px] object-contain bg-white" />
+          <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow">
+            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-cover" />
+          </div>
         </div>
 
         <!-- 3품 -->
