@@ -75,14 +75,23 @@
     .ts-sub  { font-weight:700; font-size:.92rem; margin-top:.25rem }
     .ts-org  { font-size:.78rem; color:var(--muted); margin-top:.2rem }
 
-    /* 동아리/봉사 – 동그라미 스티커 */
+    /* 동그라미 스티커 (불투명 글래스 느낌) */
     .circle-sticker{
-      width:92px; height:92px; border-radius:9999px; background:#fff;
-      border:1px solid var(--stroke); display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:.5rem; box-shadow:0 4px 10px rgba(0,0,0,.05);
-      font-weight:800; font-size:.82rem; line-height:1.15;
+      width: 100px; height: 100px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.78); /* 불투명도 추가 */
+      border: 1px solid var(--stroke);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: .6rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+      font-weight: 800; font-size: .82rem; line-height: 1.15;
     }
-    .circle-sticker small{ display:block; font-weight:700; font-size:.72rem; color:var(--muted); }
+    .circle-sticker small{
+      display:block; font-weight:700;
+      font-size:.72rem; color:var(--muted);
+      margin-top:.15rem;
+    }
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -192,37 +201,58 @@
 
     <div class="line my-6"></div>
 
-    <!-- 활동 -->
-    <section id="activities" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
-
-      <!-- 주요활동 -->
-      <div class="mb-6">
-        <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
-        <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 울림 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 아하 임원단 — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b></li>
-        </ul>
-      </div>
-
-      <!-- 동아리 · 봉사활동 (스티커 + 라벨) -->
-      <div>
-        <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
-
-        <div class="text-sm font-bold text-[var(--muted)] mb-2">🎵 동아리</div>
-        <div class="flex flex-wrap gap-3 mb-4">
-          <div class="circle-sticker">2023<br>어깨동무<small>(Creative Group)</small></div>
-          <div class="circle-sticker">2024<br>레드체리</div>
-          <div class="circle-sticker">2024<br>장돌<small>(화학과 스터디)</small></div>
+  <!-- 활동 -->
+  <section id="activities" class="py-6">
+    <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
+  
+    <!-- 주요활동 -->
+    <div class="mb-6">
+      <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
+      <ul class="space-y-3">
+        <li class="reveal glass soft rounded-xl px-4 py-3">
+          2024 · 울림 임원단 — 미디어
+        </li>
+        <li class="reveal glass soft rounded-xl px-4 py-3">
+          2025 · 아하 임원단 — 미디어
+        </li>
+        <li class="reveal glass soft rounded-xl px-4 py-3">
+          2023–2024 · 성균관대학교 공식홍보대사 <b>Alimi 30기</b>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- 동아리 · 봉사 -->
+    <div>
+      <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
+  
+      <!-- 동아리 -->
+      <div class="text-sm font-bold text-[var(--muted)] mb-2">🎵 동아리</div>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <div class="circle-sticker">
+          2023<br>어깨동무
+          <small>동아리</small>
         </div>
-
-        <div class="text-sm font-bold text-[var(--muted)] mb-2">🤝 봉사</div>
-        <div class="flex flex-wrap gap-3">
-          <div class="circle-sticker">2024<br>양평군<br>노인요양원</div>
+        <div class="circle-sticker">
+          2024<br>레드체리
+          <small>동아리</small>
+        </div>
+        <div class="circle-sticker">
+          2024<br>장돌
+          <small>동아리</small>
         </div>
       </div>
-    </section>
+  
+      <!-- 봉사 -->
+      <div class="text-sm font-bold text-[var(--muted)] mb-2">🤝 봉사</div>
+      <div class="flex flex-wrap gap-3">
+        <div class="circle-sticker">
+          2025<br>양평군<br>노인요양원
+          <small>봉사</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
     <!-- 어학 · 자격증 -->
     <section id="credentials" class="py-6">
