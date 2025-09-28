@@ -24,27 +24,10 @@
     }
     html{scroll-behavior:smooth}
     body{
-      position:relative;
       background:linear-gradient(120deg,var(--bg1),var(--bg2));
       color:var(--ink);
       font-family:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto;
-      overflow-x:hidden;
     }
-    /* 은은한 움직이는 하이라이트 */
-    body::after{
-      content:"";
-      position:fixed; inset:-20% -10% auto auto;
-      width:60vmax; height:60vmax; pointer-events:none;
-      background:radial-gradient(closest-side, rgba(236,72,153,.12), rgba(236,72,153,0) 70%);
-      filter:blur(30px);
-      animation: floatGlow 18s ease-in-out infinite alternate;
-      z-index:-1;
-    }
-    @keyframes floatGlow{
-      0%{ transform:translate(-10%, -5%) scale(1);}
-      100%{ transform:translate(5%, 8%) scale(1.07);}
-    }
-
     .brand{font-family:"GmarketSansBold","Jua","Noto Sans KR",sans-serif}
     .pretty{font-family:"Jua","Noto Sans KR",sans-serif}
     .glass{background:rgba(255,255,255,.72); backdrop-filter:saturate(150%) blur(8px)}
@@ -68,21 +51,26 @@
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff;
       border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
-    /* 프로그램 썸네일 */
+    /* 프로그램 썸네일 – 1:1 유지 */
     .thumbWrap{
       aspect-ratio:1/1; border:1px solid var(--stroke); border-radius:12px;
       background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 이미지 */
-    .stamp{ width:100%; max-width:420px; height:auto; border-radius:12px; border:1px solid var(--stroke); background:#fff; overflow:hidden;}
+    /* 3품 이미지 프레임 */
+    .stamp{
+      width:100%; max-width:420px; height:auto;
+      border-radius:12px; border:1px solid var(--stroke);
+      background:#fff; overflow:hidden;
+    }
     .stamp img{width:100%; height:auto; object-fit:cover}
 
-    /* 동아리/봉사 – 불투명 원형 스티커 */
+    /* 동아리/봉사 – 원형 스티커 (한 줄, 가로 스크롤) */
+    .sticker-row{white-space:nowrap; overflow-x:auto; -webkit-overflow-scrolling: touch; padding-bottom:.25rem;}
     .circle-sticker{
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      width:110px; height:110px;
+      display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+      width:110px; height:110px; margin-right:12px;
       border-radius:9999px; background:rgba(255,255,255,0.78);
       border:1px solid var(--stroke);
       font-size:.85rem; font-weight:700; text-align:center;
@@ -90,25 +78,8 @@
     }
     .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
-    /* 활동 – 타임라인 (주요활동 전용) */
-    .timeline{ position:relative; padding-left:22px; }
-    .timeline::before{
-      content:""; position:absolute; left:8px; top:0; bottom:0;
-      width:2px; background:linear-gradient(var(--stroke), transparent 10%, var(--stroke));
-      opacity:.9;
-    }
-    .tl-item{ position:relative; padding-left:14px; }
-    .tl-item::before{
-      content:""; position:absolute; left:-2px; top:.9rem;
-      width:10px; height:10px; border-radius:999px; background:#fff; border:2px solid var(--accent);
-      box-shadow:0 2px 8px rgba(236,72,153,.25);
-    }
-
     /* 홈 헤드라인 – 두 줄(첫 줄 순환) + 고정 크기(가장 긴 문구 기준) */
-    .headline-line{
-      white-space: nowrap;
-      line-height: 1.08;
-    }
+    .headline-line{ white-space:nowrap; line-height:1.08; }
   </style>
 </head>
 <body id="top">
@@ -126,7 +97,7 @@
         <a href="#scholarships" class="hover:text-[var(--accent-strong)]">장학금</a>
         <a href="#academic" class="hover:text-[var(--accent-strong)]">교과</a>
         <a href="#programs" class="hover:text-[var(--accent-strong)]">프로그램</a>
-        <a href="#global" class="hover:text-[var(--accent-strong)]">디지털 배지·3품</a>
+        <a href="#global" class="hover:text-[var(--accent-strong)]">디지털 뱃지·3품</a>
         <a href="#roadmap" class="hover:text-[var(--accent-strong)]">목표</a>
       </nav>
     </div>
@@ -142,8 +113,7 @@
           <span id="kw" class="headline-line text-[var(--accent-strong)] block">세상을 배움으로 채우는</span>
           <span class="headline-line block">미래 연구자</span>
         </h1>
-
-        <p class="text-[var(--muted)] mt-4">
+        <p class="text-[var(--muted)] mt-3">
           작은 분자의 움직임이 세상을 바꾸듯,<br>
           작은 저의 발걸음으로 사람들의 삶을 따뜻하게 바꾸고 싶습니다.
         </p>
@@ -211,29 +181,26 @@
     <section id="activities" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">💡 활동</h2>
 
-      <!-- 주요활동: 타임라인 -->
+      <!-- 주요활동: 원래 카드 리스트로 복원 -->
       <div class="mb-6">
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
-        <div class="timeline space-y-3">
-          <div class="tl-item glass rounded-xl p-4 reveal">
-            <div class="text-sm text-[var(--muted)] mb-1">2024</div>
-            <div>양평장로교회 <b>울림 임원단</b> — 미디어</div>
-          </div>
-          <div class="tl-item glass rounded-xl p-4 reveal">
-            <div class="text-sm text-[var(--muted)] mb-1">2025</div>
-            <div>양평장로교회 <b>아하 임원단</b> — 미디어</div>
-          </div>
-          <div class="tl-item glass rounded-xl p-4 reveal">
-            <div class="text-sm text-[var(--muted)] mb-1">2023–2024</div>
-            <div><b>성균관대학교 공식 홍보대사 알리미</b></div>
-          </div>
-        </div>
+        <ul class="space-y-3">
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2024 · 양평장로교회 <b>울림 임원단</b> — 미디어
+          </li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2025 · 양평장로교회 <b>아하 임원단</b> — 미디어
+          </li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2023–2024 · <b>성균관대학교 공식 홍보대사 알리미</b>
+          </li>
+        </ul>
       </div>
 
-      <!-- 동아리/봉사 -->
+      <!-- 동아리/봉사: 작은 원형 스티커, 한 줄 -->
       <div>
         <h3 class="text-xl font-bold mb-3">🎶 동아리 · 봉사활동</h3>
-        <div class="flex flex-wrap gap-3">
+        <div class="sticker-row">
           <div class="circle-sticker">2023<br>어깨동무<small>동아리</small></div>
           <div class="circle-sticker">2024<br>레드체리<small>동아리</small></div>
           <div class="circle-sticker">2024<br>장돌<small>동아리</small></div>
@@ -242,26 +209,43 @@
       </div>
     </section>
 
-    <!-- 어학 · 자격증 -->
+    <!-- 어학 · 자격증 (원래 구조로 복원) -->
     <section id="credentials" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">📚 어학 · 자격증</h2>
-      <div class="flex flex-wrap gap-4">
 
-        <!-- TOEIC -->
-        <div class="glass rounded-xl p-4 reveal">💬 TOEIC 945 <span class="text-[var(--muted)]">(ETS / YBM 한국TOEIC위원회)</span></div>
+      <!-- 어학 -->
+      <div class="reveal">
+        <h3 class="text-xl font-extrabold mb-3">어학</h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          <article class="glass soft rounded-xl p-4">💬 TOEIC 945 <span class="text-[var(--muted)]">(ETS / YBM 한국TOEIC위원회)</span></article>
+        </div>
+      </div>
 
-        <!-- ITQ & 기타 -->
-        <div class="glass rounded-xl p-4 reveal">🖥️ ITQ 한글 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🖥️ ITQ 파워포인트 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🖥️ ITQ 엑셀 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🖥️ ITQ 인터넷 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🎨 GTQ 3급 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🎨 GTQ 2급 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🎨 GTQ 1급 <span class="text-[var(--muted)]">(KPC / 국가공인)</span></div>
-        <div class="glass rounded-xl p-4 reveal">🗂️ ICDL — Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation / 국제자격)</span></div>
-        <div class="glass rounded-xl p-4 reveal">📄 문서실무사 4급 <span class="text-[var(--muted)]">대한상공회의소</span></div>
-        <div class="glass rounded-xl p-4 reveal">📚 한국사능력검정시험 <span class="text-[var(--muted)]">국사편찬위원회</span></div>
-        <div class="glass rounded-xl p-4 reveal">🈶 한자 6급 <span class="text-[var(--muted)]">대한검정회</span></div>
+      <!-- 컴퓨터·IT -->
+      <div class="reveal mt-7">
+        <h3 class="text-xl font-extrabold mb-3">컴퓨터 · IT</h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          <article class="glass soft rounded-xl p-4">🖥️ ITQ 한글 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
+          <article class="glass soft rounded-xl p-4">🖥️ ITQ 파워포인트 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
+          <article class="glass soft rounded-xl p-4">🖥️ ITQ 엑셀 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
+          <article class="glass soft rounded-xl p-4">🖥️ ITQ 인터넷 <span class="text-[var(--muted)]">(KPC 한국생산성본부 / 국가공인)</span></article>
+
+          <article class="glass soft rounded-xl p-4">🎨 GTQ 3급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
+          <article class="glass soft rounded-xl p-4">🎨 GTQ 2급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
+          <article class="glass soft rounded-xl p-4">🎨 GTQ 1급 <span class="text-[var(--muted)]">(KPC 한국생산성본부자격 / 국가공인)</span></article>
+
+          <article class="glass soft rounded-xl p-4">🗂️ ICDL — Using the Computer and Managing Files <span class="text-[var(--muted)]">(ICDL Foundation / 국제자격)</span></article>
+          <article class="glass soft rounded-xl p-4">📄 문서실무사 4급 <span class="text-[var(--muted)]">(대한상공회의소)</span></article>
+        </div>
+      </div>
+
+      <!-- 그 외 -->
+      <div class="reveal mt-7">
+        <h3 class="text-xl font-extrabold mb-3">그 외</h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          <article class="glass soft rounded-xl p-4">📚 한국사능력검정시험 <span class="text-[var(--muted)]">(국사편찬위원회)</span></article>
+          <article class="glass soft rounded-xl p-4">🈶 한자 6급 <span class="text-[var(--muted)]">(대한검정회 한자급수자격검정시험)</span></article>
+        </div>
       </div>
     </section>
 
@@ -283,11 +267,10 @@
       </p>
     </section>
 
-    <!-- 교과 진행 현황 -->
+    <!-- 교과 진행 현황 (원형 유지) -->
     <section id="academic" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📖 교과 진행 현황</h2>
 
-      <!-- 상단 요약 -->
       <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <a href="평점평균.jpg" target="_blank" class="glass soft rounded-2xl p-5 flex items-center gap-4">
           <div class="circle shrink-0">
@@ -309,7 +292,6 @@
         </a>
       </div>
 
-      <!-- 세부 표 -->
       <div class="overflow-x-auto glass rounded-xl reveal">
         <table class="w-full text-sm">
           <thead class="bg-white/70">
@@ -391,11 +373,11 @@
       </div>
     </section>
 
-    <!-- 디지털 배지 & 3품 -->
+    <!-- 디지털 뱃지 & 3품 -->
     <section id="global" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 배지 & 3품 인증</h2>
+      <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 뱃지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 배지: 상단 회색 텍스트 자체가 링크 -->
+        <!-- 디지털 배지: 상단 회색 텍스트를 링크로 -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <a class="text-sm text-[var(--muted)] mb-2 inline-block underline hover:text-[var(--accent-strong)]"
              target="_blank"
@@ -456,52 +438,42 @@
     // 홈 헤드라인: 두 줄 고정 + 첫 줄 순환(크기 고정)
     const seq=["세상을 배움으로 채우는","도전을 두려워하지 않는","작은 것에도 감사하는"];
     const kw=document.getElementById('kw');
-
-    // 가장 긴 문구가 한 줄에 들어가도록 한 번만(및 리사이즈시) 계산 → 모든 문구 동일 크기 고정
-    const LONGEST = "세상을 배움으로 채우는";
+    const LONGEST="세상을 배움으로 채우는";
 
     function calcFitFontPx(container, text, {min=20, max=64} = {}){
-      const probe = document.createElement('span');
-      probe.style.visibility = 'hidden';
-      probe.style.position = 'absolute';
-      probe.style.whiteSpace = 'nowrap';
-      probe.style.lineHeight = '1.08';
-      probe.style.fontFamily = getComputedStyle(container).fontFamily;
-      probe.style.fontWeight = getComputedStyle(container).fontWeight;
-      probe.textContent = text;
+      const probe=document.createElement('span');
+      probe.style.visibility='hidden';
+      probe.style.position='absolute';
+      probe.style.whiteSpace='nowrap';
+      probe.style.lineHeight='1.08';
+      probe.style.fontFamily=getComputedStyle(container).fontFamily;
+      probe.style.fontWeight=getComputedStyle(container).fontWeight;
+      probe.textContent=text;
       container.parentNode.appendChild(probe);
-
-      let lo = min, hi = max, ans = min;
-      const maxWidth = container.clientWidth;
-      while (lo <= hi){
-        const mid = Math.floor((lo+hi)/2);
-        probe.style.fontSize = mid + 'px';
-        if (probe.offsetWidth <= maxWidth){ ans = mid; lo = mid + 1; }
-        else { hi = mid - 1; }
+      let lo=min, hi=max, ans=min;
+      const maxWidth=container.clientWidth;
+      while(lo<=hi){
+        const mid=Math.floor((lo+hi)/2);
+        probe.style.fontSize=mid+'px';
+        if(probe.offsetWidth<=maxWidth){ ans=mid; lo=mid+1; } else { hi=mid-1; }
       }
       probe.remove();
       return ans;
     }
-
     function applyFixedFont(){
-      const px = calcFitFontPx(kw, LONGEST, {min:20, max:64});
-      document.querySelectorAll('.headline-line').forEach(el => { el.style.fontSize = px + 'px'; });
+      const px=calcFitFontPx(kw, LONGEST, {min:24, max:72});
+      document.querySelectorAll('.headline-line').forEach(el=> el.style.fontSize=px+'px');
     }
     window.addEventListener('resize', applyFixedFont);
     applyFixedFont();
 
-    // 문구 순환(폰트 크기 변경 없음)
     let i=0;
-    function rotate(){
+    setInterval(()=>{
       i=(i+1)%seq.length;
       kw.style.transition="opacity .22s, transform .22s";
       kw.style.opacity=0; kw.style.transform="translateY(-4px)";
-      setTimeout(()=>{
-        kw.textContent=seq[i];
-        kw.style.opacity=1; kw.style.transform="none";
-      },200);
-    }
-    setInterval(rotate,2600);
+      setTimeout(()=>{ kw.textContent=seq[i]; kw.style.opacity=1; kw.style.transform="none"; },200);
+    },2600);
   </script>
 </body>
 </html>
