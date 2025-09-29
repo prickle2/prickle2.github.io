@@ -126,37 +126,27 @@
     }
     .story-dot small{font-weight:700;opacity:.9}
     .story-dot:active{transform:scale(.98)}
+
+    /* 스토리: 아코디언 패널(원 아래에 펼침/접힘) */
+    .speech{
+      position: static;           /* 고정/절대 아님 */
+      width: 100%;
+      margin-top: 12px;
+      background: rgba(255,255,255,.95);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      padding:16px 18px;
     
-    /* 말풍선 네모 박스 — 원 바로 아래 고정 + 내부 스크롤 */
-  .speech{
-    position:absolute; z-index:40;
-    left:50%; top:100%;                /* 원 바로 아래 */
-    transform:translateX(-50%);
-    width:min(780px, 90vw);
-    max-height:clamp(220px, 48vh, 420px); /* 화면 넘치면 내부 스크롤 */
-    overflow:auto;
-    background:rgba(255,255,255,.95);
-    border:1px solid var(--stroke); border-radius:16px;
-    box-shadow:0 16px 40px rgba(0,0,0,.12);
-    padding:16px 18px;
-    opacity:0; pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-  }
-    
-  /* 스토리: 원들은 그대로, 아래 하나의 패널만 사용 */
-  .speech{ display:none !important; }     /* 각 노드 속 말풍선은 템플릿만 */
-  
-  .story-panel{
-    margin-top:16px;
-    background:rgba(255,255,255,.95);
-    border:1px solid var(--stroke);
-    border-radius:16px;
-    box-shadow:0 16px 40px rgba(0,0,0,.12);
-    padding:16px 18px;
-    max-height:clamp(220px, 60vh, 480px);
-    overflow:auto;
-  }
-  .story-panel.hidden{ display:none; }
+      max-height: 0;              /* 닫힌 상태 */
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .35s ease, opacity .25s ease;
+    }
+    .story-node.open .speech{
+      max-height: 800px;          /* 필요시 1200px 등으로 */
+      opacity: 1;
+    }
 
 
   .ts-title.hanja-small {
@@ -493,7 +483,6 @@
       <h2 class="pretty text-3xl font-bold mb-5">🌀 나의 스토리</h2>
     
       <div class="story-row">
-      <div id="storyPanel" class="story-panel hidden"></div>
 
         <!-- 1 출발 -->
         <div class="story-node">
