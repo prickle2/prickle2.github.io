@@ -127,27 +127,35 @@
     .story-dot small{font-weight:700;opacity:.9}
     .story-dot:active{transform:scale(.98)}
 
-    /* 스토리: 아코디언 패널(원 아래에 펼침/접힘) */
-    .speech{
-      position: static;           /* 고정/절대 아님 */
-      width: 100%;
-      margin-top: 12px;
-      background: rgba(255,255,255,.95);
+
+    /* 스토리: 동그라미 가로 정렬을 보기 좋게 */
+    .story-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;  /* 가운데 정렬 */
+      gap:28px;
+    }
+    
+    /* 각 노드에 있는 말풍선은 '템플릿'만 — 화면엔 숨김 */
+    .speech{ display:none !important; }
+    
+    /* 고정 슬롯(스토리 패널) */
+    .story-panel{
+      margin-top:16px;
+      background:rgba(255,255,255,.95);
       border:1px solid var(--stroke);
       border-radius:16px;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      box-shadow:0 16px 40px rgba(0,0,0,.12);
       padding:16px 18px;
+      max-height:clamp(220px, 60vh, 480px);
+      overflow:auto;
+    }
+    .story-panel.hidden{ display:none; }
     
-      max-height: 0;              /* 닫힌 상태 */
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .35s ease, opacity .25s ease;
-    }
-    .story-node.open .speech{
-      max-height: 800px;          /* 필요시 1200px 등으로 */
-      opacity: 1;
-    }
-
+    /* 항상 자리를 확보하고 싶으면 위 두 줄 대신 아래 방식 사용
+    .story-panel{ min-height:220px; }
+    .story-panel.hidden{ visibility:hidden; }
+    */
 
   .ts-title.hanja-small {
     font-size: 0.8rem;   /* 글씨 크기 줄임 */
@@ -562,6 +570,7 @@
           </div>
         </div>
       </div>
+      <div id="storyPanel" class="story-panel hidden"></div>
     </section>
 
 
@@ -667,37 +676,40 @@
   </script>  
   
   <script>
-  // 스토리: 원 클릭 시 아코디언(하나만 열림)
+  // 스토리: 고정 슬롯(#storyPanel)에 내용만 바꿔 끼우기
+  const panel = document.getElementById('storyPanel');
+  
   document.querySelectorAll('.story-dot').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const node = btn.closest('.story-node');
-      const already = node.classList.contains('open');
   
-      // 모두 닫기
-      document.querySelectorAll('.story-node.open').forEach(n=> n.classList.remove('open'));
+      // active 표시 (선택)
+      document.querySelectorAll('.story-node.active').forEach(n=>n.classList.remove('active'));
+      node.classList.add('active');
   
-      // 자신 토글
-      if(!already){
-        node.classList.add('open');
+      // 노드 내부 숨겨진 템플릿(.speech)에서 내용 복사
+      const tpl = node.querySelector('.speech');
+      if (tpl){
+        panel.innerHTML = tpl.innerHTML;
+        panel.classList.remove('hidden');
   
-        // 펼쳐진 패널이 화면 밖이면 중앙 근처로 스크롤
-        const panel = node.querySelector('.speech');
-        if(panel){
-          requestAnimationFrame(()=>{
-            panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
-          });
-        }
+        // 패널이 보이도록 살짝 스크롤
+        panel.scrollIntoView({ behavior:'smooth', block:'start' });
+        window.scrollBy({ top: -12, behavior:'smooth' });
       }
     });
   });
   
-  // 바깥 클릭 시 전부 닫기(선택)
+  // (선택) 바깥 클릭 시 패널 숨기기
   document.addEventListener('click', (e)=>{
-    if(!e.target.closest('.story-node')){
-      document.querySelectorAll('.story-node.open').forEach(n=> n.classList.remove('open'));
+    if (!e.target.closest('.story-node') && !e.target.closest('#storyPanel')) {
+      document.querySelectorAll('.story-node.active').forEach(n=>n.classList.remove('active'));
+      panel.classList.add('hidden');   // 자리를 항상 유지하고 싶으면 이 줄 지우고 CSS의 min-height 방식 사용
+      panel.innerHTML = '';
     }
   });
   </script>
+
 
 
 </body>
