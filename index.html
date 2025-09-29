@@ -53,27 +53,34 @@
     }
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 인증 이미지 박스 — 크기 통일 + 이미지 꽉 채우기 */
-    .stamp{
-      width:100%;
-      max-width:540px;        /* 필요시 조절 */
-      aspect-ratio: 16 / 6;   /* 박스 비율 통일 */
-      border:1px solid var(--stroke);
-      border-radius:12px;
-      background:#fff;
-      overflow:hidden;
+    /* 3품 인증 박스 통일 */
+    .stamp {
+      width: 220px;                  /* 가로 고정 (원하는 값으로 조절) */
+      height: 120px;                 /* 세로 고정 (사진 비율에 맞춤) */
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+      flex-shrink: 0;                /* flex에서 줄어들지 않도록 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    .stamp img{
-      width:100%;
-      height:100%;
-      object-fit:cover;        /* 꽉 채우기 (잘려도 됨) */
+    .stamp img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;             /* 꽉 채우기 (잘려도 됨) */
     }
     
-    /* 모바일에서는 조금 더 세로 확보 */
+    /* 모바일에서 조금 더 유연하게 */
     @media (max-width:640px){
-      .stamp{ aspect-ratio: 16 / 8; }
+      .stamp {
+        width: 160px;
+        height: 100px;
+      }
     }
+
 
 
 
@@ -136,31 +143,28 @@
     transition:opacity .18s ease, transform .18s ease;
   }
     
-    /* 모달(중앙 고정) 상태 */
-  .speech.is-modal{
-    position: fixed !important;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%) !important;
-    width: min(780px, 90vw);
-    max-height: clamp(220px, 60vh, 520px);
-    overflow: auto;
-    opacity: 1;              /* 열리면 항상 보이기 */
-    pointer-events: auto;
-  }
-  
-  /* 꼬리: 위쪽에 고정, X 위치만 변수로 이동 */
-  .speech.is-modal::after{
-    content:"";
-    position:absolute; top:-12px;
-    left: var(--tailX, 50%);
-    transform: translateX(-50%);
-    border-left:12px solid transparent;
-    border-right:12px solid transparent;
-    border-bottom:12px solid rgba(255,255,255,.95);
-    filter:drop-shadow(0 -1px 0 var(--stroke));
-  }
-
-
+     /* 스토리: 아코디언 패널(원 아래에 펼침/접힘) */
+    .speech{
+      position: static;           /* 고정/절대 아님 */
+      width: 100%;
+      margin-top: 12px;
+      background: rgba(255,255,255,.95);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      padding:16px 18px;
+    
+      /* 아코디언 효과 */
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .35s ease, opacity .25s ease;
+    }
+    
+    .story-node.open .speech{
+      max-height: 800px;          /* 내용이 더 길면 더 크게(필요시 1200px) */
+      opacity: 1;
+    }
 
   .ts-title.hanja-small {
     font-size: 0.8rem;   /* 글씨 크기 줄임 */
@@ -679,59 +683,40 @@
   </script>  
   
   <script>
-  // === [스토리: 말풍선 중앙 고정 모달 + 꼬리 위치 계산] ===
-  const MODAL_W = () => Math.min(780, Math.floor(window.innerWidth * 0.90));
-  
-  function openSpeechModal(btn){
-    const node = btn.closest('.story-node');
-  
-    // 모두 닫기
-    document.querySelectorAll('.story-node.open').forEach(n=>{
-      n.classList.remove('open');
-      n.querySelector('.speech')?.classList.remove('is-modal');
-    });
-  
-    // 현재 노드 열기 + 모달화
-    node.classList.add('open');
-    const speech = node.querySelector('.speech');
-    speech.classList.add('is-modal');
-  
-    // 꼬리 위치 % 계산 (화면 중앙 모달 기준)
-    const dot = btn.getBoundingClientRect();
-    const centerX = dot.left + dot.width/2;
-    const modalW = MODAL_W();
-    const modalLeft = (window.innerWidth - modalW) / 2;
-  
-    let tailPct = ((centerX - modalLeft) / modalW) * 100;
-    tailPct = Math.max(6, Math.min(94, tailPct)); // 가장자리 여유
-    speech.style.setProperty('--tailX', tailPct + '%');
-  }
-  
-  // 버튼 클릭
+  <script>
+  // 스토리: 원 클릭 시 아코디언(하나만 열림)
   document.querySelectorAll('.story-dot').forEach(btn=>{
-    btn.addEventListener('click', ()=> openSpeechModal(btn));
+    btn.addEventListener('click', ()=>{
+      const node = btn.closest('.story-node');
+      const already = node.classList.contains('open');
+  
+      // 모두 닫기
+      document.querySelectorAll('.story-node.open').forEach(n=> n.classList.remove('open'));
+  
+      // 자신 토글
+      if(!already){
+        node.classList.add('open');
+  
+        // 펼쳐진 패널이 화면 밖이면 중앙 근처로 스크롤
+        const panel = node.querySelector('.speech');
+        if(panel){
+          // 높이 계산 후 스무스 스크롤
+          requestAnimationFrame(()=>{
+            panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+          });
+        }
+      }
+    });
   });
   
-  // 리사이즈/스크롤 시 꼬리 위치 재계산
-  ['resize','scroll'].forEach(ev=>{
-    window.addEventListener(ev, ()=>{
-      const openNode = document.querySelector('.story-node.open');
-      if(!openNode) return;
-      const btn = openNode.querySelector('.story-dot');
-      if(btn) openSpeechModal(btn);
-    }, { passive:true });
-  });
-  
-  // 바깥 클릭 시 닫기
+  // 바깥 클릭 시 전부 닫기(선택)
   document.addEventListener('click', (e)=>{
     if(!e.target.closest('.story-node')){
-      document.querySelectorAll('.story-node.open').forEach(n=>{
-        n.classList.remove('open');
-        n.querySelector('.speech')?.classList.remove('is-modal');
-      });
+      document.querySelectorAll('.story-node.open').forEach(n=> n.classList.remove('open'));
     }
   });
   </script>
+
 
   <script>
     function toggleGoal(id, btn){
