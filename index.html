@@ -12,9 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Jua&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
 
-  <!-- Keep photo crisp -->
-  <link rel="preload" as="image" href="profile.jpg">
-
   <style>
     :root{
       --bg1:#ffe6ef; --bg2:#ffeef7;
@@ -23,11 +20,7 @@
       --stroke:#f2d7e3;
     }
     html{scroll-behavior:smooth}
-    body{
-      background:linear-gradient(120deg,var(--bg1),var(--bg2));
-      color:var(--ink);
-      font-family:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto;
-    }
+    body{background:linear-gradient(120deg,var(--bg1),var(--bg2)); color:var(--ink); font-family:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto}
     .brand{font-family:"GmarketSansBold","Jua","Noto Sans KR",sans-serif}
     .pretty{font-family:"Jua","Noto Sans KR",sans-serif}
     .glass{background:rgba(255,255,255,.72); backdrop-filter:saturate(150%) blur(8px)}
@@ -48,19 +41,18 @@
     .bar>i{display:block; height:100%; background:#f472b6; border-radius:999px}
 
     /* 키워드 네모 박스 */
-    .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff;
-      border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
+    .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff; border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
-    /* 프로그램 썸네일 */
+    /* 프로그램 썸네일(이미지 태그로, 잘림 방지) */
     .thumbWrap{
       aspect-ratio:1/1; border:1px solid var(--stroke); border-radius:12px;
       background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 이미지 */
+    /* 3품 이미지 프레임 */
     .stamp{ width:100%; max-width:420px; height:auto; border-radius:12px; border:1px solid var(--stroke); background:#fff; overflow:hidden;}
-    .stamp img{width:100%; height:auto; object-fit:cover}
+    .stamp img{width:100%; height:auto; object-fit:contain}
 
     /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
     .tall-sticker{
@@ -84,12 +76,11 @@
     }
     .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
-    /* HOME 헤드라인(두 줄 고정, 크기 고정/문구 동일) */
+    /* HOME 헤드라인(두 줄 고정, 크기 고정/작게) */
     .headline-line{
-      display:block;
-      white-space:nowrap;             /* 한 줄 유지 */
-      font-size: clamp(28px, 7vw, 64px); /* 반응형이지만 문구 종류와 무관하게 동일 크기 */
-      line-height: 1.08;
+      display:block; white-space:nowrap;
+      font-size: clamp(22px, 5vw, 38px); /* 적당히 작고 고정 */
+      line-height: 1.14;
     }
 
     /* 목표 화살표 카드 */
@@ -103,6 +94,22 @@
       border-left:14px solid rgba(255,255,255,.78);
       filter:drop-shadow(1px 0 0 var(--stroke));
     }
+
+    /* 프로그램 카드 아코디언 */
+    .accordion-content{max-height:0; overflow:hidden; transition:max-height .4s ease}
+    .accordion.open .accordion-content{max-height:2000px} /* 내부 스크롤 없이 펼쳐지도록 크게 */
+
+    /* 스토리(원 6개) */
+    .story-circle{
+      width:120px; height:120px; border-radius:9999px;
+      background:radial-gradient(120px 120px at 30% 30%, #f78fb8, #ec4899);
+      color:#fff; font-weight:800; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      cursor:pointer; box-shadow:0 8px 20px rgba(236,72,153,.3); transition:transform .2s ease;
+    }
+    .story-circle:hover{ transform: translateY(-2px) }
+    .story-circle small{font-size:.78rem; opacity:.95; font-weight:700}
+    .story-content{display:none; margin-top:1rem; padding:1rem; background:#fff; border:1px solid var(--stroke); border-radius:12px}
+    .story-item.active .story-content{display:block}
   </style>
 </head>
 <body id="top">
@@ -120,6 +127,7 @@
         <a href="#scholarships" class="hover:text-[var(--accent-strong)]">장학금</a>
         <a href="#academic" class="hover:text-[var(--accent-strong)]">교과</a>
         <a href="#programs" class="hover:text-[var(--accent-strong)]">프로그램</a>
+        <a href="#story" class="hover:text-[var(--accent-strong)]">스토리</a>
         <a href="#global" class="hover:text-[var(--accent-strong)]">디지털 배지·3품</a>
         <a href="#roadmap" class="hover:text-[var(--accent-strong)]">목표</a>
       </nav>
@@ -136,7 +144,6 @@
           <span id="kw" class="headline-line text-[var(--accent-strong)]">세상을 배움으로 채우는</span>
           <span class="headline-line">미래 연구자</span>
         </h1>
-
         <p class="text-[var(--muted)] mt-4">
           작은 분자의 움직임이 세상을 바꾸듯,<br>
           작은 저의 발걸음으로 사람들의 삶을 따뜻하게 바꾸고 싶습니다.
@@ -181,7 +188,14 @@
         </div>
       </div>
 
-     
+      <!-- RIGHT PHOTO -->
+      <div class="reveal">
+        <img src="profile.jpg" alt="성하은 프로필"
+             class="w-full max-w-[460px] mx-auto rounded-2xl shadow-xl object-contain soft block"
+             loading="eager" decoding="sync" style="image-rendering:auto; transform:translateZ(0);" />
+      </div>
+    </section>
+
     <div class="line my-6"></div>
 
     <!-- 활동 -->
@@ -290,52 +304,190 @@
       </div>
     </section>
 
-    <!-- 프로그램 -->
+    <!-- 프로그램 (카드 + 아코디언 설명) -->
     <section id="programs" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">📚 프로그램</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-        <article class="glass rounded-2xl p-4 soft reveal">
+
+        <!-- 1. SKKU-BA-DIVE -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="스꾸.jpg" alt="SKKU-BA-DIVE"></div>
           <div class="text-xs text-[var(--muted)]">2024 하계</div>
-          <div class="text-base font-semibold mt-1">SKKU-BA-DIVE</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">SKKU-BA-DIVE</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            성균관대학교 알리미들이 함께 모여 참여한 해외 교류 프로그램으로, 우리 대학을 해외에 알리고 재외국민 학생들에게 입시 정보를 제공하는 것을 목표로 하였습니다.
+            일본의 도쿄대학교, 와세다대학교, 오사카대학교를 방문하여 현지 학생들과 교류하며 각 대학의 교육 환경과 문화를 직접 경험할 수 있었습니다.
+            또한 동경한국학교에서는 입시설명회와 멘토링을 진행하며, 후배 학생들의 고민을 듣고 구체적인 조언을 나누었습니다.
+            이 과정을 통해 단순한 학교 홍보를 넘어, 청중의 상황과 관심사에 맞추어 메시지를 재구성하는 소통 능력을 배울 수 있었습니다.
+            나아가 복잡한 정보를 쉽고 설득력 있게 전달하는 법과 글로벌 환경에서 협업하는 태도의 중요성을 깨닫게 되었습니다.
+          </div>
         </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 2. 화학과 동문기업 탐방 -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="경동.jpg" alt="화학과 동문기업 탐방"></div>
           <div class="text-xs text-[var(--muted)]">2024</div>
-          <div class="text-base font-semibold mt-1">화학과 학생 동문기업 탐방 프로그램</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">화학과 학생 동문기업 탐방 프로그램</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            화학과 선배님(류덕희 회장님)이 설립하신 경동제약의 양감공장과 발안공장을 방문하였습니다.
+            이곳에서 연구소와 생산 라인을 직접 둘러보며 R&D 실험실부터 제조 공정까지 이어지는 흐름을 확인할 수 있었습니다.
+            특히 연구실에서 설정하던 실험 조건이 공장에서는 설비 한계나 대규모 배치 변동성과 맞닿는다는 사실이 인상 깊었습니다.
+            또한 품질 관리 시험 절차, 문서 관리 체계, 배치 기록의 중요성을 배우며 연구 결과가 제품으로 이어지기까지의 품질 보증 체계를 직접 목격할 수 있었습니다.
+            이를 통해 연구자는 실험실 이론뿐 아니라 현장의 제약과 규제까지 고려해야 한다는 시야를 넓힐 수 있었습니다.
+          </div>
         </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 3. DNA School 아두이노 II -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="아두이노.jpg" alt="DNA School 아두이노 II"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
-          <div class="text-base font-semibold mt-1">DNA School 바이오·디지털헬스케어 아두이노(II)</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">DNA School 바이오·디지털헬스케어 아두이노(II)</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            디지털 헬스케어 분야와 IoT 융합 역량을 배우고자 이 과정에 참가 중입니다.
+            저는 ‘시각장애인 색 인식 음성 알림’ 기기를 직접 설계하고 제작을 준비하고 있습니다.
+            아두이노를 이용해 센서 제어 및 데이터 처리 로직을 구성하고, 컬러 센서를 통해 색을 인식한 뒤 mp3 출력 모듈로 음성 알림까지 연결하는 과정을 경험할 예정입니다.
+            단순한 코드 작성이 아니라, 기기 하나가 실제로 사용자에게 작동할 수 있는 상태가 되도록 만드는 과정 자체가 의미 있다고 생각합니다.
+          </div>
         </article>
 
-        <!-- 에든버러 과정 (변경/추가) -->
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 4. Edinburgh – Using Mixed Methods -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="Using Mixed Methods in Clinical Research"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 진행 중</div>
-          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: Using Mixed Methods in Clinical Research</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">University of Edinburgh – Course: Using Mixed Methods in Clinical Research</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            학부 과정에서는 정량적 분석과 정성적 분석을 종합적으로 다루기 어려웠기에, 본 과정을 통해 혼합연구 방법론을 깊이 배우고자 지원하였습니다.
+            연구 질문에 따라 적합한 방법을 판단하고, 복합 개입 연구 설계와 리얼리스트 평가와 같은 고급 방법론을 학습할 수 있다는 점이 큰 동기였습니다.
+            이를 통해 향후 제약·신약개발 연구에서 환자 경험과 수치 데이터를 함께 반영하는 균형 잡힌 연구 설계를 수행할 수 있는 역량을 기르고자 합니다.
+          </div>
         </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 5. Edinburgh – GCP for Laboratories -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="에든버러.jpg" alt="GCP for Laboratories"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">University of Edinburgh – Course: GCP for Laboratories</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">University of Edinburgh – Course: GCP for Laboratories</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            연구 윤리는 학문적 성과를 넘어 연구의 신뢰성과 직결된다고 생각합니다.
+            본 과정에서는 국제 표준인 GCP를 실험실 현장에서 실제 절차와 연결하여 적용하는 법을 배우게 됩니다.
+            시료 관리와 데이터 기록, 문서화 과정을 체계적으로 학습함으로써, 연구 재현성과 추적성을 보장하는 방법을 익히고자 합니다.
+            이를 통해 앞으로 책임감 있고 신뢰받는 연구자로 성장할 수 있는 토대를 마련하고자 합니다.
+          </div>
         </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 6. 학생성공 E-포트폴리오 -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">학생성공 E-포트폴리오 공모전</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">학생성공 E-포트폴리오 공모전</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            저는 스스로의 학업과 활동을 돌아보고 앞으로의 방향을 점검하기 위해 이 공모전에 참가하였습니다.
+            평소에는 한 과목, 한 활동 단위로만 성과를 바라보았지만, 포트폴리오를 구성하는 과정에서 여러 경험이 어떻게 이어지고 있는지를 새롭게 보게 되었습니다.
+            단순히 성과를 나열하는 것이 아니라, 선택의 이유와 그 과정에서 얻은 배움까지 정리하다 보니 제 강점과 부족한 점이 뚜렷하게 드러났습니다.
+            이를 통해 앞으로 어떤 역량을 더 키워야 할지 구체적으로 고민하게 되었고, 학업과 연구 과정을 더욱 성실히 기록하고 발전시켜 나가야 한다는 확신을 다지게 되었습니다.
+          </div>
         </article>
 
-        <article class="glass rounded-2xl p-4 soft reveal">
+        <!-- 7. 노벨 화학상 수상분야 경연 -->
+        <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="노벨.jpg" alt="노벨 화학상 분야 경연"></div>
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
-          <div class="text-base font-semibold mt-1">노벨화학상 수상분야 맞추기 경연대회</div>
+          <button class="text-left w-full font-semibold underline mt-1 toggle">노벨화학상 수상분야 맞추기 경연대회</button>
+          <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            저는 최신 과학의 흐름을 직접 따라가 보고 싶다는 생각으로 이 대회에 참가하였습니다.
+            평소에는 교과서에 정리된 개념 위주로 공부했지만, 노벨상은 지금 이 순간 전 세계 연구자들이 주목하는 성과를 조명한다는 점에서 특별했습니다.
+            후보로 거론되는 연구들을 조사하며 단순한 지식 습득을 넘어, 왜 이 연구가 중요한지, 산업과 사회에 어떤 가치를 가질 수 있는지를 고민하게 되었습니다.
+            비록 수상 결과는 아직 발표되지 않았지만, 다양한 연구 분야를 비교하며 학문이 발전하는 방향을 넓은 시각으로 바라보는 데 큰 도움이 되었습니다.
+          </div>
         </article>
+
+      </div>
+    </section>
+
+    <!-- 스토리(원 6개 + 클릭 시 설명) -->
+    <section id="story" class="py-10">
+      <h2 class="pretty text-3xl font-bold mb-6 reveal">🌀 나의 스토리</h2>
+
+      <div class="flex flex-wrap gap-6 justify-center">
+
+        <!-- 1 출발 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-1">
+          <button class="story-circle select-none">출발<small>리더십과 소통의 시작</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              저는 학부 시절부터 <b>다양한 사람들과 함께하는 활동</b> 속에서 성장해 왔습니다.
+              성균관대학교 <b>공식 홍보대사 알리미</b>와 울림·아하 임원단 활동을 맡으며, 단순한 홍보와 운영을 넘어 상황과 청중에 맞는 메시지를 전하는 <b>소통력</b>을 기를 수 있었습니다.
+              특히 알리미 활동을 통해 다양한 배경의 후배들과 마주하면서, 지식의 양보다 중요한 것은 <b>공감과 설득</b>이라는 사실을 깨달았습니다.
+              이 경험은 연구자가 복잡한 연구 내용을 <b>누구나 이해할 수 있는 언어로 설명해야 한다</b>는 점을 일찍 깨닫게 해주었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2 학문 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-2">
+          <button class="story-circle select-none">학문<small>배움의 토대와 확장</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              저는 활동뿐 아니라 <b>학업에서도 꾸준히 최선을 다해</b>, 현재까지 <b>평점 4.27</b>을 유지하고 있습니다.
+              1학년 때는 계열제로 다양한 기초 과목을 수강하며 학문의 폭을 넓혔고, 이후에는 본격적인 <b>화학생명 분야 전공</b>을 깊이 있게 배우기 위해 노력하고 있습니다.
+              또한 에서 진행된 실시간 강의에 참여하여, 국제적 학문 기준에 맞는 <b>연구 방법론</b>을 익히고 제 학문적 시야를 확장하였습니다.
+              이러한 경험은 <b>기초를 충실히 다지면서도 새로운 가능성을 모색하는 태도</b>를 길러주었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3 확장 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-3">
+          <button class="story-circle select-none">확장<small>현장에서 배우는 시야</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              저는 연구자의 길에 필요한 <b>현장 경험</b>을 쌓고자 교내 활동을 넘어 다양한 기회를 찾았습니다.
+              <b>화학과 동문기업 탐방 프로그램</b>을 통해 연구실 실험 조건이 산업 현장에서는 <b>설비와 규제라는 새로운 제약</b>과 맞닿는다는 사실을 체감했습니다.
+              또한 <b>DNA School 아두이노 프로젝트</b>에서는 시각장애인을 위한 <b>색 인식 음성 기기</b>를 직접 설계하며, 아이디어를 <b>실행 가능한 결과물</b>로 전환하는 능력을 배웠습니다.
+              이 과정을 통해 연구는 논문 속 이론에 머무르지 않고 <b>사회적 필요에 맞게 작동할 때 비로소 가치를 가진다</b>는 점을 확인할 수 있었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 도약 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-4">
+          <button class="story-circle select-none">도약<small>해외 경험과 시야</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              저는 학문적 시야를 넓히기 위해 <b>SKKU-BA-DIVE 해외 교류 프로그램</b>에 참여했습니다.
+              일본의 <b>도쿄대학교·와세다대학교·오사카대학교</b>를 방문해 현지 학생들과 교류하며 각 대학의 <b>교육 환경과 문화를 직접 경험</b>했습니다.
+              또한 <b>동경한국학교</b>에서는 입시설명회와 멘토링을 진행하여, 후배 학생들의 고민을 듣고 구체적인 조언을 나눴습니다.
+              이 과정을 통해 단순한 홍보 활동을 넘어, <b>다양한 문화적 맥락에서 소통하는 능력</b>과 <b>글로벌 환경에서 협업하는 태도</b>를 배울 수 있었습니다.
+              이러한 경험은 저에게 연구 성과가 <b>국제적 차원에서 공유되고 협력되어야 한다</b>는 인식을 심어주었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 성찰 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-5">
+          <button class="story-circle select-none">성찰<small>나를 돌아보기</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              <b>학생성공 E-포트폴리오 공모전</b>에 참가하며, 저는 처음으로 스스로의 활동을 하나의 이야기로 정리해 보았습니다.
+              이 과정에서 성과보다 중요한 것은 <b>선택의 이유와 그로부터의 배움</b>이라는 사실을 알게 되었습니다.
+              또한 <b>장학금 수혜 경험</b>을 단순한 지원이 아닌 <b>책임감을 강화하는 계기</b>로 받아들이며, 앞으로의 길에 더욱 진지하게 임해야 함을 깨달았습니다.
+              이러한 성찰은 연구자의 자세를 <b>다잡는 중요한 계기</b>가 되었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 미래 -->
+        <div class="story-item text-center max-w-3xl reveal" id="story-6">
+          <button class="story-circle select-none">미래<small>연구자의 길</small></button>
+          <div class="story-content text-left">
+            <p class="text-[var(--muted)] leading-relaxed">
+              앞으로 저는 학부와 대학원에서의 배움을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
+              지금까지의 경험이 저에게 <b>소통, 실행, 글로벌 협력, 성찰</b>이라는 네 가지 역량을 남겼듯, 앞으로도 이를 기반으로 연구를 이어가겠습니다.
+              특히 <b>작은 발견이 실제 삶의 변화를 만들어내는 연구</b>를 꾸준히 실천하겠습니다.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -343,13 +495,13 @@
     <section id="global" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 배지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 배지: 여백 허용(잘림 없음) + 상단 텍스트를 링크로 -->
+        <!-- 디지털 배지: 링크 텍스트 + 이미지(object-contain) -->
         <div class="glass rounded-xl p-4 text-center reveal">
           <a href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09" target="_blank" rel="noopener" class="text-sm underline">
             디지털 배지 보기
           </a>
           <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow mt-2">
-            <img src="배지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
+            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
           </div>
         </div>
 
@@ -408,6 +560,26 @@
       kw.style.opacity=.0; kw.style.transform="translateY(-4px)";
       setTimeout(()=>{ kw.textContent=seq[i]; kw.style.opacity=1; kw.style.transform="none"; },200);
     },2600);
+
+    // 프로그램 아코디언: 하나만 열림
+    document.querySelectorAll('.accordion .toggle').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const current = btn.closest('.accordion');
+        // 모두 닫기
+        document.querySelectorAll('.accordion').forEach(a=>{ if(a!==current) a.classList.remove('open'); });
+        // 현재 토글
+        current.classList.toggle('open');
+      });
+    });
+
+    // 스토리: 원 클릭 시 하나만 열림
+    document.querySelectorAll('.story-item .story-circle').forEach(circle=>{
+      circle.addEventListener('click',()=>{
+        const item = circle.parentElement;
+        document.querySelectorAll('.story-item').forEach(it=>{ if(it!==item) it.classList.remove('active'); });
+        item.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
