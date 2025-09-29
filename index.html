@@ -83,6 +83,43 @@
       line-height: 1.14;
     }
 
+    /* === [스토리: 오버레이 말풍선 스타일] ===================== */
+    .story-row{display:flex;flex-wrap:wrap;gap:28px}
+    .story-node{position:relative}
+    
+    .story-dot{
+      width:132px;height:132px;border-radius:9999px;
+      background:radial-gradient(160px 160px at 30% 30%, #f78fb8, #ec4899);
+      box-shadow:0 10px 30px rgba(236,72,153,.25);
+      color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      font-weight:800;line-height:1.15;cursor:pointer;user-select:none;transition:transform .15s ease;
+    }
+    .story-dot small{font-weight:700;opacity:.9}
+    .story-dot:active{transform:scale(.98)}
+    
+    .speech{
+      position:absolute; z-index:40;
+      left:50%; top:calc(100% + 14px); transform:translate(-50%, -4px);
+      width:min(780px, 90vw);
+      background:rgba(255,255,255,.95);
+      border:1px solid var(--stroke); border-radius:16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.12);
+      padding:16px 18px;
+      opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
+    }
+    .speech:after{
+      content:""; position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      border-left:12px solid transparent; border-right:12px solid transparent;
+      border-bottom:12px solid rgba(255,255,255,.95);
+      filter:drop-shadow(0 -1px 0 var(--stroke));
+    }
+    .story-node.open .speech{opacity:1; transform:translate(-50%, 0); pointer-events:auto}
+    
+    @media (max-width:640px){
+      .story-dot{width:112px;height:112px}
+      .speech{width:92vw}
+    }
+
     /* 목표 화살표 카드 */
     .arrow{
       position:relative; background:rgba(255,255,255,.78); border:1px solid var(--stroke);
@@ -404,92 +441,90 @@
       </div>
     </section>
 
-    <!-- 스토리(원 6개 + 클릭 시 설명) -->
     <section id="story" class="py-10">
-      <h2 class="pretty text-3xl font-bold mb-6 reveal">🌀 나의 스토리</h2>
-
-      <div class="flex flex-wrap gap-6 justify-center">
-
+      <h2 class="pretty text-3xl font-bold mb-5">🌀 나의 스토리</h2>
+    
+      <div class="story-row">
         <!-- 1 출발 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-1">
-          <button class="story-circle select-none">출발<small>리더십과 소통의 시작</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              저는 학부 시절부터 <b>다양한 사람들과 함께하는 활동</b> 속에서 성장해 왔습니다.
-              성균관대학교 <b>공식 홍보대사 알리미</b>와 울림·아하 임원단 활동을 맡으며, 단순한 홍보와 운영을 넘어 상황과 청중에 맞는 메시지를 전하는 <b>소통력</b>을 기를 수 있었습니다.
-              특히 알리미 활동을 통해 다양한 배경의 후배들과 마주하면서, 지식의 양보다 중요한 것은 <b>공감과 설득</b>이라는 사실을 깨달았습니다.
-              이 경험은 연구자가 복잡한 연구 내용을 <b>누구나 이해할 수 있는 언어로 설명해야 한다</b>는 점을 일찍 깨닫게 해주었습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s1">
+            출발<br><small>리더십과 소통의 시작</small>
+          </button>
+          <div class="speech" id="s1">
+            <p>저는 학부 시절부터 <b>다양한 사람들과 함께하는 활동</b> 속에서 성장해 왔습니다.
+            성균관대학교 <b>공식 홍보대사 알리미</b>와 울림·아하 임원단 활동을 맡으며, 단순한 홍보와 운영을 넘어 상황과 청중에 맞는 메시지를 전하는 <b>소통력</b>을 기를 수 있었습니다.
+            특히 알리미 활동을 통해 다양한 배경의 후배들과 마주하면서, 지식의 양보다 중요한 것은 <b>공감과 설득</b>이라는 사실을 깨달았습니다.
+            이 경험은 연구자가 복잡한 연구 내용을 <b>누구나 이해할 수 있는 언어로 설명해야 한다</b>는 점을 일찍 깨닫게 해주었습니다.</p>
           </div>
         </div>
-
+    
         <!-- 2 학문 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-2">
-          <button class="story-circle select-none">학문<small>배움의 토대와 확장</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              저는 활동뿐 아니라 <b>학업에서도 꾸준히 최선을 다해</b>, 현재까지 <b>평점 4.27</b>을 유지하고 있습니다.
-              1학년 때는 계열제로 다양한 기초 과목을 수강하며 학문의 폭을 넓혔고, 이후에는 본격적인 <b>화학생명 분야 전공</b>을 깊이 있게 배우기 위해 노력하고 있습니다.
-              또한 에서 진행된 실시간 강의에 참여하여, 국제적 학문 기준에 맞는 <b>연구 방법론</b>을 익히고 제 학문적 시야를 확장하였습니다.
-              이러한 경험은 <b>기초를 충실히 다지면서도 새로운 가능성을 모색하는 태도</b>를 길러주었습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s2">
+            학문<br><small>배움의 토대와 확장</small>
+          </button>
+          <div class="speech" id="s2">
+            <p>저는 활동뿐 아니라 <b>학업에서도 꾸준히 최선을 다해</b>, 현재까지 <b>평점 4.27</b>을 유지하고 있습니다.
+            1학년 때는 계열제로 다양한 기초 과목을 수강하며 학문의 폭을 넓혔고, 이후에는 본격적인 <b>화학생명 분야 전공</b>을 깊이 있게 배우기 위해 노력하고 있습니다.
+            또한 해외에서 진행된 실시간 강의에 참여하여 국제적 학문 기준에 맞는 <b>연구 방법론</b>을 익히고 제 학문적 시야를 확장하였습니다.
+            이러한 경험은 <b>기초를 충실히 다지면서도 새로운 가능성을 모색하는 태도</b>를 길러주었습니다.</p>
           </div>
         </div>
-
+    
         <!-- 3 확장 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-3">
-          <button class="story-circle select-none">확장<small>현장에서 배우는 시야</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              저는 연구자의 길에 필요한 <b>현장 경험</b>을 쌓고자 교내 활동을 넘어 다양한 기회를 찾았습니다.
-              <b>화학과 동문기업 탐방 프로그램</b>을 통해 연구실 실험 조건이 산업 현장에서는 <b>설비와 규제라는 새로운 제약</b>과 맞닿는다는 사실을 체감했습니다.
-              또한 <b>DNA School 아두이노 프로젝트</b>에서는 시각장애인을 위한 <b>색 인식 음성 기기</b>를 직접 설계하며, 아이디어를 <b>실행 가능한 결과물</b>로 전환하는 능력을 배웠습니다.
-              이 과정을 통해 연구는 논문 속 이론에 머무르지 않고 <b>사회적 필요에 맞게 작동할 때 비로소 가치를 가진다</b>는 점을 확인할 수 있었습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s3">
+            확장<br><small>현장에서 배우는 시야</small>
+          </button>
+          <div class="speech" id="s3">
+            <p>저는 연구자의 길에 필요한 <b>현장 경험</b>을 쌓고자 교내 활동을 넘어 다양한 기회를 찾았습니다.
+            <b>화학과 동문기업 탐방 프로그램</b>을 통해 연구실 실험 조건이 산업 현장에서는 <b>설비와 규제라는 새로운 제약</b>과 맞닿는다는 사실을 체감했습니다.
+            또한 <b>DNA School 아두이노 프로젝트</b>에서는 시각장애인을 위한 <b>색 인식 음성 기기</b>를 직접 설계하며, 아이디어를 <b>실행 가능한 결과물</b>로 전환하는 능력을 배웠습니다.
+            이 과정을 통해 연구는 논문 속 이론에 머무르지 않고 <b>사회적 필요에 맞게 작동할 때 비로소 가치를 가진다</b>는 점을 확인할 수 있었습니다.</p>
           </div>
         </div>
-
+    
         <!-- 4 도약 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-4">
-          <button class="story-circle select-none">도약<small>해외 경험과 시야</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              저는 학문적 시야를 넓히기 위해 <b>SKKU-BA-DIVE 해외 교류 프로그램</b>에 참여했습니다.
-              일본의 <b>도쿄대학교·와세다대학교·오사카대학교</b>를 방문해 현지 학생들과 교류하며 각 대학의 <b>교육 환경과 문화를 직접 경험</b>했습니다.
-              또한 <b>동경한국학교</b>에서는 입시설명회와 멘토링을 진행하여, 후배 학생들의 고민을 듣고 구체적인 조언을 나눴습니다.
-              이 과정을 통해 단순한 홍보 활동을 넘어, <b>다양한 문화적 맥락에서 소통하는 능력</b>과 <b>글로벌 환경에서 협업하는 태도</b>를 배울 수 있었습니다.
-              이러한 경험은 저에게 연구 성과가 <b>국제적 차원에서 공유되고 협력되어야 한다</b>는 인식을 심어주었습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s4">
+            도약<br><small>해외 경험과 시야</small>
+          </button>
+          <div class="speech" id="s4">
+            <p>저는 학문적 시야를 넓히기 위해 <b>SKKU-BA-DIVE 해외 교류 프로그램</b>에 참여했습니다.
+            일본의 <b>도쿄대학교·와세다대학교·오사카대학교</b>를 방문해 현지 학생들과 교류하며 각 대학의 <b>교육 환경과 문화를 직접 경험</b>했습니다.
+            또한 <b>동경한국학교</b>에서는 입시설명회와 멘토링을 진행하여, 후배 학생들의 고민을 듣고 구체적인 조언을 나눴습니다.
+            이 과정을 통해 단순한 홍보 활동을 넘어, <b>다양한 문화적 맥락에서 소통하는 능력</b>과 <b>글로벌 환경에서 협업하는 태도</b>를 배울 수 있었습니다.
+            이러한 경험은 저에게 연구 성과가 <b>국제적 차원에서 공유되고 협력되어야 한다</b>는 인식을 심어주었습니다.</p>
           </div>
         </div>
-
+    
         <!-- 5 성찰 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-5">
-          <button class="story-circle select-none">성찰<small>나를 돌아보기</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              <b>학생성공 E-포트폴리오 공모전</b>에 참가하며, 저는 처음으로 스스로의 활동을 하나의 이야기로 정리해 보았습니다.
-              이 과정에서 성과보다 중요한 것은 <b>선택의 이유와 그로부터의 배움</b>이라는 사실을 알게 되었습니다.
-              또한 <b>장학금 수혜 경험</b>을 단순한 지원이 아닌 <b>책임감을 강화하는 계기</b>로 받아들이며, 앞으로의 길에 더욱 진지하게 임해야 함을 깨달았습니다.
-              이러한 성찰은 연구자의 자세를 <b>다잡는 중요한 계기</b>가 되었습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s5">
+            성찰<br><small>나를 돌아보기</small>
+          </button>
+          <div class="speech" id="s5">
+            <p><b>학생성공 E-포트폴리오 공모전</b>에 참가하며, 저는 처음으로 스스로의 활동을 하나의 이야기로 정리해 보았습니다.
+            이 과정에서 성과보다 중요한 것은 <b>선택의 이유와 그로부터의 배움</b>이라는 사실을 알게 되었습니다.
+            또한 <b>장학금 수혜 경험</b>을 단순한 지원이 아닌 <b>책임감을 강화하는 계기</b>로 받아들이며, 앞으로의 길에 더욱 진지하게 임해야 함을 깨달았습니다.
+            이러한 성찰은 연구자의 자세를 <b>다잡는 중요한 계기</b>가 되었습니다.</p>
           </div>
         </div>
-
+    
         <!-- 6 미래 -->
-        <div class="story-item text-center max-w-3xl reveal" id="story-6">
-          <button class="story-circle select-none">미래<small>연구자의 길</small></button>
-          <div class="story-content text-left">
-            <p class="text-[var(--muted)] leading-relaxed">
-              앞으로 저는 학부와 대학원에서의 배움을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
-              지금까지의 경험이 저에게 <b>소통, 실행, 글로벌 협력, 성찰</b>이라는 네 가지 역량을 남겼듯, 앞으로도 이를 기반으로 연구를 이어가겠습니다.
-              특히 <b>작은 발견이 실제 삶의 변화를 만들어내는 연구</b>를 꾸준히 실천하겠습니다.
-            </p>
+        <div class="story-node">
+          <button class="story-dot" data-story="s6">
+            미래<br><small>연구자의 길</small>
+          </button>
+          <div class="speech" id="s6">
+            <p>앞으로 저는 학부와 대학원에서의 배움을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
+            지금까지의 경험이 저에게 <b>소통, 실행, 글로벌 협력, 성찰</b>이라는 네 가지 역량을 남겼듯, 앞으로도 이를 기반으로 연구를 이어가겠습니다.
+            특히 <b>작은 발견이 실제 삶의 변화를 만들어내는 연구</b>를 꾸준히 실천하겠습니다.</p>
           </div>
         </div>
-
       </div>
     </section>
+
 
     <!-- 디지털 배지 & 3품 -->
     <section id="global" class="py-6">
@@ -580,6 +615,37 @@
         item.classList.toggle('active');
       });
     });
+
+    // === [스토리: 원 클릭 시 오버레이 말풍선 토글] ===
+    document.querySelectorAll('.story-dot').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const node = btn.closest('.story-node');
+        const opened = node.classList.contains('open');
+    
+        // 모두 닫기
+        document.querySelectorAll('.story-node.open').forEach(n=>n.classList.remove('open'));
+    
+        // 자신 토글
+        if(!opened){
+          node.classList.add('open');
+          // 말풍선이 화면 밖이면 살짝 스크롤
+          const speech = node.querySelector('.speech');
+          const rect = speech.getBoundingClientRect();
+          if(rect.bottom > window.innerHeight){
+            window.scrollBy({ top: rect.bottom - window.innerHeight + 24, behavior:'smooth' });
+          }
+        }
+      });
+    });
+    
+    // 바깥 클릭 시 닫기
+    document.addEventListener('click', (e)=>{
+      const isNode = e.target.closest('.story-node');
+      if(!isNode){
+        document.querySelectorAll('.story-node.open').forEach(n=>n.classList.remove('open'));
+      }
+    });
+
   </script>
 </body>
 </html>
