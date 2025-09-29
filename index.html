@@ -100,28 +100,41 @@
     .story-dot small{font-weight:700;opacity:.9}
     .story-dot:active{transform:scale(.98)}
     
+    /* 말풍선 네모 박스 — 원 바로 아래 고정 + 내부 스크롤 */
     .speech{
       position:absolute; z-index:40;
-      left:50%; top:calc(100% + 14px); transform:translate(-50%, -4px);
+      left:50%; top:100%;                 /* 항상 동그라미 바로 아래 */
+      transform:translateX(-50%);         /* Y 이동 제거: 네모는 고정 */
       width:min(780px, 90vw);
+      max-height:clamp(220px, 48vh, 420px); /* 화면 넘치면 내부 스크롤 */
+      overflow:auto;
       background:rgba(255,255,255,.95);
       border:1px solid var(--stroke); border-radius:16px;
       box-shadow:0 16px 40px rgba(0,0,0,.12);
       padding:16px 18px;
       opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
     }
+    
+    /* 말풍선 꼬리 — 위치는 CSS 변수로 제어(기본 50%) */
     .speech:after{
-      content:""; position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      content:""; position:absolute; top:-12px;
+      left:var(--tailX, 50%); transform:translateX(-50%);
       border-left:12px solid transparent; border-right:12px solid transparent;
       border-bottom:12px solid rgba(255,255,255,.95);
       filter:drop-shadow(0 -1px 0 var(--stroke));
     }
-    .story-node.open .speech{opacity:1; transform:translate(-50%, 0); pointer-events:auto}
+    
+    /* 열릴 때 효과 */
+    .story-node.open .speech{opacity:1; transform:translateX(-50%) translateY(12px); pointer-events:auto}
     
     @media (max-width:640px){
       .story-dot{width:112px;height:112px}
       .speech{width:92vw}
     }
+    
+    /* 혹시 잘림 방지(없으면 추가) */
+    .story-node{ overflow:visible; }
+
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -650,8 +663,16 @@
         // 자신 토글
         if(!opened){
           node.classList.add('open');
-          // 말풍선이 화면 밖이면 살짝 스크롤
+        
+          // 꼬리 위치 계산해서 세팅
           const speech = node.querySelector('.speech');
+          const dotRect = btn.getBoundingClientRect();
+          const speechRect = speech.getBoundingClientRect();
+          let tailPct = ((dotRect.left + dotRect.width/2) - speechRect.left) / speechRect.width * 100;
+          tailPct = Math.max(6, Math.min(94, tailPct)); // 가장자리 방지
+          speech.style.setProperty('--tailX', tailPct + '%');
+        
+          // 말풍선이 화면 밖이면 살짝 스크롤
           const rect = speech.getBoundingClientRect();
           if(rect.bottom > window.innerHeight){
             window.scrollBy({ top: rect.bottom - window.innerHeight + 24, behavior:'smooth' });
