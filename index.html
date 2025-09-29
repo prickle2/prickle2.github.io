@@ -40,6 +40,9 @@
     .bar{height:10px; border-radius:999px; background:#ffe0ec; overflow:hidden}
     .bar>i{display:block; height:100%; background:#f472b6; border-radius:999px}
 
+    .ts-title.long { white-space: nowrap; font-size: clamp(0.86rem, 2.2vw, 1rem); overflow: hidden; text-overflow: ellipsis; }
+
+
     /* 키워드 네모 박스 */
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff; border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
@@ -276,7 +279,7 @@
         <div class="tall-sticker reveal"><div class="ts-emoji">🗂️</div><div class="ts-title">ICDL</div><div class="ts-sub">국제자격</div><div class="ts-org">(ICDL Foundation)</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">📄</div><div class="ts-title">문서실무사</div><div class="ts-sub">4급</div><div class="ts-org">대한상공회의소</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">📚</div><div class="ts-title">한국사</div><div class="ts-sub">능력검정시험</div><div class="ts-org">국사편찬위원회</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🈶</div><div class="ts-title">한자</div><div class="ts-sub">6급</div><div class="ts-org">대한검정회</div></div>
+        <div class="tall-sticker reveal"><div class="ts-emoji">🈶</div><div class="ts-title">한자급수자격검정</div><div class="ts-sub">6급</div><div class="ts-org">대한검정회</div></div>
       </div>
     </section>
 
@@ -566,7 +569,26 @@
     <section id="roadmap" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🗺️ 목표와 비전</h2>
       <div class="reveal">
-        <div class="arrow"><b>단기</b> — 학부 실험 역량 & 데이터 해석력 강화, 교내/외 프로그램 적극 참여</div>
+      <div class="arrow">
+        <b>단기</b> — 학부 학업 역량, 교내외 프로그램 적극 참여
+        <div class="mt-1">
+          <button type="button"
+                  class="underline text-sm text-[var(--muted)] hover:text-[var(--accent-strong)]"
+                  aria-expanded="false"
+                  aria-controls="shortGoals"
+                  onclick="toggleGoal('shortGoals', this)">
+            자세히 보기
+          </button>
+      
+          <ul id="shortGoals" class="hidden mt-2 text-sm space-y-1">
+            <li>⬜ 심포지엄 참여 (Spatial Epidemiology and Mathematical Modeling for Infectious Disease Control: Lessons from Ethiopia)</li>
+            <li>⬜ IBS 신경 및 교세포 기능 컨퍼런스 참여 (IBS Conference on Neuronal and Glial Function)</li>
+            <li>⬜ 동계 학부생 연구학점제 [URP 1형]</li>
+            <li>⬜ 코어, 심화 전공수업 듣기</li>
+          </ul>
+        </div>
+      </div>
+
         <div class="arrow"><b>중기</b> — 대학원 진학 준비 및 제약 연계 연구 경험 확보</div>
         <div class="arrow"><b>장기</b> — 신약개발 분야 문제해결 중심의 미래 연구자로 성장</div>
       </div>
@@ -606,7 +628,7 @@
         current.classList.toggle('open');
       });
     });
-
+    
     // 스토리: 원 클릭 시 하나만 열림
     document.querySelectorAll('.story-item .story-circle').forEach(circle=>{
       circle.addEventListener('click',()=>{
@@ -647,5 +669,13 @@
     });
 
   </script>
+  <script>
+    function toggleGoal(id, btn){
+      const el = document.getElementById(id);
+      const nowHidden = el.classList.toggle('hidden');  // true면 접힘 상태
+      btn.setAttribute('aria-expanded', (!nowHidden).toString());
+    }
+  </script>
+
 </body>
 </html>
