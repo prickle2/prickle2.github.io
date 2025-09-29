@@ -101,28 +101,31 @@
     .story-dot:active{transform:scale(.98)}
     
     /* 말풍선 네모 박스 — 원 바로 아래 고정 + 내부 스크롤 */
-    .speech{
-      position:absolute; z-index:40;
-      left:50%; top:100%;                 /* 항상 동그라미 바로 아래 */
-      transform:translateX(-50%);         /* Y 이동 제거: 네모는 고정 */
-      width:min(780px, 90vw);
-      max-height:clamp(220px, 48vh, 420px); /* 화면 넘치면 내부 스크롤 */
-      overflow:auto;
-      background:rgba(255,255,255,.95);
-      border:1px solid var(--stroke); border-radius:16px;
-      box-shadow:0 16px 40px rgba(0,0,0,.12);
-      padding:16px 18px;
-      opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
-    }
-    
-    /* 말풍선 꼬리 — 위치는 CSS 변수로 제어(기본 50%) */
-    .speech:after{
-      content:""; position:absolute; top:-12px;
-      left:var(--tailX, 50%); transform:translateX(-50%);
-      border-left:12px solid transparent; border-right:12px solid transparent;
-      border-bottom:12px solid rgba(255,255,255,.95);
-      filter:drop-shadow(0 -1px 0 var(--stroke));
-    }
+   .speech{
+    position:absolute; z-index:40;
+    left:50%; top:100%;                /* 원 바로 아래 */
+    transform:translateX(-50%);
+    width:min(780px, 90vw);
+    max-height:clamp(220px, 48vh, 420px); /* 화면 넘치면 내부 스크롤 */
+    overflow:auto;
+    background:rgba(255,255,255,.95);
+    border:1px solid var(--stroke); border-radius:16px;
+    box-shadow:0 16px 40px rgba(0,0,0,.12);
+    padding:16px 18px;
+    opacity:0; pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .speech:after{
+    content:""; position:absolute; top:-12px;
+    left:var(--tailX,50%); transform:translateX(-50%);
+    border-left:12px solid transparent; border-right:12px solid transparent;
+    border-bottom:12px solid rgba(255,255,255,.95);
+    filter:drop-shadow(0 -1px 0 var(--stroke));
+  }
+  .story-node.open .speech{
+    opacity:1; transform:translateX(-50%) translateY(12px); pointer-events:auto;
+  }
+
     
     /* 열릴 때 효과 */
     .story-node.open .speech{opacity:1; transform:translateX(-50%) translateY(12px); pointer-events:auto}
@@ -664,13 +667,14 @@
         if(!opened){
           node.classList.add('open');
         
-          // 꼬리 위치 계산해서 세팅
+          // 꼬리 위치 계산
           const speech = node.querySelector('.speech');
           const dotRect = btn.getBoundingClientRect();
           const speechRect = speech.getBoundingClientRect();
           let tailPct = ((dotRect.left + dotRect.width/2) - speechRect.left) / speechRect.width * 100;
-          tailPct = Math.max(6, Math.min(94, tailPct)); // 가장자리 방지
+          tailPct = Math.max(6, Math.min(94, tailPct));
           speech.style.setProperty('--tailX', tailPct + '%');
+
         
           // 말풍선이 화면 밖이면 살짝 스크롤
           const rect = speech.getBoundingClientRect();
