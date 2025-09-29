@@ -42,6 +42,69 @@
 
     .ts-title.long { white-space: nowrap; font-size: clamp(0.86rem, 2.2vw, 1rem); overflow: hidden; text-overflow: ellipsis; }
 
+    /* 프로그램 카드 hover 효과 (가까이 갔을 때 살짝 떠오름) */
+    .accordion{
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+    .accordion:hover,
+    .accordion:focus-within{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(244,114,182,.22); /* 위쪽 카드들과 톤 맞춤 */
+    }
+
+    /* 3품: 스탬프 크기/비율 조정(낮고 넓게) */
+    .stamp{
+      width: 340px;
+      height: 84px;             /* 세로 낮춰 균형 */
+      border:1px solid var(--stroke);
+      border-radius:14px;
+      background:#fff;
+      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .stamp img{ width:100%; height:100%; object-fit:cover; }
+    
+    /* 3품: 한 줄 레이아웃(좌:스탬프 / 우:상태문구), 수직정렬 중앙 */
+    .three-row{
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      align-items:center;
+      gap:18px;
+      min-height:96px;          /* 줄 높이 통일 */
+    }
+    
+    /* 3품 제목 가운데 */
+    .three-title{ text-align:center; font-weight:700; }
+    
+    /* 모바일(세로 쌓기) */
+    @media (max-width:640px){
+      .three-row{ grid-template-columns:1fr; gap:10px; }
+      .stamp{ width:100%; height:72px; }
+    }
+
+    /* 스토리 원 hover 효과 강화 */
+    .story-dot{
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .story-dot:hover,
+    .story-dot:focus-visible{
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(236,72,153,.28);
+    }
+    
+    /* 스토리 원 타이틀(첫 줄) 크게 + 밑줄 */
+    .story-dot .dot-title{
+      display:block;
+      font-size: 1.08rem;     /* 기존보다 크게 */
+      font-weight: 900;
+      text-decoration: underline;
+      margin-bottom: 2px;
+    }
+    .story-dot small{
+      font-size: .82rem;
+    }
 
     /* 키워드 네모 박스 */
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff; border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
@@ -495,7 +558,8 @@
         <!-- 1 출발 -->
         <div class="story-node">
           <button class="story-dot" data-story="s1">
-            출발<br><small>리더십과 소통의 시작</small>
+            <span class="dot-title">출발</span>
+            <small>리더십과 소통의 시작</small>
           </button>
           <div class="speech" id="s1">
             <p>저는 학부 시절부터 <b>다양한 사람들과 함께하는 활동</b> 속에서 성장해 왔습니다.
@@ -508,7 +572,8 @@
         <!-- 2 학문 -->
         <div class="story-node">
           <button class="story-dot" data-story="s2">
-            학문<br><small>배움의 토대와 확장</small>
+            <span class="dot-title">학문</span>
+            <small>배움의 토대와 확장</small>
           </button>
           <div class="speech" id="s2">
             <p>저는 활동뿐 아니라 <b>학업에서도 꾸준히 최선을 다해</b>, 현재까지 <b>평점 4.27</b>을 유지하고 있습니다.
@@ -521,8 +586,8 @@
         <!-- 3 확장 -->
         <div class="story-node">
           <button class="story-dot" data-story="s3">
-            확장<br><small>현장에서 배우는 시야</small>
-          </button>
+            <span class="dot-title">확장</span>
+            <small>현장에서 배우는 시야</small>
           <div class="speech" id="s3">
             <p>저는 연구자의 길에 필요한 <b>현장 경험</b>을 쌓고자 교내 활동을 넘어 다양한 기회를 찾았습니다.
             <b>화학과 동문기업 탐방 프로그램</b>을 통해 연구실 실험 조건이 산업 현장에서는 <b>설비와 규제라는 새로운 제약</b>과 맞닿는다는 사실을 체감했습니다.
@@ -534,7 +599,8 @@
         <!-- 4 도약 -->
         <div class="story-node">
           <button class="story-dot" data-story="s4">
-            도약<br><small>해외 경험과 시야</small>
+            <span class="dot-title">도약</span>
+            <small>해외 경험과 시야</small>
           </button>
           <div class="speech" id="s4">
             <p>저는 학문적 시야를 넓히기 위해 <b>SKKU-BA-DIVE 해외 교류 프로그램</b>에 참여했습니다.
@@ -548,7 +614,8 @@
         <!-- 5 성찰 -->
         <div class="story-node">
           <button class="story-dot" data-story="s5">
-            성찰<br><small>나를 돌아보기</small>
+            <span class="dot-title">성찰</span>
+            <small>나를 돌아보기</small>
           </button>
           <div class="speech" id="s5">
             <p><b>학생성공 E-포트폴리오 공모전</b>에 참가하며, 저는 처음으로 스스로의 활동을 하나의 이야기로 정리해 보았습니다.
@@ -561,7 +628,8 @@
         <!-- 6 미래 -->
         <div class="story-node">
           <button class="story-dot" data-story="s6">
-            미래<br><small>연구자의 길</small>
+            <span class="dot-title">미래</span>
+            <small>연구자의 길</small>
           </button>
           <div class="speech" id="s6">
             <p>앞으로 저는 학부와 대학원에서의 배움을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
