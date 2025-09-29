@@ -143,28 +143,21 @@
     transition:opacity .18s ease, transform .18s ease;
   }
     
-     /* 스토리: 아코디언 패널(원 아래에 펼침/접힘) */
-    .speech{
-      position: static;           /* 고정/절대 아님 */
-      width: 100%;
-      margin-top: 12px;
-      background: rgba(255,255,255,.95);
-      border:1px solid var(--stroke);
-      border-radius:16px;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-      padding:16px 18px;
-    
-      /* 아코디언 효과 */
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .35s ease, opacity .25s ease;
-    }
-    
-    .story-node.open .speech{
-      max-height: 800px;          /* 내용이 더 길면 더 크게(필요시 1200px) */
-      opacity: 1;
-    }
+  /* 스토리: 원들은 그대로, 아래 하나의 패널만 사용 */
+  .speech{ display:none !important; }     /* 각 노드 속 말풍선은 템플릿만 */
+  
+  .story-panel{
+    margin-top:16px;
+    background:rgba(255,255,255,.95);
+    border:1px solid var(--stroke);
+    border-radius:16px;
+    box-shadow:0 16px 40px rgba(0,0,0,.12);
+    padding:16px 18px;
+    max-height:clamp(220px, 60vh, 480px);
+    overflow:auto;
+  }
+  .story-panel.hidden{ display:none; }
+
 
   .ts-title.hanja-small {
     font-size: 0.8rem;   /* 글씨 크기 줄임 */
@@ -500,6 +493,8 @@
       <h2 class="pretty text-3xl font-bold mb-5">🌀 나의 스토리</h2>
     
       <div class="story-row">
+      <div id="storyPanel" class="story-panel hidden"></div>
+
         <!-- 1 출발 -->
         <div class="story-node">
           <button class="story-dot" data-story="s1">
@@ -683,7 +678,6 @@
   </script>  
   
   <script>
-  <script>
   // 스토리: 원 클릭 시 아코디언(하나만 열림)
   document.querySelectorAll('.story-dot').forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -700,7 +694,6 @@
         // 펼쳐진 패널이 화면 밖이면 중앙 근처로 스크롤
         const panel = node.querySelector('.speech');
         if(panel){
-          // 높이 계산 후 스무스 스크롤
           requestAnimationFrame(()=>{
             panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
           });
@@ -717,14 +710,6 @@
   });
   </script>
 
-
-  <script>
-    function toggleGoal(id, btn){
-      const el = document.getElementById(id);
-      const nowHidden = el.classList.toggle('hidden');  // true면 접힘 상태
-      btn.setAttribute('aria-expanded', (!nowHidden).toString());
-    }
-  </script>
 
 </body>
 </html>
