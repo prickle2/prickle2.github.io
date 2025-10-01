@@ -68,7 +68,7 @@
     
     .three-row{
       display:grid;
-      grid-template-columns: 340px 1fr;
+      : 340px 1fr;
       align-items:center;
       gap:18px;
       min-height:96px;
@@ -150,12 +150,13 @@
     }
     
     .story-dot small{
-      font-family: "Noto Sans KR",sans-serif;  /* 소제목은 노토 */
-      font-size: .74rem;     /* 더 작게 */
-      font-weight: 700;
-      opacity: .95;
-      line-height: 1.15;
+      font-family: "Noto Sans KR",sans-serif;
+      font-size: .68rem;     /* 기존 .74rem → 더 작게 */
+      font-weight: 600;      /* 가독성 위해 살짝 낮춤 */
+      opacity: .9;
+      line-height: 1.1;
     }
+
 
         
     /* 스토리 패널 */
