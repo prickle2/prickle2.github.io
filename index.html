@@ -142,6 +142,22 @@
 
     .headline-line{ display:block; white-space:nowrap; font-size: clamp(24px, 5.2vw, 52px); line-height: 1.14; }
 
+    /* 스토리 동그라미 폰트/크기 조정 */
+    .story-dot .dot-title{
+      font-family: "Jua","GmarketSansBold","Noto Sans KR",sans-serif; /* Jua로 변경 */
+      font-size: 1.18rem;
+      letter-spacing: -.2px;
+    }
+    
+    .story-dot small{
+      font-family: "Noto Sans KR",sans-serif;  /* 소제목은 노토 */
+      font-size: .74rem;     /* 더 작게 */
+      font-weight: 700;
+      opacity: .95;
+      line-height: 1.15;
+    }
+
+        
     /* 스토리 패널 */
     .story-row{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
     .story-node{position:relative; overflow:visible}
