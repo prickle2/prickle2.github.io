@@ -42,7 +42,7 @@
 
     .ts-title.long { white-space: nowrap; font-size: clamp(0.86rem, 2.2vw, 1rem); overflow: hidden; text-overflow: ellipsis; }
 
-    /* 프로그램 카드 hover 효과 (가까이 갔을 때 살짝 떠오름) */
+    /* 프로그램 카드 hover 효과 */
     .accordion{
       transition: transform .2s ease, box-shadow .2s ease;
       cursor: pointer;
@@ -50,13 +50,13 @@
     .accordion:hover,
     .accordion:focus-within{
       transform: translateY(-3px);
-      box-shadow: 0 14px 30px rgba(244,114,182,.22); /* 위쪽 카드들과 톤 맞춤 */
+      box-shadow: 0 14px 30px rgba(244,114,182,.22);
     }
 
-    /* 3품: 스탬프 크기/비율 조정(낮고 넓게) */
+    /* 3품: 스탬프 */
     .stamp{
       width: 340px;
-      height: 84px;             /* 세로 낮춰 균형 */
+      height: 84px;
       border:1px solid var(--stroke);
       border-radius:14px;
       background:#fff;
@@ -66,19 +66,15 @@
     }
     .stamp img{ width:100%; height:100%; object-fit:cover; }
     
-    /* 3품: 한 줄 레이아웃(좌:스탬프 / 우:상태문구), 수직정렬 중앙 */
     .three-row{
       display:grid;
       grid-template-columns: 340px 1fr;
       align-items:center;
       gap:18px;
-      min-height:96px;          /* 줄 높이 통일 */
+      min-height:96px;
     }
-    
-    /* 3품 제목 가운데 */
     .three-title{ text-align:center; font-weight:700; }
     
-    /* 모바일(세로 쌓기) */
     @media (max-width:640px){
       .three-row{ grid-template-columns:1fr; gap:10px; }
       .stamp{ width:100%; height:72px; }
@@ -94,26 +90,15 @@
       box-shadow: 0 12px 32px rgba(236,72,153,.28);
     }
     
-    /* 스토리 원 타이틀(첫 줄) 크게 + 밑줄 */
     .story-dot .dot-title{
       display:block;
-      font-size: 1.22rem;     /* 크기 ↑ */
+      font-size: 1.22rem;
       font-weight: 900;
       text-decoration: underline;
       margin-bottom: 2px;
     }
-    .story-dot small{
-      font-size: .82rem;
-    }
+    .story-dot small{ font-size:.82rem; }
 
-    /* 3품 정렬 */
-    .three-row{
-      display:grid;
-      grid-template-columns: 340px 1fr;
-      align-items:center;
-      gap:18px;
-      min-height:96px;
-    }
     .stamp{
       width: 340px;
       height: 84px;
@@ -124,48 +109,17 @@
     }
     .stamp img{ width:100%; height:100%; object-fit:cover; }
         
-    /* 키워드 네모 박스 */
+    /* 키워드 */
     .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.46rem .8rem; background:#fff; border:1px solid var(--stroke); border-radius:10px; font-weight:800; margin:.25rem .35rem .25rem 0;}
 
-    /* 프로그램 썸네일(이미지 태그로, 잘림 방지) */
+    /* 썸네일 */
     .thumbWrap{
       aspect-ratio:1/1; border:1px solid var(--stroke); border-radius:12px;
       background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
     .thumbWrap img{max-width:100%; max-height:100%; object-fit:contain}
 
-    /* 3품 인증 박스 통일 */
-    .stamp {
-      width: 300px;                  /* 가로 고정 (원하는 값으로 조절) */
-      height: 70px;                 /* 세로 고정 (사진 비율에 맞춤) */
-      border: 1px solid var(--stroke);
-      border-radius: 12px;
-      background: #fff;
-      overflow: hidden;
-      flex-shrink: 0;                /* flex에서 줄어들지 않도록 */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .stamp img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;             /* 꽉 채우기 (잘려도 됨) */
-    }
-    
-    /* 모바일에서 조금 더 유연하게 */
-    @media (max-width:640px){
-      .stamp {
-        width: 160px;
-        height: 100px;
-      }
-    }
-
-
-
-
-    /* 자격증 – 세로 스티커(소형) + 3단 타이포 */
+    /* 자격증 스티커 */
     .tall-sticker{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       width:120px; height:150px; border:1px solid var(--stroke); border-radius:14px; background:#fff;
@@ -175,77 +129,29 @@
     .ts-title{ font-weight:800; font-size:1.02rem; line-height:1.1 }
     .ts-sub  { font-weight:700; font-size:.92rem; margin-top:.25rem }
     .ts-org  { font-size:.78rem; color:var(--muted); margin-top:.2rem }
+    .ts-title.hanja-small{ font-size:.8rem; white-space:nowrap; }
 
-    /* 동아리/봉사 – 불투명 원형 스티커 */
     .circle-sticker{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      width:110px; height:110px;
-      border-radius:9999px; background:rgba(255,255,255,0.78);
+      width:110px; height:110px; border-radius:9999px; background:rgba(255,255,255,0.78);
       border:1px solid var(--stroke);
       font-size:.85rem; font-weight:700; text-align:center;
       box-shadow:0 6px 16px rgba(0,0,0,0.08);
     }
     .circle-sticker small{ font-size:0.7rem; font-weight:600; color:var(--muted); }
 
-    /* HOME 헤드라인(두 줄 고정, 크기 고정/작게) */
-    .headline-line{
-      display:block; white-space:nowrap;
-      font-size: clamp(24px, 5.2vw, 52px); /* 적당히 작고 고정 */
-      line-height: 1.14;
-    }
+    .headline-line{ display:block; white-space:nowrap; font-size: clamp(24px, 5.2vw, 52px); line-height: 1.14; }
 
-    /* === [스토리: 오버레이 말풍선 스타일] ===================== */
-    .story-row{display:flex;flex-wrap:wrap;gap:28px}
-    .story-node{position:relative}
-    
-    .story-dot{
-      width:132px;height:132px;border-radius:9999px;
-      background:radial-gradient(160px 160px at 30% 30%, #f78fb8, #ec4899);
-      box-shadow:0 10px 30px rgba(236,72,153,.25);
-      color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      font-weight:800;line-height:1.15;cursor:pointer;user-select:none;transition:transform .15s ease;
-    }
-    .story-dot small{font-weight:700;opacity:.9}
-    .story-dot:active{transform:scale(.98)}
-
-
-    /* 스토리: 동그라미 가로 정렬을 보기 좋게 */
-    .story-row{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;  /* 가운데 정렬 */
-      gap:28px;
-    }
-    
-    /* 각 노드에 있는 말풍선은 '템플릿'만 — 화면엔 숨김 */
+    /* 스토리 패널 */
+    .story-row{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
+    .story-node{position:relative; overflow:visible}
     .speech{ display:none !important; }
-    
-    /* 고정 슬롯(스토리 패널) */
     .story-panel{
-      margin-top:16px;
-      background:rgba(255,255,255,.95);
-      border:1px solid var(--stroke);
-      border-radius:16px;
-      box-shadow:0 16px 40px rgba(0,0,0,.12);
-      padding:16px 18px;
-      max-height:clamp(220px, 60vh, 480px);
-      overflow:auto;
+      margin-top:16px; background:rgba(255,255,255,.95); border:1px solid var(--stroke);
+      border-radius:16px; box-shadow:0 16px 40px rgba(0,0,0,.12);
+      padding:16px 18px; max-height:clamp(220px, 60vh, 480px); overflow:auto;
     }
     .story-panel.hidden{ display:none; }
-    
-    /* 항상 자리를 확보하고 싶으면 위 두 줄 대신 아래 방식 사용
-    .story-panel{ min-height:220px; }
-    .story-panel.hidden{ visibility:hidden; }
-    */
-
-  .ts-title.hanja-small {
-    font-size: 0.8rem;   /* 글씨 크기 줄임 */
-    white-space: nowrap; /* 줄바꿈 안 되게 */
-  }
-      
-    /* 혹시 잘림 방지(없으면 추가) */
-    .story-node{ overflow:visible; }
-
 
     /* 목표 화살표 카드 */
     .arrow{
@@ -259,21 +165,9 @@
       filter:drop-shadow(1px 0 0 var(--stroke));
     }
 
-    /* 프로그램 카드 아코디언 */
+    /* 아코디언 */
     .accordion-content{max-height:0; overflow:hidden; transition:max-height .4s ease}
-    .accordion.open .accordion-content{max-height:2000px} /* 내부 스크롤 없이 펼쳐지도록 크게 */
-
-    /* 스토리(원 6개) */
-    .story-circle{
-      width:120px; height:120px; border-radius:9999px;
-      background:radial-gradient(120px 120px at 30% 30%, #f78fb8, #ec4899);
-      color:#fff; font-weight:800; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      cursor:pointer; box-shadow:0 8px 20px rgba(236,72,153,.3); transition:transform .2s ease;
-    }
-    .story-circle:hover{ transform: translateY(-2px) }
-    .story-circle small{font-size:.78rem; opacity:.95; font-weight:700}
-    .story-content{display:none; margin-top:1rem; padding:1rem; background:#fff; border:1px solid var(--stroke); border-radius:12px}
-    .story-item.active .story-content{display:block}
+    .accordion.open .accordion-content{max-height:2000px}
   </style>
 </head>
 <body id="top">
@@ -349,7 +243,7 @@
         <div class="mt-4 flex flex-wrap gap-2">
           <a href="mailto:prickle2@g.skku.edu" class="badge soft">📧 prickle2@g.skku.edu</a>
           <a href="https://instagram.com/she.u_u" target="_blank" rel="noopener" class="badge soft">📷 @she.u_u</a>
-          <a href="https://www.linkedin.com/in/%ED%95%98%EC%9D%80-%EC%84%B1-971687387/" target="_blank" rel="noopener" class="badge soft">🔗 LinkedIn</a>
+          <a href="https://www.linkedin.com/in/성하은-자연과학계열-971687387/" target="_blank" rel="noopener" class="badge soft">🔗 LinkedIn</a>
         </div>
       </div>
 
@@ -371,9 +265,9 @@
       <div class="mb-6">
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
         <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">2023 - 2024 · <b>성균관대학교 공식 홍보대사 알리미</b></li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림 임원단</b> — 미디어</li>
-          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하 임원단</b> — 미디어</li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림 임원단</b></li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하 임원단</b></li>
+          <li class="reveal glass soft rounded-xl px-4 py-3"><b>성균관대학교 공식 홍보대사 알리미</b> (2023–2024)</li>
         </ul>
       </div>
 
@@ -384,7 +278,7 @@
           <div class="circle-sticker">2023<br>어깨동무<small>동아리</small></div>
           <div class="circle-sticker">2024<br>레드체리<small>동아리</small></div>
           <div class="circle-sticker">2024<br>장돌<small>동아리</small></div>
-          <div class="circle-sticker">2025<br>양평군노인요양원<small>봉사</small></div>
+          <div class="circle-sticker">2025<br>양평군노인요양원<small><a href="봉사.jpg" class="underline">봉사</a></small></div>
         </div>
       </div>
     </section>
@@ -401,7 +295,7 @@
         <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">3급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">2급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">🎨</div><div class="ts-title">GTQ</div><div class="ts-sub">1급</div><div class="ts-org">(KPC 한국생산성본부 / 국가공인)</div></div>
-        <div class="tall-sticker reveal"><div class="ts-emoji">🗂️</div><div class="ts-title">ICDL</div><div class="ts-sub" style="font-size:.78rem; line-height:1.15">컴퓨터 활용 및 파일 관리</div><div class="ts-org">(ICDL Foundation / 국제자격)</div></div>
+        <div class="tall-sticker reveal"><div class="ts-emoji">🗂️</div><div class="ts-title">ICDL</div><div class="ts-sub" style="font-size:.78rem; line-height:1.15">컴퓨터 활용 및 파일 관리</div><div class="ts-org">(ICDL Foundation)</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">📄</div><div class="ts-title">문서실무사</div><div class="ts-sub">4급</div><div class="ts-org">대한상공회의소</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">📚</div><div class="ts-title">한국사</div><div class="ts-sub">능력검정시험</div><div class="ts-org">국사편찬위원회</div></div>
         <div class="tall-sticker reveal"><div class="ts-emoji">🈶</div><div class="ts-title hanja-small">한자급수자격검정</div><div class="ts-sub">6급</div><div class="ts-org">대한검정회</div></div>
@@ -412,13 +306,16 @@
     <section id="scholarships" class="py-6">
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🎓 장학금</h2>
       <ul class="space-y-3">
+        <!-- 2023 -->
         <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 근로봉사장학금</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교내 · 국가장학금(유형2, 신·편입생)</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2023-1 · 교외 · 메가스터디교육㈜</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 근로봉사장학금</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2023-2 · 교내 · 문행장학금(추가지급)</li>
-        <li class="glass rounded-xl px-4 py-3 reveal">2024-1 · 교내 · 글로벌 리더학습 장학금</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2023 · 교외 · 양평군교육발전위원회 성적우수</li>
+        <!-- 2024 -->
+        <li class="glass rounded-xl px-4 py-3 reveal">2024-1 · 교내 · 글로벌 리더학습 장학금</li>
+        <li class="glass rounded-xl px-4 py-3 reveal">2024-2 · 교내 · 문행장학금(추가지급)</li>
         <li class="glass rounded-xl px-4 py-3 reveal">2024 · 교외 · 양평군교육발전위원회 성적우수</li>
       </ul>
       <p class="mt-3 text-sm text-[var(--muted)]">
@@ -442,28 +339,49 @@
         </a>
       </div>
 
-      <!-- 세부 표 -->
+      <!-- 세부 표 (이미지와 동일하게 수정) -->
       <div class="overflow-x-auto glass rounded-xl reveal">
         <table class="w-full text-sm">
           <thead class="bg-white/70">
             <tr class="text-left">
-              <th class="p-3">구분</th><th class="p-3">취득</th><th class="p-3">필요</th><th class="p-3">잔여</th><th class="p-3">상태</th>
+              <th class="p-3">구분</th>
+              <th class="p-3">기준학점</th>
+              <th class="p-3">취득학점</th>
+              <th class="p-3">잔여학점</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 심화학점</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3 text-[var(--accent-strong)] font-bold">21</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어학점</td><td class="p-3">35</td><td class="p-3">12</td><td class="p-3 text-[var(--accent-strong)] font-bold">23</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 실험실습</td><td class="p-3">6</td><td class="p-3">1</td><td class="p-3 text-[var(--accent-strong)] font-bold">5</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회과학/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회과학/자연과학기반(실습)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">DS기반(계열1)</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">DS기반(공통)</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
+            <!-- 균형교양 세 영역 표시 -->
+            <tr class="border-t border-[var(--stroke)]">
+              <td class="p-3">균형교양 - 인간/문화</td>
+              <td class="p-3"><div class="text-[12px] text-[var(--muted)]">균형교양 3개 영역 중 2개 영역 이상에서 총 6학점 이상 이수</div></td>
+              <td class="p-3">21 / 9</td>
+              <td class="p-3">0</td>
+            </tr>
+            <tr class="border-t border-[var(--stroke)]">
+              <td class="p-3">균형교양 - 사회/역사</td>
+              <td class="p-3"></td>
+              <td class="p-3">21 / 3</td>
+              <td class="p-3">0</td>
+            </tr>
+            <tr class="border-t border-[var(--stroke)]">
+              <td class="p-3">균형교양 - 자연/과학/기술</td>
+              <td class="p-3"></td>
+              <td class="p-3">21 / 9</td>
+              <td class="p-3">0</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -480,7 +398,7 @@
           <div class="text-xs text-[var(--muted)]">2024 하계</div>
           <button class="text-left w-full font-semibold underline mt-1 toggle">SKKU-BA-DIVE</button>
           <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            성균관대학교 <b>알리미들이 함께 모여 참여한 해외 교류 프로그램</b>으로, 대학을 해외에 알리고 <b>재외국민 학생들에게 입시 정보를 제공</b>하는 것을 목표로 하였습니다. 일본의 <b>도쿄대학교, 와세다대학교, 오사카대학교</b>를 방문하여 현지 학생들과 교류하고, 동경한국학교에서는 <b>입시설명회와 멘토링</b>을 진행했습니다. 이를 통해 단순한 홍보를 넘어 <b>청중 맞춤 메시지 재구성 능력</b>을 배우고, <b>복잡한 정보를 쉽고 설득력 있게 전달하는 역량</b>과 <b>글로벌 협업 태도의 중요성</b>을 깨닫게 되었습니다.
+            성균관대학교 <b>알리미들이 함께 모여 참여한 해외 교류 프로그램</b>으로, 대학을 해외에 알리고 <b>재외국민 학생들에게 입시 정보를 제공</b>하는 것을 목표로 하였습니다. 일본의 <b>도쿄대학교, 와세다대학교, 오사카대학교</b>를 방문하여 현지 학생들과 교류하고, 동경한국학교에서는 <b>입시설명회와 멘토링</b>을 진행했습니다. 이를 통해 단순한 홍보를 넘어 <b>청중 맞춤 메시지 재구성 능력</b>을 배우고, <b>복잡한 정보를 쉽고 설득력 있게 전달하는 역량</b>을 깨닫게 되었습니다.
           </div>
         </article>
 
@@ -504,8 +422,6 @@
           </div>
         </article>
 
-      
-
         <!-- 6. 학생성공 E-포트폴리오 -->
         <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="포폴.jpg" alt="학생성공 공모전"></div>
@@ -522,11 +438,11 @@
           <div class="text-xs text-[var(--muted)]">2025 · 참가 중</div>
           <button class="text-left w-full font-semibold underline mt-1 toggle">노벨화학상 수상분야 맞추기 경연대회</button>
           <div class="accordion-content mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            저는 <b>최신 과학의 흐름을 직접 따라가 보고 싶어</b> 이 대회에 참가하였습니다. 평소에는 수업에서 배우 지식 위주로 공부했지만, <b>노벨상은 전 세계 연구자들이 주목하는 성과</b>를 조명한다는 점에서 특별했습니다. 후보로 거론되는 연구들을 조사하며, 단순한 지식 습득을 넘어 <b>연구의 중요성과 사회·산업적 가치</b>를 고민할 수 있었습니다. 비록 수상 결과는 아직 발표되지 않았지만, 다양한 연구 분야를 비교하며 <b>학문이 발전하는 방향을 넓은 시각으로 바라보는 데 큰 도움</b>이 되었습니다.
+            저는 <b>최신 과학의 흐름을 직접 따라가 보고 싶어</b> 이 대회에 참가하였습니다. 평소에는 <b>수업에서 배우는 지식</b> 위주로 공부했지만, <b>노벨상은 전 세계 연구자들이 주목하는 성과</b>를 조명한다는 점에서 특별했습니다. 후보로 거론되는 연구들을 조사하며, 단순한 지식 습득을 넘어 <b>연구의 중요성과 사회·산업적 가치</b>를 고민할 수 있었습니다. 비록 수상 결과는 아직 발표되지 않았지만, 다양한 연구 분야를 비교하며 <b>학문이 발전하는 방향을 넓은 시각으로 바라보는 데 큰 도움</b>이 되었습니다.
           </div>
         </article>
 
-         <!-- 5. Edinburgh – GCP for Laboratories -->
+        <!-- 5. Edinburgh – GCP for Laboratories (맨 뒤로 이동) -->
         <article class="glass rounded-2xl p-4 soft reveal accordion">
           <div class="thumbWrap mb-3"><img src="에든버러2.jpg" alt="GCP for Laboratories"></div>
           <div class="text-xs text-[var(--muted)]">
@@ -595,7 +511,7 @@
             <p>저는 다양한 시야를 넓히기 위해 <b>SKKU-BA-DIVE 해외 교류 프로그램</b>에 참여했습니다.
             일본의 <b>도쿄대학교·와세다대학교·오사카대학교</b>를 방문해 현지 학생들과 교류하며 각 대학의 <b>교육 환경과 문화를 직접 경험</b>했습니다.
             또한 <b>동경한국학교</b>에서는 입시설명회와 멘토링을 진행하여, 후배 학생들의 고민을 듣고 구체적인 조언을 나눴습니다.
-            이 과정을 통해 단순한 홍보 활동을 넘어, <b>다양한 문화적 맥락에서 소통하는 능력</b>을 배울 수 있었습니다.</p>
+            이 과정을 통해 단순한 홍보 활동을 넘어, <b>다양한 문화적 맥락에서 소통하는 능력</b>과 <b>글로벌 환경에서 협업하는 태도</b>를 배울 수 있었습니다.</p>
           </div>
         </div>
     
@@ -609,7 +525,7 @@
             <p><b>학생성공 E-포트폴리오 공모전</b>에 참가하며, 저는 처음으로 스스로의 활동을 하나의 이야기로 정리해 보았습니다.
             이 과정에서 성과보다 중요한 것은 <b>선택의 이유와 그로부터의 배움</b>이라는 사실을 알게 되었습니다.
             또한 <b>장학금 수혜 경험</b>을 단순한 지원이 아닌 <b>책임감을 강화하는 계기</b>로 받아들이며, 앞으로의 길에 더욱 진지하게 임해야 함을 깨달았습니다.
-            이러한 성찰은 연구자의 자세를 <b>다잡는 중요한 계기</b>가 되었습니다.</p>
+            이러한 성찰을 통해 <b>스스로를 돌아보고 앞으로 나아갈 방향을 다지는 기회</b>를 얻을 수 있었습니다.</p>
           </div>
         </div>
     
@@ -620,9 +536,9 @@
             <small>연구자의 길</small>
           </button>
           <div class="speech" id="s6">
-            <p>앞으로 저는 학부와 대학원에서의 배움을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
-            지금까지의 경험이 저에게 <b>소통, 실행, 글로벌 협력, 성찰</b>이라는 네 가지 역량을 남겼듯, 앞으로도 이를 기반으로 연구를 이어가겠습니다.
-            특히 <b>작은 발견이 실제 삶의 변화를 만들어내는 연구</b>를 꾸준히 실천하겠습니다.</p>
+            <p>앞으로 저는 학부와 대학원에서 배운 것을 토대로 <b>제약·화학생명 분야 연구자</b>로 성장하고자 합니다.
+            지금까지의 경험이 저에게 <b>소통</b>, <b>실행</b>, <b>책임</b>, <b>성찰</b>이라는 네 가지 역량을 남겼듯, 앞으로도 이를 바탕으로 학문적 도전을 이어가겠습니다.
+            특히, <b>작은 발견이 삶의 변화를 이끌어내는 연구</b>를 추구하겠습니다.</p>
           </div>
         </div>
       </div>
@@ -632,7 +548,7 @@
 
     <!-- 디지털 배지 & 3품 -->
     <section id="global" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🌍 디지털 배지 & 3품 인증</h2>
+      <h2 class="pretty text-3xl font-bold mb-4 reveal">🏅 디지털 배지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
         <!-- 디지털 배지: 링크 텍스트 + 이미지(object-contain) -->
         <div class="glass rounded-xl p-4 text-center reveal">
@@ -715,7 +631,7 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // 홈 헤드라인 순환(크기 고정, 문구만 변경)
+    // 홈 헤드라인 순환
     const seq=["세상을 배움으로 채우는","도전을 두려워하지 않는","작은 것에도 감사하는"];
     let i=0; const kw=document.getElementById('kw');
     setInterval(()=>{
@@ -729,9 +645,7 @@
     document.querySelectorAll('.accordion .toggle').forEach(btn=>{
       btn.addEventListener('click',()=>{
         const current = btn.closest('.accordion');
-        // 모두 닫기
         document.querySelectorAll('.accordion').forEach(a=>{ if(a!==current) a.classList.remove('open'); });
-        // 현재 토글
         current.classList.toggle('open');
       });
     });
@@ -744,29 +658,23 @@
   document.querySelectorAll('.story-dot').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const node = btn.closest('.story-node');
-  
-      // active 표시 (선택)
       document.querySelectorAll('.story-node.active').forEach(n=>n.classList.remove('active'));
       node.classList.add('active');
-  
-      // 노드 내부 숨겨진 템플릿(.speech)에서 내용 복사
       const tpl = node.querySelector('.speech');
       if (tpl){
         panel.innerHTML = tpl.innerHTML;
         panel.classList.remove('hidden');
-  
-        // 패널이 보이도록 살짝 스크롤
         panel.scrollIntoView({ behavior:'smooth', block:'start' });
         window.scrollBy({ top: -12, behavior:'smooth' });
       }
     });
   });
   
-  // (선택) 바깥 클릭 시 패널 숨기기
+  // 바깥 클릭 시 패널 숨기기
   document.addEventListener('click', (e)=>{
     if (!e.target.closest('.story-node') && !e.target.closest('#storyPanel')) {
       document.querySelectorAll('.story-node.active').forEach(n=>n.classList.remove('active'));
-      panel.classList.add('hidden');   // 자리를 항상 유지하고 싶으면 이 줄 지우고 CSS의 min-height 방식 사용
+      panel.classList.add('hidden');
       panel.innerHTML = '';
     }
   });
@@ -776,11 +684,10 @@
     function toggleGoal(id, btn){
       const el = document.getElementById(id);
       if (!el) return;
-      const nowHidden = el.classList.toggle('hidden'); // true면 접힘 상태
+      const nowHidden = el.classList.toggle('hidden');
       if (btn) btn.setAttribute('aria-expanded', String(!nowHidden));
     }
   </script>
-
 
 </body>
 </html>
