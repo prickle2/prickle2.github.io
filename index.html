@@ -339,49 +339,28 @@
         </a>
       </div>
 
-      <!-- 세부 표 (이미지와 동일하게 수정) -->
+      <!-- 세부 표 -->
       <div class="overflow-x-auto glass rounded-xl reveal">
         <table class="w-full text-sm">
           <thead class="bg-white/70">
             <tr class="text-left">
-              <th class="p-3">구분</th>
-              <th class="p-3">기준학점</th>
-              <th class="p-3">취득학점</th>
-              <th class="p-3">잔여학점</th>
+              <th class="p-3">구분</th><th class="p-3">취득</th><th class="p-3">필요</th><th class="p-3">잔여</th><th class="p-3">상태</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 심화학점</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3 text-[var(--accent-strong)] font-bold">21</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어학점</td><td class="p-3">35</td><td class="p-3">12</td><td class="p-3 text-[var(--accent-strong)] font-bold">23</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 실험실습</td><td class="p-3">6</td><td class="p-3">1</td><td class="p-3 text-[var(--accent-strong)] font-bold">5</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회과학/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회과학/자연과학기반(실습)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">DS기반(계열1)</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
-            <tr class="border-t border-[var(--stroke)]"><td class="p-3">DS기반(공통)</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td></tr>
-            <!-- 균형교양 세 영역 표시 -->
-            <tr class="border-t border-[var(--stroke)]">
-              <td class="p-3">균형교양 - 인간/문화</td>
-              <td class="p-3"><div class="text-[12px] text-[var(--muted)]">균형교양 3개 영역 중 2개 영역 이상에서 총 6학점 이상 이수</div></td>
-              <td class="p-3">21 / 9</td>
-              <td class="p-3">0</td>
-            </tr>
-            <tr class="border-t border-[var(--stroke)]">
-              <td class="p-3">균형교양 - 사회/역사</td>
-              <td class="p-3"></td>
-              <td class="p-3">21 / 3</td>
-              <td class="p-3">0</td>
-            </tr>
-            <tr class="border-t border-[var(--stroke)]">
-              <td class="p-3">균형교양 - 자연/과학/기술</td>
-              <td class="p-3"></td>
-              <td class="p-3">21 / 9</td>
-              <td class="p-3">0</td>
-            </tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">제1전공 코어</td><td class="p-3">12</td><td class="p-3">35</td><td class="p-3">23</td><td class="p-3"><div class="bar"><i style="width:34%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">34% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">실험실습</td><td class="p-3">1</td><td class="p-3">6</td><td class="p-3">5</td><td class="p-3"><div class="bar"><i style="width:17%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">17% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">심화</td><td class="p-3">0</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3"><div class="bar"><i style="width:0%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">0% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">의사소통</td><td class="p-3">4</td><td class="p-3">4</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">창의</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">글로벌(필수)</td><td class="p-3">2</td><td class="p-3">4</td><td class="p-3">2</td><td class="p-3"><div class="bar"><i style="width:50%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">50% · 진행중</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">인문사회/자연과학기반(심화)</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">성균인성·리더십</td><td class="p-3">2</td><td class="p-3">2</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">고전·명저</td><td class="p-3">3</td><td class="p-3">3</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(인간·문화)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(사회·역사)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
+            <tr class="border-t border-[var(--stroke)]"><td class="p-3">균형교양(자연·과학·기술)</td><td class="p-3">21</td><td class="p-3">21</td><td class="p-3">0</td><td class="p-3"><div class="bar"><i style="width:100%"></i></div><div class="mt-1 text-[12px] text-[var(--muted)]">100% · ✅ 완료</div></td></tr>
           </tbody>
         </table>
       </div>
