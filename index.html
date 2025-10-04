@@ -655,108 +655,124 @@
 
       </div>
 
-    <!-- ============== e-DISC (자소서 톤 · 색상정리 · 강점/보완 구분) ============== -->
+   <!-- ============== e-DISC (자소서 톤 · 색상 정돈 · 강점/보완 분리) ============== -->
     <section id="edisc" class="py-10">
-      <!-- e-DISC 내부 전용 색상 클래스 (다른 섹션에 영향 없음) -->
-      <style>
-        #edisc .txt-strong{ color: var(--accent-strong); font-weight:800; }
-        #edisc .txt-growth{ color: #b45309; font-weight:800; } /* amber-700 */
-        #edisc .tag.strong{ border-color:#f2d7e3; color:var(--accent-strong); }
-        #edisc .tag.growth{ border-color:#f7d7a6; color:#b45309; }
-      </style>
-    
       <h2 class="pretty text-3xl font-bold mb-5 reveal">🧭 e-DISC – 핵심 요약</h2>
     
-      <!-- 상단 요약 칩: 강점/보완을 명확히 표기 -->
+      <!-- 상단 요약 칩: '나의 강점/보완 과제' 명확화 -->
       <div class="glass rounded-2xl p-5 mb-6 reveal">
         <div class="flex flex-wrap items-center gap-2">
           <span id="edisc-chip" class="badge">Dominant · 분포</span>
-          <span class="tag strong">나의 강점: 토론·발표</span>
-          <span class="tag strong">나의 강점: 의사결정·실험설계</span>
-          <span class="tag strong">나의 강점: 팀 합의</span>
-          <span class="tag growth">보완 과제: 문서화·정밀검증</span>
+          <span class="tag">나의 강점: 토론·발표</span>
+          <span class="tag">나의 강점: 의사결정·실험설계</span>
+          <span class="tag">나의 강점: 팀 합의</span>
+          <span class="tag">보완 과제: 문서화·정밀검증</span>
         </div>
       </div>
     
       <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
     
-        <!-- Pie · 4Q -->
+        <!-- Pie & 4Q -->
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumbWrap mb-3">
             <img id="edisc_pie4q" src="edisc_pie_4q.jpg" alt="Pie & 4Q">
           </div>
           <div class="font-semibold">Pie · 4Q</div>
           <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            저는 <b class="txt-strong">I 40%</b>가 주도, <b class="txt-strong">D 29%</b>가 보조이며
-            <b>S 24%</b>와 <b>C 7%</b>의 성향을 가지고 있습니다. 이 분포는 다양한 청중 앞에서
-            내용을 쉽게 풀어 전달하고, 프로젝트에서 의사결정 속도를 확보하는 데 도움이 되었습니다.
+            저는 <b class="text-pink-600">I 40%</b>가 주도, <b class="text-amber-600">D 29%</b>가 보조이며
+            <b class="text-emerald-600">S 24%</b>, <b class="text-slate-700">C 7%</b>의 성향을 가지고 있습니다.
+            이러한 조합은 복잡한 내용을 쉽게 풀어 설명하고 팀을 빠르게 움직이게 하는 데 강점을 보입니다.
           </p>
-          <ul class="mt-1 text-sm space-y-1">
-            <li>✅ <span class="txt-strong">나의 강점</span> — 세미나·멘토링에서 청중의 반응을 보며 메시지를
-                재구성하여 <b>이해되는 언어</b>로 설명할 수 있었습니다.</li>
-            <li>✅ <span class="txt-strong">나의 강점</span> — 과제 진행 시 <b>실험 설계→실행</b>을 신속히 결정·추진합니다.</li>
-            <li>✅ <span class="txt-strong">나의 강점</span> — 팀 내 의견을 <b>조율</b>하며 갈등을 완충합니다.</li>
-            <li>🛠 <span class="txt-growth">보완 과제</span> — <b>세부 기록·검증</b>을 체크리스트/템플릿으로
-                습관화하여 정밀도를 높이고자 합니다.</li>
-          </ul>
+          <div class="mt-2 text-sm">
+            <div class="font-semibold mb-1">💪 나의 강점</div>
+            <ul class="space-y-1">
+              <li>💬 <b class="text-pink-600">사교(I)</b> — 세미나·멘토링에서 청중 반응을 읽고 <b>쉽게 재구성하여 설명</b>할 수 있습니다.</li>
+              <li>⚡ <b class="text-amber-600">주도(D)</b> — 프로젝트에서 <b>실험 설계·의사결정</b>을 신속히 내리고 추진합니다.</li>
+              <li>🤝 <b class="text-emerald-600">안정(S)</b> — 서로의 관점을 조율해 <b>팀 합의와 협업</b>을 이끕니다.</li>
+            </ul>
+            <div class="font-semibold mt-3 mb-1">🧩 보완이 필요한 점</div>
+            <ul class="space-y-1">
+              <li>📝 <b class="text-slate-700">신중(C)</b> — <b>문서화·정밀 검증</b>이 상대적으로 약할 수 있어 체크리스트·템플릿을 통해 습관화하고자 합니다.</li>
+            </ul>
+          </div>
         </article>
     
-        <!-- Diamond & 유연성 -->
+        <!-- Diamond -->
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumbWrap mb-3">
             <img id="edisc_diamond" src="edisc_diamond.jpg" alt="Diamond & Flexibility">
           </div>
           <div class="font-semibold">Diamond & 유연성</div>
           <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            저는 <b>외향·과제 지향</b> 축에 가까워 아이디어를 <b>발견→정리→발표</b>하는 루프를 빠르게 돌립니다.
-            상황에 따라 <b>데이터 중심</b>과 <b>사람 중심</b>의 소통 톤을 적절히 전환할 수 있습니다.
+            저는 <b class="text-blue-600">외향·과제 지향</b> 축에 가깝습니다. 아이디어를
+            <b>발견→정리→발표</b>하는 루프를 빠르게 돌리며, 상황에 따라
+            <b class="text-violet-600">데이터 중심 ↔ 사람 중심</b>의 소통 톤을 전환할 수 있습니다.
           </p>
-          <ul class="mt-1 text-sm space-y-1">
-            <li>✅ <span class="txt-strong">나의 강점</span> — 랩미팅·세미나에서 핵심을 구조화해 공유하고 토론을 주도했습니다.</li>
-            <li>🛠 <span class="txt-growth">보완 과제</span> — 속도감으로 디테일이 누락되지 않도록
-                <b>분석 집중 블록</b>과 <b>동료 리뷰</b>를 정례화하고자 합니다.</li>
-          </ul>
+          <div class="mt-2 text-sm">
+            <div class="font-semibold mb-1">💪 나의 강점</div>
+            <ul class="space-y-1">
+              <li>🎯 랩미팅/세미나에서 핵심을 <b>구조화하여 공유</b>하고 토론을 주도합니다.</li>
+              <li>🔄 프로젝트 전 과정에서 <b>속도감 있는 실행</b>과 <b>피드백 반영</b>이 가능합니다.</li>
+            </ul>
+            <div class="font-semibold mt-3 mb-1">🧩 보완이 필요한 점</div>
+            <ul class="space-y-1">
+              <li>⏱️ 속도감 때문에 디테일이 누락되지 않도록 <b>분석 집중 블록</b>과 <b>동료 리뷰</b>를 정례화하고자 합니다.</li>
+            </ul>
+          </div>
         </article>
     
-        <!-- Profile I · II -->
+        <!-- Profile I/II -->
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumbWrap mb-3">
             <img id="edisc_profiles" src="edisc_profiles.jpg" alt="Profile I/II">
           </div>
           <div class="font-semibold">Profile I · II</div>
           <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            저는 의식(Ⅰ)에서 <b>성과·마감 정렬</b>을 중시하고, 무의식(Ⅱ)에서는 <b>표현·네트워킹</b>에
-            에너지를 얻습니다. 그래서 연구 과정에서 <b>결과 공유·협업</b>을 즐기며 자연스럽게 역할을 맡아 왔습니다.
+            저는 의식(Ⅰ)에서 <b>성과·마감 정렬</b>을 중시하고, 무의식(Ⅱ)에서는
+            <b class="text-pink-600">표현·네트워킹</b>에서 에너지를 얻습니다. 그 결과 연구 과정에서
+            <b>결과 공유와 협업</b>을 즐기며 자연스럽게 역할을 맡아 왔습니다.
           </p>
-          <ul class="mt-1 text-sm space-y-1">
-            <li>✅ <span class="txt-strong">나의 강점</span> — 목표를 명확히 설정하고
-                <b>실험→피드백</b> 사이클을 빠르게 반복합니다.</li>
-            <li>🛠 <span class="txt-growth">보완 과제</span> — 공유 이전에 <b>문서화·통계 검증</b> 단계를 표준화하여
-                재현성과 신뢰성을 높이고자 합니다.</li>
-          </ul>
+          <div class="mt-2 text-sm">
+            <div class="font-semibold mb-1">💪 나의 강점</div>
+            <ul class="space-y-1">
+              <li>🧪 목표를 명확히 설정하고 <b>실험→피드백</b> 사이클을 신속히 반복합니다.</li>
+              <li>📣 결과를 <b>이해되는 언어</b>로 번역해 팀 안팎에 효과적으로 공유합니다.</li>
+            </ul>
+            <div class="font-semibold mt-3 mb-1">🧩 보완이 필요한 점</div>
+            <ul class="space-y-1">
+              <li>✅ 공유 이전에 <b>문서화·통계 검증</b> 단계를 표준화하여 <b>재현성·신뢰성</b>을 높이고자 합니다.</li>
+            </ul>
+          </div>
         </article>
     
-        <!-- 연구개발(R&D) – 두 그래프 크롭 / 이미지 크기 통일(정사각) -->
+        <!-- R&D (두 그래프 크롭 · 이미지 크기 '모두 동일') -->
         <article class="glass rounded-2xl p-4 soft reveal">
           <div class="thumbWrap mb-3">
             <img id="edisc_job_rnd" src="edisc_job_rnd.jpg" alt="R&D – 나의 프로파일 & 연구개발 프로파일(두 그래프)">
           </div>
           <div class="font-semibold">연구개발(R&D) – 핵심 적합 포인트</div>
           <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            저는 <b class="txt-strong">I·D 축</b>의 에너지를 바탕으로 <b>실험 설계–추진–공유</b> 전 과정에서
-            강점을 보였습니다. 특히 결과를 <b>이해되는 언어</b>로 번역하여 팀과 외부에 전달하는 역할을 잘 수행했습니다.
+            저는 <b class="text-amber-600">D</b>와 <b class="text-pink-600">I</b> 축의 에너지를 바탕으로
+            <b>실험 설계–추진–공유</b> 전 과정에서 강점을 보입니다. 특히 결과를
+            <b>이해되는 언어</b>로 번역하여 팀과 외부에 전달하는 역할을 충실히 수행해 왔습니다.
           </p>
-          <ul class="mt-1 text-sm space-y-1">
-            <li>✅ <span class="txt-strong">나의 강점</span> — 빠른 실험 설계·시도로 학습 속도를 높이고 성과 공유를 주도합니다.</li>
-            <li>🛠 <span class="txt-growth">보완 과제</span> — 장시간 프로토콜의 정밀함을 확보하기 위해
-                <b>SOP 기반 기록·랩노트 템플릿·동료 리뷰</b>를 루틴화하고자 합니다.</li>
-            <li>🎯 <span class="txt-strong">진로 적합</span> — “<b>소통하는 연구자</b>”로서 컨퍼런스·협업 프로젝트에서
-                시너지를 만들 준비가 되어 있습니다.</li>
-          </ul>
+          <div class="mt-2 text-sm">
+            <div class="font-semibold mb-1">💪 나의 강점</div>
+            <ul class="space-y-1">
+              <li>🚀 <b>빠른 실험 설계·시도</b>로 학습 속도를 높이고 성과 공유를 주도합니다.</li>
+              <li>🤝 협업 환경에서 <b>토론·발표</b>를 통해 팀의 추진력을 강화합니다.</li>
+            </ul>
+            <div class="font-semibold mt-3 mb-1">🧩 보완이 필요한 점</div>
+            <ul class="space-y-1">
+              <li>🧾 장시간 프로토콜의 <b>세부 준수·오차 검증</b>을 놓치지 않도록
+                  <b>SOP 기록·랩노트 템플릿·동료 리뷰</b>를 루틴화하고자 합니다.</li>
+            </ul>
+          </div>
         </article>
     
       </div>
     </section>
+
 
 
 
@@ -892,6 +908,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 목표: 화살표 카드 -->
     <section id="roadmap" class="py-10">
