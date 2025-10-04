@@ -206,6 +206,20 @@
       padding:16px 18px;max-height:clamp(220px,60vh,480px);overflow:auto;
     }
     .story-panel.hidden{display:none}
+
+    /* === 전역: 모든 'underline' 요소 호버 시 색상 포인트 적용 === */
+    .underline { text-underline-offset:2px; text-decoration-thickness:2px; }
+    .underline:hover,
+    .underline:focus-visible { color: var(--accent-strong); }
+    
+    /* 텍스트형 버튼 유틸 (배경/테두리 제거) */
+    .linkbtn{ background:transparent; border:0; padding:0; margin:0;
+              font:inherit; color:inherit; cursor:pointer; text-align:inherit; }
+    
+    /* 추가 포인트 클래스(원하면 다른 요소에도 재사용 가능) */
+    .hover-accent:hover,
+    .hover-accent:focus-visible { color: var(--accent-strong); }
+
     
         
     /* 아코디언 */
@@ -311,15 +325,15 @@
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
         <ul class="space-y-3">
           <li class="reveal glass soft rounded-xl px-4 py-3">
-            2023 - 2024 · <b>성균관대학교 공식 홍보대사 
-              <button type="button"
-                      class="underline decoration-2 underline-offset-2 hover:text-[var(--accent-strong)] focus:outline-none"
-                      onclick="toggleGoal('alimiDetail', this)"
-                      aria-expanded="false">
-                알리미
-              </button>
-            </b>
+            2023 - 2024 ·
+            <button type="button"
+                    class="linkbtn underline decoration-2 underline-offset-2 hover-accent"
+                    onclick="toggleGoal('alimiDetail', this)"
+                    aria-expanded="false">
+              <b>성균관대학교 공식 홍보대사 알리미</b>
+            </button>
           </li>
+
           
           <!-- ⬇️ 알리미 상세 (토글) -->
           <div id="alimiDetail" class="hidden mt-3 glass rounded-2xl p-5 text-[15px] leading-relaxed">
@@ -1011,6 +1025,7 @@
     }, { once:true });
   });
 </script>
+  
 
 
 
