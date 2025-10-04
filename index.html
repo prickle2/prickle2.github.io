@@ -1104,8 +1104,9 @@
     if (!chip) return;
     chip.textContent = `Dominant ${EDISC.dominant} · D ${EDISC.D}% · I ${EDISC.I}% · S ${EDISC.S}% · C ${EDISC.C}%`;
     chip.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--stroke') || '#f2d7e3';
-    chip.style.color = 'var(--accent-strong)';
-  })();
+    // 교체 (회색, 우선순위 강제)
+    chip.style.setProperty('color', '#444444', 'important');
+
 
   // 이미지가 없으면 해당 카드 숨김 (동작 유지)
   [
