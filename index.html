@@ -231,6 +231,7 @@
         <a href="#story" class="hover:text-[var(--accent-strong)]">스토리</a>
         <a href="#global" class="hover:text-[var(--accent-strong)]">디지털 배지·3품</a>
         <a href="#roadmap" class="hover:text-[var(--accent-strong)]">목표</a>
+        <a href="#edisc" class="hover:text-[var(--accent-strong)]">e-DISC</a>
       </nav>
     </div>
   </header>
@@ -481,6 +482,95 @@
         </article>
 
       </div>
+
+    <!-- ============== e-DISC (축소 버전: IT 제외, R&D는 2그래프 타이트 크롭) ============== -->
+    <section id="edisc" class="py-10">
+      <h2 class="pretty text-3xl font-bold mb-5 reveal">🧭 e-DISC – 핵심 요약</h2>
+    
+      <!-- 상단 요약 칩 -->
+      <div class="glass rounded-2xl p-5 mb-6 reveal">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="edisc-chip" class="badge">DISC 분포</span>
+          <span class="tag">토론·발표</span>
+          <span class="tag">의사결정·실험설계</span>
+          <span class="tag">팀 합의</span>
+          <span class="tag">R&D 적합성</span>
+        </div>
+        <p class="text-sm text-[var(--muted)] mt-2">
+          검사 결과를 <b>연구·학습 맥락</b>으로 간결히 해석했습니다. 이미지를 안 올리면 카드는 자동 숨김됩니다.
+        </p>
+      </div>
+    
+      <!-- 카드: Pie/4Q · Diamond · Profile · R&D(2그래프 전용) -->
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+        <!-- Pie & 4Q -->
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="thumbWrap mb-3"><img id="edisc_pie4q" src="edisc_pie_4q.jpg" alt="Pie & 4Q"></div>
+          <div class="font-semibold underline">Pie · 4Q</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-pink-600">→ I 주도: <b>세미나·포럼 토론</b> 강점</li>
+            <li class="text-amber-600">→ D 보조: <b>실험 설계·의사결정</b> 속도↑</li>
+          </ul>
+        </article>
+    
+        <!-- Diamond -->
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="thumbWrap mb-3"><img id="edisc_diamond" src="edisc_diamond.jpg" alt="Diamond & Flexibility"></div>
+          <div class="font-semibold underline">Diamond & 유연성</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-blue-600">→ 외향·과제 축: <b>실험–발표 루프</b> 적합</li>
+            <li class="text-violet-600">→ 상황 전환: <b>데이터/사람</b> 톤 전환</li>
+          </ul>
+        </article>
+    
+        <!-- Profile I/II -->
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="thumbWrap mb-3"><img id="edisc_profiles" src="edisc_profiles.jpg" alt="Profile I/II"></div>
+          <div class="font-semibold underline">Profile I · II</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-slate-700">→ 의식: <b>성과·마감</b> 정렬(OKR/KPI)</li>
+            <li class="text-pink-600">→ 무의식: <b>대인·표현</b> 선호(네트워킹)</li>
+          </ul>
+        </article>
+    
+        <!-- R&D (두 그래프 크롭 전용) -->
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <!-- 세로 긴 이미지 대비: 3:4 비율 -->
+          <div class="thumbWrap mb-3" style="aspect-ratio:3/4">
+            <img id="edisc_job_rnd" src="edisc_job_rnd.jpg" alt="R&D – 나의 프로파일 & 연구개발 프로파일(두 그래프)">
+          </div>
+          <div class="font-semibold underline">연구개발(R&D) – 핵심 2그래프</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-amber-600">→ D 성향: <b>목표–실험–데이터</b> 빠른 루프</li>
+            <li class="text-pink-600">→ I 성향: <b>결과 공유·토론</b> 시너지</li>
+          </ul>
+          <p class="text-xs text-[var(--muted)] mt-2">※ 하단 감점/개발 역량은 과밀 방지를 위해 제외</p>
+        </article>
+      </div>
+    
+      <!-- 텍스트 요약(이미지 없이) -->
+      <div class="grid md:grid-cols-2 gap-5 mt-6">
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="font-semibold underline">학습 스타일(텍스트 요약)</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-pink-600">→ 참여/아이디어 공유↑: <b>Journal club</b> 토론 주도</li>
+            <li class="text-emerald-600">→ 시행착오·실험 지향: <b>반복 개선 루프</b></li>
+            <li class="text-blue-600">→ 동료학습 선호: <b>랩미팅·코드리뷰</b> 강점</li>
+          </ul>
+        </article>
+        <article class="glass rounded-2xl p-4 soft reveal">
+          <div class="font-semibold underline">스트레스 관리(텍스트 요약)</div>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="text-amber-600">→ 통제·자유 상실 취약: <b>마감/체크리스트</b></li>
+            <li class="text-pink-600">→ 소외/단절: <b>1:1·소그룹</b> 체크인</li>
+            <li class="text-slate-700">→ 규칙 과잉: <b>근거+유연</b> SOP</li>
+          </ul>
+        </article>
+      </div>
+    
+      <p class="text-xs text-[var(--muted)] mt-6">
+        ※ Extended DISC 리포트 기반 요약. 이미지를 업로드하지 않으면 해당 카드는 자동 숨김됩니다.
+      </p>
     </section>
 
     <section id="story" class="py-10">
@@ -714,6 +804,36 @@
       if (btn) btn.setAttribute('aria-expanded', String(!nowHidden));
     }
   </script>
+
+  <script>
+  // 분포 수치(필요 시 값만 변경)
+  const EDISC = { D: 30, I: 50, S: 20, C: 0, dominant: "I" };
+
+  // 칩 렌더
+  (function(){
+    const chip = document.getElementById('edisc-chip');
+    if (!chip) return;
+    chip.textContent = `Dominant ${EDISC.dominant} · D ${EDISC.D}% / I ${EDISC.I}% / S ${EDISC.S}% / C ${EDISC.C}%`;
+    chip.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--stroke') || '#f2d7e3';
+    chip.style.color = 'var(--accent-strong)';
+  })();
+
+  // 이미지가 없으면 해당 카드 숨김
+  [
+    ['edisc_pie4q','edisc_pie_4q.jpg'],
+    ['edisc_diamond','edisc_diamond.jpg'],
+    ['edisc_profiles','edisc_profiles.jpg'],
+    ['edisc_job_rnd','edisc_job_rnd.jpg'],
+  ].forEach(([id,_name])=>{
+    const img = document.getElementById(id);
+    if (!img) return;
+    img.addEventListener('error', ()=>{
+      const card = img.closest('article');
+      if (card) card.style.display = 'none';
+    }, { once:true });
+  });
+</script>
+
 
 </body>
 </html>
