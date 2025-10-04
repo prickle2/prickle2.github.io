@@ -36,6 +36,30 @@
     .circle small{display:block; font-weight:600; font-size:11px; opacity:.9}
     .circle .value{font-size:22px}
 
+    /* 디지털 배지: 박스 중앙 정렬 */
+    .badge-box{
+      display:flex; align-items:center; justify-content:center;
+      width:100%; aspect-ratio:16/9;
+      background:#fff; border:1px solid var(--stroke); border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    .badge-box img{ max-width:92%; max-height:92%; object-fit:contain }
+    
+    /* 3품: 이미지 왼쪽, 텍스트 오른쪽 */
+    .three-item{
+      display:grid; grid-template-columns:84px 1fr; align-items:center; gap:14px;
+    }
+    .stamp--square{
+      width:84px; height:84px;
+      border:1px solid var(--stroke); border-radius:14px; background:#fff; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .stamp--square img{ width:100%; height:100%; object-fit:cover }
+    
+    /* (기존 오타 수정) */
+    .three-row{ display:grid; grid-template-columns:340px 1fr; align-items:center; gap:18px; min-height:96px; }
+
+
     /* 표 안 미니 진행바 */
     .bar{height:10px; border-radius:999px; background:#ffe0ec; overflow:hidden}
     .bar>i{display:block; height:100%; background:#f472b6; border-radius:999px}
@@ -872,14 +896,18 @@
       <h2 class="pretty text-3xl font-bold mb-4 reveal">🏅 디지털 배지 & 3품 인증</h2>
       <div class="grid md:grid-cols-2 gap-4">
         <!-- 디지털 배지: 링크 텍스트 + 이미지(object-contain) -->
+        <!-- 디지털 배지: 링크 + 중앙 정렬 박스 -->
         <div class="glass rounded-xl p-4 text-center reveal">
-          <a href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09" target="_blank" rel="noopener" class="text-sm underline">
+          <a href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09"
+             target="_blank" rel="noopener" class="text-sm underline">
             디지털 배지 보기
           </a>
-          <div class="relative w-full max-w-[720px] mx-auto aspect-[16/9] overflow-hidden rounded-lg border border-[var(--stroke)] bg-white shadow mt-2">
-            <img src="뱃지.jpg" alt="Digital Badge" class="absolute inset-0 w-full h-full object-contain bg-white" />
+        
+          <div class="badge-box mt-2 mx-auto max-w-[720px]">
+            <img src="뱃지.jpg" alt="Digital Badge">
           </div>
         </div>
+
 
         <!-- 3품 -->
         <div class="glass rounded-xl p-4 reveal">
