@@ -310,7 +310,68 @@
       <div class="mb-6">
         <h3 class="text-xl font-bold mb-3">📌 주요활동</h3>
         <ul class="space-y-3">
-          <li class="reveal glass soft rounded-xl px-4 py-3">2023 - 2024 ·<b>성균관대학교 공식 홍보대사 알리미</b></li>
+          <li class="reveal glass soft rounded-xl px-4 py-3">
+            2023 - 2024 · <b>성균관대학교 공식 홍보대사 
+              <button type="button"
+                      class="underline decoration-2 underline-offset-2 hover:text-[var(--accent-strong)] focus:outline-none"
+                      onclick="toggleGoal('alimiDetail', this)"
+                      aria-expanded="false">
+                알리미
+              </button>
+            </b>
+          </li>
+          
+          <!-- ⬇️ 알리미 상세 (토글) -->
+          <div id="alimiDetail" class="hidden mt-3 glass rounded-2xl p-5 text-[15px] leading-relaxed">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="badge">1994년 출범 · 대한민국 최초 대학생 홍보대사</span>
+              <span class="badge">입학처 산하</span>
+              <span class="badge">공식 커뮤니케이션·입시 안내</span>
+            </div>
+          
+            <h4 class="pretty text-xl font-bold mb-2">알리미 한눈에 보기</h4>
+            <p class="text-[var(--muted)]">
+              성균관대학교의 얼굴로서 교내·외 <b>입시 커뮤니케이션과 현장 운영</b>을 담당했습니다.
+              수험생·학부모의 질문을 <b>정확하고 신뢰감 있게</b> 해소하며, 복잡한 제도를 <b>이해하기 쉬운 언어</b>로 풀어 전달했습니다.
+            </p>
+          
+            <div class="line my-4"></div>
+          
+            <!-- 역할·상황 통합 리스트 -->
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="glass rounded-xl p-4">
+                <div class="font-semibold mb-2">무엇을 했나요? (역할 → 현장 상황)</div>
+                <ul class="text-sm text-[var(--muted)] space-y-2">
+                  <li>🏫 <b>캠퍼스 투어 & 오픈캠퍼스</b> — 교내 시설·학과 소개, 동선 안내, 학부모·수험생 Q&amp;A 진행</li>
+                  <li>🚌 <b>전국 투어</b> — 지역 고등학교 방문 설명·멘토링, 학교·전형 정보의 핵심만 추려 맞춤 설명</li>
+                  <li>🧪 <b>수시 실기·면접</b> — 고사장 운영 동선 관리, 응시생 응대, 변수 발생 시 즉시 문제 해결</li>
+                  <li>✍️ <b>수시 논술</b> — 대규모 시험 운영 보조, 지점별 유기적 협업 및 커뮤니케이션 유지</li>
+                  <li>🎯 <b>정시 박람회·설명회</b> — 부스 상담·홍보, 학부모 심층 질문에 구조화된 답변 제공</li>
+                  <li>🔁 <b>편입·기타 전형</b> — 고사장 안내·운영 보조, 응시자 경험의 일관성 유지</li>
+                  <li>🎥 <b>콘텐츠 제작</b> — 사진·영상 촬영 및 출연, 메시지 톤·정보 정확도 검수</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="tag">#입시안내</span><span class="tag">#동선관리</span><span class="tag">#멘토링</span>
+                  <span class="tag">#박람회상담</span><span class="tag">#콘텐츠</span>
+                </div>
+              </div>
+          
+              <div class="glass rounded-xl p-4">
+                <div class="font-semibold mb-2">무엇이 남았나요? (배움 · 성장)</div>
+                <ul class="text-sm text-[var(--muted)] space-y-2">
+                  <li>🗣️ <b>공식 커뮤니케이션</b> — 청중 눈높이에 맞춘 <b>구조화·재서술 능력</b>, 발표력 강화</li>
+                  <li>🤝 <b>협업·운영</b> — 대규모 인원의 <b>정밀 분업</b> 및 <b>SOP 준수</b>로 안정적 현장 운영</li>
+                  <li>⚡ <b>문제 해결</b> — 혼잡·문의 폭주 등 <b>현장 변수에 즉시 대응</b>, 리스크 최소화</li>
+                  <li>💬 <b>멘토링·공감</b> — 서로 다른 배경의 요구를 이해하고 <b>신뢰</b>를 형성하는 태도</li>
+                  <li>🧭 <b>책임감·윤리</b> — 공적 정보를 <b>정확·일관</b>되게 전달하는 책무성 체득</li>
+                </ul>
+                <div class="mt-3 text-sm text-[var(--muted)]">
+                  한 줄 요약 — <b>정보 전달자</b>를 넘어, <b>공감과 신뢰를 이끄는 멘토·협력자</b>로 성장.
+                </div>
+              </div>
+            </div>
+          </div>
+
           <li class="reveal glass soft rounded-xl px-4 py-3">2024 · 양평장로교회 <b>울림 임원단</b></li>
           <li class="reveal glass soft rounded-xl px-4 py-3">2025 · 양평장로교회 <b>아하 임원단</b></li>
         </ul>
