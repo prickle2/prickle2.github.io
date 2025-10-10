@@ -1121,50 +1121,61 @@
 
 
   <!-- 디지털 배지 & 3품 -->
-    <section id="global" class="py-6">
-      <h2 class="pretty text-3xl font-bold mb-4 reveal">🏅 디지털 배지 & 3품 인증</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <!-- 디지털 배지: 링크 텍스트 + 이미지(object-contain) -->
-        <!-- 디지털 배지: 링크 + 중앙 정렬 박스 -->
-        <div class="glass rounded-xl p-4 text-center reveal">
-          <a href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09"
-             target="_blank" rel="noopener" class="text-sm underline">
-            디지털 배지 보기
-          </a>
-        
+  <section id="global" class="py-6">
+    <h2 class="pretty text-3xl font-bold mb-4 reveal">🏅 디지털 배지 & 3품 인증</h2>
+  
+    <div class="grid md:grid-cols-2 gap-4">
+      <!-- ✅ 디지털 배지: 링크 + 이미지(세로/가로 중앙 정렬) -->
+      <div class="glass rounded-xl p-4 reveal flex flex-col">
+        <a
+          href="https://www.openbadge-global.com/ns/portal/openbadge/public/assertions/user/UUpKcE9ZQkdNQ21TUDQyNHRMMkRTdz09"
+          target="_blank" rel="noopener"
+          class="text-sm underline text-center"
+        >
+          디지털 배지 보기
+        </a>
+  
+        <!-- 이 래퍼로 카드 높이 내에서 완전 중앙 정렬 -->
+        <div class="flex-1 flex items-center justify-center">
           <div class="badge-box mt-2 mx-auto max-w-[720px]">
             <img src="뱃지.jpg" alt="Digital Badge">
           </div>
         </div>
-
-
-        <!-- 3품 -->
-        <div class="glass rounded-xl p-4 reveal flex flex-col justify-center">
-          <div class="font-semibold mb-3 text-center">3품 인증</div>
-
-          <div class="flex items-center gap-4">
-            <div class="three-row">
-              <div class="stamp"><img src="인성.jpg" alt="인성 인증"></div>
-              <div class="text-sm">인성 인증 — ✅ 완료</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 mt-3">
-           <div class="three-row">
-              <div class="stamp"><img src="글로벌.jpg" alt="글로벌 인증"></div>
-              <div class="text-sm">글로벌 인증 — ✅ 완료</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4 mt-3">
-            <div class="three-row">
-              <div class="stamp"><img src="AI.jpg" alt="AI 인증"></div>
-              <div class="text-sm">AI 인증 — ✅ 완료</div>
-            </div>
-          </div>
-        </div>
       </div>
-    </section>
+  
+      <!-- ✅ 3품: 사진 + 텍스트 한 줄 정렬(줄바꿈 X) -->
+      <div class="glass rounded-xl p-4 reveal">
+        <div class="font-semibold mb-3 text-center">3품 인증</div>
+  
+        <ul class="space-y-4">
+          <!-- 인성 -->
+          <li class="flex items-center gap-3 whitespace-nowrap">
+            <div class="stamp">
+              <img src="인성.jpg" alt="인성 인증">
+            </div>
+            <span class="text-sm">인성 인증 — ✅ 완료</span>
+          </li>
+  
+          <!-- 글로벌 -->
+          <li class="flex items-center gap-3 whitespace-nowrap">
+            <div class="stamp">
+              <img src="글로벌.jpg" alt="글로벌 인증">
+            </div>
+            <span class="text-sm">글로벌 인증 — ✅ 완료</span>
+          </li>
+  
+          <!-- AI -->
+          <li class="flex items-center gap-3 whitespace-nowrap">
+            <div class="stamp">
+              <img src="AI.jpg" alt="AI 인증">
+            </div>
+            <span class="text-sm">AI 인증 — ✅ 완료</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
 
 
 
