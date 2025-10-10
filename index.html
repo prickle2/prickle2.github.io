@@ -19,6 +19,7 @@
       --accent:#f472b6; --accent-strong:#ec4899;
       --stroke:#f2d7e3;
     }
+
     html{scroll-behavior:smooth}
     body{background:linear-gradient(120deg,var(--bg1),var(--bg2)); color:var(--ink); font-family:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto}
     .brand{font-family:"GmarketSansBold","Jua","Noto Sans KR",sans-serif}
@@ -55,9 +56,6 @@
       display:flex; align-items:center; justify-content:center;
     }
     .stamp--square img{ width:100%; height:100%; object-fit:cover }
-    
-    /* (기존 오타 수정) */
-    .three-row{ display:grid; grid-template-columns:340px 1fr; align-items:center; gap:18px; min-height:96px; }
 
 
     /* 표 안 미니 진행바 */
@@ -561,6 +559,7 @@
             aria-controls="volunteerPanel">
             2025<br><u>양평군노인요양원</u><small>봉사</small>
           </button>
+          </div> 
           
                 
         <!-- ✅ 클릭 시 나타나는 아코디언 -->
@@ -872,9 +871,6 @@
       </div>
     </section>
 
-
-      </div>
-
     <!-- ============== 나의 성향 (e-DISC) ============== -->
     <section id="edisc" class="py-10">
       <h2 class="pretty text-3xl font-bold mb-5 reveal">🧭 나의 행동 성향 (e-DISC)</h2>
@@ -1071,6 +1067,7 @@
           <button class="story-dot" data-story="s3">
             <span class="dot-title">확장</span>
             <small>현장에서 배우는 시야</small>
+            </button>
           <div class="speech" id="s3">
             <p>저는 연구자의 길에 필요한 <b>현장 경험</b>을 쌓고자 교내 활동을 넘어 다양한 기회를 찾았습니다.
             <b>화학과 동문기업 탐방 프로그램</b>을 통해 연구실 실험 조건이 산업 현장에서는 <b>설비와 규제라는 새로운 제약</b>과 맞닿는다는 사실을 체감했습니다.
@@ -1298,7 +1295,7 @@
       const card = img.closest('article');
       if (card) card.style.display = 'none';
     }, { once:true });
-  });
+  })();
 </script>
 
 <script>
