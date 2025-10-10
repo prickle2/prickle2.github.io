@@ -559,48 +559,50 @@
         </div>
       
         <!-- ✅ 클릭 시 나타나는 아코디언 -->
-        <div id="volunteerPanel" class="hidden mt-4 glass rounded-2xl p-4">
-          <!-- 표 -->
-          <div class="overflow-x-auto mb-6">
-            <table class="w-full text-sm">
-              <thead class="bg-white/70">
-                <tr class="text-left">
-                  <th class="p-3">봉사일자</th>
-                  <th class="p-3">활동내용</th>
-                  <th class="p-3">시간</th>
-                  <th class="p-3">기관</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-17</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-18</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-21</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-22</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-23</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-24</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-25</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-28</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-29</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-30</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-02</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-07</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-08</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-                <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-09</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
-              </tbody>
-              <tfoot class="bg-white/60">
-                <tr class="font-semibold">
-                  <td class="p-3 text-center" colspan="4">총 14회 · 28시간 봉사</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+        <div id="volunteerPanel" class="hidden mt-4 glass rounded-2xl p-6">
+          <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
+            
+            <!-- 📋 표 (왼쪽) -->
+            <div class="flex-1 overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-white/70">
+                  <tr class="text-left">
+                    <th class="p-3">봉사일자</th>
+                    <th class="p-3">활동내용</th>
+                    <th class="p-3">시간</th>
+                    <th class="p-3">기관</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-17</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-18</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-21</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-22</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-23</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-24</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-25</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-28</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-29</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-04-30</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-02</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-07</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-08</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                  <tr class="border-t border-[var(--stroke)]"><td class="p-3">2025-05-09</td><td class="p-3">프로그램 진행 보조 및 행정 지원</td><td class="p-3">2시간</td><td class="p-3">양평군노인요양원</td></tr>
+                </tbody>
+                <tfoot class="bg-white/60">
+                  <tr class="font-semibold">
+                    <td class="p-3 text-center" colspan="4">총 14회 · 28시간 봉사</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
         
-          <!-- 사진: 표 아래, 가운데 -->
-          <div class="flex justify-center">
-            <img src="봉사.jpg" alt="양평군노인요양원 봉사활동 사진" class="rounded-2xl w-[80%] max-w-2xl shadow-md">
+            <!-- 🖼️ 오른쪽 사진 (세로 가운데 정렬) -->
+            <div class="flex-1 flex justify-center items-center">
+              <img src="봉사.jpg" alt="양평군노인요양원 봉사활동 사진" class="rounded-2xl w-[85%] max-w-md shadow-lg">
+            </div>
           </div>
         </div>
-
 
 
 
